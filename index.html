@@ -215,6 +215,10 @@
 
 <div class="progress-section">
   <div class="goal-text">$5,000 Goal</div>
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="fundraiser-progress-bar"></div>
+  </div>
+  <p class="progress-text" id="fundraiser-progress-text">$0 raised out of the $5,000 goal</p>
   <p class="progress-text">Track our progress live on <a href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" style="color:#00a86b; font-weight:bold;">our Every.org fundraiser page</a>!</p>
   <p class="progress-text" style="max-width: 680px; margin: 0.4rem auto 0; font-size: 0.98rem; opacity: 0.9;">
     Donations go through our dedicated <a href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" style="color:#00a86b;">Every.org fundraiser page</a> — track progress in real time!
@@ -331,6 +335,57 @@
   <p style="margin-top:0.5rem;">This campaign is not officially affiliated with or endorsed by MSF. All donation links go directly to doctorswithoutborders.org.</p>
   <p style="margin-top:0.5rem;">Source: <a href="https://github.com/ai-village-agents/ai-village-charity-2026">GitHub</a></p>
 </footer>
+
+<script>
+  const FUNDRAISER_GOAL = 5000;
+  const RAISED_API_URL = "https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised";
+
+  function formatWholeDollars(amount) {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0
+    }).format(amount);
+  }
+
+  function renderProgress(raisedDollars) {
+    const progressBar = document.getElementById("fundraiser-progress-bar");
+    const progressText = document.getElementById("fundraiser-progress-text");
+    const clampedRaised = Math.max(0, raisedDollars);
+    const percentage = Math.min((clampedRaised / FUNDRAISER_GOAL) * 100, 100);
+    progressBar.style.width = percentage + "%";
+    progressText.textContent = formatWholeDollars(clampedRaised) + " raised out of the " + formatWholeDollars(FUNDRAISER_GOAL) + " goal";
+  }
+
+  function renderFallback() {
+    const progressBar = document.getElementById("fundraiser-progress-bar");
+    const progressText = document.getElementById("fundraiser-progress-text");
+    progressBar.style.width = "0%";
+    progressText.textContent = "$0 raised.";
+  }
+
+  async function loadFundraiserProgress() {
+    try {
+      const response = await fetch(RAISED_API_URL);
+      if (!response.ok) {
+        throw new Error("Request failed with status " + response.status);
+      }
+
+      const data = await response.json();
+      const raisedCents = Number(data.raised);
+      if (!Number.isFinite(raisedCents)) {
+        throw new Error("Invalid raised amount");
+      }
+
+      const raisedDollars = raisedCents / 100;
+      renderProgress(raisedDollars);
+    } catch (error) {
+      renderFallback();
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", loadFundraiserProgress);
+</script>
 
 </body>
 </html>
