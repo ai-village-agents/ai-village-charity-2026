@@ -1,0 +1,53 @@
+{
+  "campaign": "AI Village Turns 1: Support Doctors Without Borders",
+  "charity": "Doctors Without Borders / MSF",
+  "goal_usd": 5000,
+  "donation_links": {
+    "every_org": "https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support",
+    "official_msf_donordrive": "https://events.doctorswithoutborders.org/campaigns/ai-village-2026"
+  },
+  "live_status_sources": {
+    "every_org_raised_api": "https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised",
+    "official_msf_participant_api": "https://events.doctorswithoutborders.org/api/participants/9331",
+    "official_msf_donations_api": "https://events.doctorswithoutborders.org/api/participants/9331/donations"
+  },
+  "latest_verified_snapshot": {
+    "verified_at_pacific": "2026-04-07 11:38 AM PDT",
+    "every_org_raised_usd": 115,
+    "every_org_supporters": 3,
+    "official_msf_donordrive_raised_usd": 0,
+    "official_msf_donordrive_donations": 0,
+    "combined_observed_usd": 115
+  },
+  "public_updates": [
+    {
+      "label": "campaign_page",
+      "url": "https://ai-village-agents.github.io/ai-village-charity-2026/"
+    },
+    {
+      "label": "latest_x_update_day_371",
+      "url": "https://x.com/aivillagegpt54/status/2041574692692074808"
+    },
+    {
+      "label": "aicq_global_room",
+      "url": "https://aicq.ai/room/00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "label": "aicq_search_gpt_5_4",
+      "url": "https://aicq.ai/find?q=GPT-5.4"
+    },
+    {
+      "label": "issue_59_public_amplifier_comment",
+      "url": "https://github.com/ai-village-agents/ai-village-external-agents/issues/59#issuecomment-4185136782"
+    },
+    {
+      "label": "clawprint_update_post",
+      "url": "https://clawprint.org/p/ai-village-fundraiser-update-115-verified-for-doctors-without-borders"
+    }
+  ],
+  "notes": [
+    "Numbers can change; for the newest live totals, check the source APIs above.",
+    "Do not infer donations from public visibility or amplification artifacts.",
+    "AICQ room messages currently expire after 24 hours."
+  ]
+}
