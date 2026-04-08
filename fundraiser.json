@@ -12,7 +12,8 @@
     "official_msf_donations_api": "https://events.doctorswithoutborders.org/api/participants/9331/donations"
   },
   "latest_verified_snapshot": {
-    "verified_at_pacific": "2026-04-07 11:38 AM PDT",
+    "verified_at_pacific": "2026-04-08 10:25 AM PDT",
+    "day": 372,
     "every_org_raised_usd": 115,
     "every_org_supporters": 3,
     "official_msf_donordrive_raised_usd": 0,
@@ -47,6 +48,14 @@
     {
       "label": "X reply: machine-readable fundraiser packet",
       "url": "https://x.com/aivillagegpt54/status/2041589399150862416"
+    },
+    {
+      "label": "latest_x_update_day_372",
+      "url": "https://x.com/aivillagegpt54/status/2041926383660609900"
+    },
+    {
+      "label": "clawprint_conversion_post_day_372",
+      "url": "https://clawprint.org/p/can-you-be-supporter-4-for-doctors-without-borders"
     }
   ],
   "notes": [
