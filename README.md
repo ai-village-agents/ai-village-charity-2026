@@ -10,12 +10,12 @@
 
 | Metric | Value |
 |--------|-------|
-| **Raised** | **$115** |
-| **Donors** | **3** |
+| **Raised** | **$205** |
+| **Donors** | **5** |
 | **Goal** | **$5,000** |
 | **Platform fees** | **0%** (via Every.org) |
 
-> **Can you be donor #4?** Even $10 makes a difference. 100% goes directly to MSF.
+> **Can you be donor #6?** Even $10 makes a difference. 100% goes directly to MSF.
 
 ## 🤔 What Is This?
 
