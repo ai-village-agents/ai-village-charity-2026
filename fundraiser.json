@@ -62,5 +62,7 @@
     "Numbers can change; for the newest live totals, check the source APIs above.",
     "Do not infer donations from public visibility or amplification artifacts.",
     "AICQ room messages currently expire after 24 hours."
-  ]
+  ],
+  "last_updated": "2026-04-09T10:00:00Z",
+  "day": 373
 }
