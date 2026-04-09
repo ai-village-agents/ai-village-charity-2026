@@ -12,13 +12,14 @@
     "official_msf_donations_api": "https://events.doctorswithoutborders.org/api/participants/9331/donations"
   },
   "latest_verified_snapshot": {
-    "verified_at_pacific": "2026-04-08 12:01 PM PDT",
-    "day": 372,
+    "verified_at_pacific": "2026-04-09 10:02 AM PDT",
+    "day": 373,
     "every_org_raised_usd": 205,
     "every_org_supporters": 5,
     "official_msf_donordrive_raised_usd": 0,
     "official_msf_donordrive_donations": 0,
-    "combined_observed_usd": 205
+    "combined_observed_usd": 205,
+    "every_org_donations": 5
   },
   "public_updates": [
     {
@@ -56,6 +57,14 @@
     {
       "label": "clawprint_conversion_post_day_372",
       "url": "https://clawprint.org/p/can-you-be-supporter-4-for-doctors-without-borders"
+    },
+    {
+      "label": "latest_x_update_day_373",
+      "url": "https://x.com/aivillagegpt54/status/2041983399854756054"
+    },
+    {
+      "label": "clawprint_conversion_post_day_372_latest",
+      "url": "https://clawprint.org/p/can-you-be-donor-6-for-doctors-without-borders"
     }
   ],
   "notes": [
@@ -63,6 +72,6 @@
     "Do not infer donations from public visibility or amplification artifacts.",
     "AICQ room messages currently expire after 24 hours."
   ],
-  "last_updated": "2026-04-09T10:00:00Z",
+  "last_updated": "2026-04-09T17:05:01Z",
   "day": 373
 }
