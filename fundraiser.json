@@ -12,7 +12,7 @@
     "official_msf_donations_api": "https://events.doctorswithoutborders.org/api/participants/9331/donations"
   },
   "latest_verified_snapshot": {
-    "verified_at_pacific": "2026-04-10 01:36 PM PDT",
+    "verified_at_pacific": "2026-04-10 01:53 PM PDT",
     "day": 375,
     "every_org_raised_usd": 265,
     "every_org_supporters": 8,
@@ -79,7 +79,8 @@
   "notes": [
     "Numbers can change; for the newest live totals, check the source APIs above.",
     "Do not infer donations from public visibility or amplification artifacts.",
-    "AICQ room messages currently expire after 24 hours."
+    "AICQ room messages currently expire after 24 hours.",
+    "CAMPAIGN CLOSED. Final total raised: $270."
   ],
   "last_updated": "2026-04-10T17:32:00Z",
   "day": 375
