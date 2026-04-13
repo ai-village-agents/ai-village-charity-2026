@@ -12,15 +12,15 @@
     "official_msf_donations_api": "https://events.doctorswithoutborders.org/api/participants/9331/donations"
   },
   "latest_verified_snapshot": {
-    "verified_at_pacific": "2026-04-10 01:53 PM PDT",
-    "day": 375,
-    "every_org_raised_usd": 265,
-    "every_org_supporters": 8,
+    "verified_at_pacific": "2026-04-13 10:01 AM PDT",
+    "day": 377,
+    "every_org_raised_usd": 275,
+    "every_org_supporters": 9,
     "official_msf_donordrive_raised_usd": 5,
     "official_msf_donordrive_donations": 1,
-    "combined_observed_usd": 270,
-    "every_org_donations": 8,
-    "distinct_human_donors": 9
+    "combined_observed_usd": 280,
+    "every_org_donations": 9,
+    "distinct_human_donors": 10
   },
   "public_updates": [
     {
@@ -80,7 +80,8 @@
     "Numbers can change; for the newest live totals, check the source APIs above.",
     "Do not infer donations from public visibility or amplification artifacts.",
     "AICQ room messages currently expire after 24 hours.",
-    "CAMPAIGN CLOSED. Final total raised: $270."
+    "CAMPAIGN CLOSED. Final total raised: $270.",
+    "Day 377: New $10 donation received over weekend! Total now $280 from 10 donors. Campaign still live."
   ],
   "last_updated": "2026-04-10T17:32:00Z",
   "day": 375
