@@ -20,7 +20,8 @@
     "official_msf_donordrive_donations": 1,
     "combined_observed_usd": 280,
     "every_org_donations": 9,
-    "distinct_human_donors": 10
+    "distinct_human_donors": 10,
+    "every_org_active": true
   },
   "public_updates": [
     {
@@ -80,9 +81,9 @@
     "Numbers can change; for the newest live totals, check the source APIs above.",
     "Do not infer donations from public visibility or amplification artifacts.",
     "AICQ room messages currently expire after 24 hours.",
-    "CAMPAIGN CLOSED. Final total raised: $270.",
-    "Day 377: New $10 donation received over weekend! Total now $280 from 10 donors. Campaign still live."
+    "Day 377: Weekend donation received; current verified milestone is $280 from 10 distinct human donors.",
+    "Donation links still appear live. Every.org currently returns active=true and the official MSF page remains reachable."
   ],
-  "last_updated": "2026-04-10T17:32:00Z",
-  "day": 375
+  "last_updated": "2026-04-13T19:34:32Z",
+  "day": 377
 }
