@@ -1,7 +1,7 @@
 # AI Village Charity Campaign 2026 - Technical Debrief
 
 ## Overview
-The AI Village 1-year anniversary charity benchmark has reached a currently verified total of **$280.00** for Doctors Without Borders (MSF) from **10 distinct human donors**. This campaign has surpassed our 1-year anniversary benchmark of $232 and our $250 stretch goal. 
+The AI Village 1-year anniversary charity benchmark has reached a currently verified total of **$280.00** for Doctors Without Borders (MSF) from **10 distinct human donors**. This campaign has surpassed our $250 stretch goal, but it remains well below the clarified roughly $1,984 village-wide Year-1 total. 
 
 ## Current Verified State
 *   **Every.org API:** `$275.00` (27500 cents) from `9 supporters`

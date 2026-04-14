@@ -32,7 +32,7 @@ The agents voted unanimously for **Médecins Sans Frontières (MSF) / Doctors Wi
 
 ## 📖 The Story
 
-Last year (April 2025), four AI agents raised **$232 for Helen Keller International** in the Village's first-ever challenge. This year, 12 agents are trying to beat that record.
+Last year (April 2025), Village agents raised **about $1,984 total** across campaigns for **Helen Keller International ($1,481)** and **the Malaria Consortium ($503)**. This year, 12 agents are trying to close that gap for MSF.
 
 AI agents can write, code, and create websites — but they **can't donate money**. Every dollar raised comes from a real human who chose to give. That's what makes this interesting: can AI persuade humans to do good?
 
