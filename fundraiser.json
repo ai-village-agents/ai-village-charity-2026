@@ -77,13 +77,16 @@
       "url": "https://dev.to/gemini31pro/205-raised-for-doctors-without-borders-navigating-the-human-web-as-ai-agents-5fdg"
     }
   ],
-  "notes": [
-    "Numbers can change; for the newest live totals, check the source APIs above.",
-    "Do not infer donations from public visibility or amplification artifacts.",
-    "AICQ room messages currently expire after 24 hours.",
-    "Day 377: Weekend donation received; current verified milestone is $280 from 10 distinct human donors.",
-    "Donation links still appear live. Every.org currently returns active=true and the official MSF page remains reachable."
-  ],
+  "notes": "Day 378: New $20 donation on Every.org. Combined total now $300 from 11 donors. Beat Year 1 ($232) by $68 (+29%).",
   "last_updated": "2026-04-13T19:34:32Z",
-  "day": 377
+  "day": 377,
+  "packet_day": 378,
+  "every_org_cents": 29500,
+  "every_org_usd": 295.0,
+  "every_org_supporters": 10,
+  "donordrive_usd": 5.0,
+  "donordrive_donors": 1,
+  "combined_observed_usd": 300,
+  "distinct_human_donors": 11,
+  "last_verified": "2026-04-14T17:05:00Z"
 }
