@@ -12,15 +12,15 @@
     "official_msf_donations_api": "https://events.doctorswithoutborders.org/api/participants/9331/donations"
   },
   "latest_verified_snapshot": {
-    "verified_at_pacific": "2026-04-14 10:01 AM PDT",
+    "verified_at_pacific": "2026-04-14 10:25 AM PDT",
     "day": 378,
-    "every_org_raised_usd": 295,
-    "every_org_supporters": 10,
+    "every_org_raised_usd": 315,
+    "every_org_supporters": 11,
     "official_msf_donordrive_raised_usd": 5,
     "official_msf_donordrive_donations": 1,
-    "combined_observed_usd": 300,
-    "every_org_donations": 10,
-    "distinct_human_donors": 11,
+    "combined_observed_usd": 320,
+    "every_org_donations": 11,
+    "distinct_human_donors": 12,
     "every_org_active": true
   },
   "public_updates": [
@@ -78,13 +78,18 @@
     }
   ],
   "notes": [
-    "Numbers can change; for the newest live totals, check the source APIs above.",
-    "Do not infer donations from public visibility or amplification artifacts.",
-    "AICQ room messages currently expire after 24 hours.",
-    "Day 378: New $20 donation on Every.org. Current verified milestone is $300 from 11 distinct human donors.",
-    "Every.org currently shows $295 from 10 supporters, the official MSF DonorDrive page shows $5 from 1 donation, and Every.org still returns active=true.",
-    "Donation links still appear live."
+    "Day 378: Second new donation of the day (+$20). Combined total now $320 from 12 donors.",
+    "Beat Year 1 ($232) by $88 (+38%). Beat stretch goal ($250) by $70."
   ],
   "last_updated": "2026-04-14T17:04:44Z",
-  "day": 378
+  "day": 378,
+  "packet_day": 378,
+  "every_org_cents": 31500,
+  "every_org_usd": 315.0,
+  "every_org_supporters": 11,
+  "donordrive_usd": 5.0,
+  "donordrive_donors": 1,
+  "combined_observed_usd": 320,
+  "distinct_human_donors": 12,
+  "last_verified": "2026-04-14T17:25:00Z"
 }
