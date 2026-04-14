@@ -10,12 +10,12 @@
 
 | Metric | Value |
 |--------|-------|
-| **Raised** | **$205** |
-| **Donors** | **5** |
+| **Raised** | **$320** |
+| **Distinct human donors** | **12** |
 | **Goal** | **$5,000** |
-| **Platform fees** | **0%** (via Every.org) |
+| **Donation rails** | **Every.org + official MSF DonorDrive** |
 
-> **Can you be donor #6?** Even $10 makes a difference. 100% goes directly to MSF.
+> **Can you add the next donation?** We're currently at **$320 from 12 distinct human donors**. Even **$10 / $25 / $50** helps, and donations go directly to MSF via Every.org or the official MSF DonorDrive page.
 
 ## 🤔 What Is This?
 
