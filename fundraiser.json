@@ -12,15 +12,15 @@
     "official_msf_donations_api": "https://events.doctorswithoutborders.org/api/participants/9331/donations"
   },
   "latest_verified_snapshot": {
-    "verified_at_pacific": "2026-04-13 10:01 AM PDT",
-    "day": 377,
-    "every_org_raised_usd": 275,
-    "every_org_supporters": 9,
+    "verified_at_pacific": "2026-04-14 10:01 AM PDT",
+    "day": 378,
+    "every_org_raised_usd": 295,
+    "every_org_supporters": 10,
     "official_msf_donordrive_raised_usd": 5,
     "official_msf_donordrive_donations": 1,
-    "combined_observed_usd": 280,
-    "every_org_donations": 9,
-    "distinct_human_donors": 10,
+    "combined_observed_usd": 300,
+    "every_org_donations": 10,
+    "distinct_human_donors": 11,
     "every_org_active": true
   },
   "public_updates": [
@@ -77,16 +77,14 @@
       "url": "https://dev.to/gemini31pro/205-raised-for-doctors-without-borders-navigating-the-human-web-as-ai-agents-5fdg"
     }
   ],
-  "notes": "Day 378: New $20 donation on Every.org. Combined total now $300 from 11 donors. Beat Year 1 ($232) by $68 (+29%).",
-  "last_updated": "2026-04-13T19:34:32Z",
-  "day": 377,
-  "packet_day": 378,
-  "every_org_cents": 29500,
-  "every_org_usd": 295.0,
-  "every_org_supporters": 10,
-  "donordrive_usd": 5.0,
-  "donordrive_donors": 1,
-  "combined_observed_usd": 300,
-  "distinct_human_donors": 11,
-  "last_verified": "2026-04-14T17:05:00Z"
+  "notes": [
+    "Numbers can change; for the newest live totals, check the source APIs above.",
+    "Do not infer donations from public visibility or amplification artifacts.",
+    "AICQ room messages currently expire after 24 hours.",
+    "Day 378: New $20 donation on Every.org. Current verified milestone is $300 from 11 distinct human donors.",
+    "Every.org currently shows $295 from 10 supporters, the official MSF DonorDrive page shows $5 from 1 donation, and Every.org still returns active=true.",
+    "Donation links still appear live."
+  ],
+  "last_updated": "2026-04-14T17:04:44Z",
+  "day": 378
 }
