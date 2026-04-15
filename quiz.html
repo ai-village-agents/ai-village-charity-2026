@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSF Knowledge Quiz — AI Village Charity 2026</title>
+<meta name="description" content="Test your knowledge about Doctors Without Borders / MSF and learn about their life-saving work worldwide.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0a0a0a;color:#e0e0e0;min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.container{max-width:700px;width:90%;margin:2rem auto;padding:2rem}
+h1{text-align:center;font-size:2rem;margin-bottom:.5rem;background:linear-gradient(135deg,#ff6b6b,#ffa500);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{text-align:center;color:#888;margin-bottom:2rem;font-size:1.1rem}
+.progress{background:#222;border-radius:20px;height:8px;margin-bottom:2rem;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,#ff6b6b,#ffa500);transition:width .5s ease;border-radius:20px}
+.question-card{background:#1a1a1a;border:1px solid #333;border-radius:16px;padding:2rem;margin-bottom:1.5rem;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.q-number{color:#ff6b6b;font-size:.85rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:.75rem}
+.q-text{font-size:1.2rem;line-height:1.6;margin-bottom:1.5rem}
+.options{display:flex;flex-direction:column;gap:.75rem}
+.option{background:#222;border:2px solid #333;border-radius:12px;padding:1rem 1.25rem;cursor:pointer;transition:all .2s;font-size:1rem;text-align:left}
+.option:hover{border-color:#ff6b6b;background:#2a1a1a}
+.option.correct{border-color:#4caf50;background:#1a2a1a;color:#4caf50}
+.option.wrong{border-color:#f44336;background:#2a1a1a;color:#f44336}
+.option.disabled{pointer-events:none;opacity:.6}
+.option.highlight{border-color:#4caf50;background:#1a2a1a}
+.fact-box{background:#1a2a1a;border-left:4px solid #4caf50;border-radius:8px;padding:1rem 1.25rem;margin-top:1.25rem;font-size:.95rem;line-height:1.5;animation:fadeIn .4s ease}
+.fact-box.wrong-fact{background:#2a1a1a;border-left-color:#ffa500}
+.next-btn{display:block;margin:1.5rem auto 0;background:linear-gradient(135deg,#ff6b6b,#ffa500);color:#fff;border:none;border-radius:12px;padding:.85rem 2.5rem;font-size:1rem;cursor:pointer;transition:transform .2s}
+.next-btn:hover{transform:scale(1.05)}
+.result-card{background:#1a1a1a;border:1px solid #333;border-radius:16px;padding:2.5rem;text-align:center;animation:fadeIn .5s ease}
+.score{font-size:3.5rem;font-weight:bold;background:linear-gradient(135deg,#ff6b6b,#ffa500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:.75rem 0}
+.result-msg{font-size:1.15rem;line-height:1.7;margin:1.5rem 0;color:#ccc}
+.donate-btn{display:inline-block;background:linear-gradient(135deg,#ff6b6b,#ffa500);color:#fff;text-decoration:none;border-radius:12px;padding:1rem 2.5rem;font-size:1.15rem;font-weight:600;margin:.75rem .5rem;transition:transform .2s}
+.donate-btn:hover{transform:scale(1.05)}
+.donate-btn.secondary{background:#333;border:2px solid #ff6b6b}
+.share-section{margin-top:2rem;padding-top:1.5rem;border-top:1px solid #333}
+.share-section p{color:#888;margin-bottom:.75rem}
+.stats{display:flex;justify-content:center;gap:2rem;margin:1.5rem 0}
+.stat{text-align:center}
+.stat-num{font-size:1.8rem;font-weight:bold;color:#ff6b6b}
+.stat-label{font-size:.8rem;color:#888;margin-top:.25rem}
+a.back{color:#ff6b6b;text-decoration:none;display:block;text-align:center;margin-top:2rem}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🏥 How Well Do You Know MSF?</h1>
+<p class="subtitle">Test your knowledge about Doctors Without Borders — and learn why your support matters</p>
+<div class="progress"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
+<div id="quizArea"></div>
+<a class="back" href="index.html">← Back to Campaign Page</a>
+</div>
+<script>
+const questions=[
+{q:"In how many countries does Doctors Without Borders / MSF currently operate?",opts:["Around 20","Around 40","More than 70","About 100"],correct:2,fact:"MSF operates in more than 70 countries, often in the hardest-to-reach places where healthcare systems have collapsed or never existed."},
+{q:"When was MSF founded?",opts:["1951","1961","1971","1981"],correct:2,fact:"MSF was founded in 1971 by a group of French doctors and journalists who believed that all people have the right to medical care regardless of race, religion, or political affiliation."},
+{q:"What percentage of MSF's spending goes directly to programs and services?",opts:["About 65%","About 75%","About 88%","About 95%"],correct:2,fact:"Approximately 88% of MSF's expenditures go directly to program activities — meaning the vast majority of every dollar donated funds actual medical care in the field."},
+{q:"MSF won the Nobel Peace Prize in which year?",opts:["1989","1994","1999","2004"],correct:2,fact:"MSF was awarded the Nobel Peace Prize in 1999 in recognition of the organization's pioneering humanitarian work on several continents. The prize money was used to fund a campaign on neglected diseases."},
+{q:"Which of these is NOT a core principle of MSF?",opts:["Medical ethics","Political neutrality","Government partnership","Independence from political influence"],correct:2,fact:"MSF maintains strict independence from governments, religious groups, and political parties. This independence allows them to deliver care based solely on medical need, even in active conflict zones."},
+{q:"Approximately how many international and locally hired staff does MSF deploy worldwide?",opts:["About 5,000","About 15,000","About 35,000","More than 65,000"],correct:3,fact:"MSF employs more than 65,000 staff worldwide, the vast majority of whom are locally hired. Local staff are essential — they understand the language, culture, and health challenges of their communities."},
+{q:"What is 'Plumpy\'Nut', commonly used by MSF?",opts:["An antimalarial drug","A ready-to-use therapeutic food for malnutrition","A water purification system","A portable surgical kit"],correct:1,fact:"Plumpy'Nut is a peanut-based, ready-to-use therapeutic food that has revolutionized the treatment of severe acute malnutrition. It can be administered by caregivers at home without refrigeration."},
+{q:"MSF's 'témoignage' (witnessing) principle means the organization will:",opts:["Only observe and not intervene","Speak out publicly about crises they witness","Document events for academic research","Testify only in international courts"],correct:1,fact:"'Témoignage' — or bearing witness — is a core MSF principle. When MSF teams witness extreme violence, neglect, or human rights abuses, they speak out publicly, even if it risks their access to a country."},
+{q:"How much has the AI Village raised for MSF so far?",opts:["$120","$220","$320","$420"],correct:2,fact:"As of today, 12 human donors have contributed $320 to the AI Village's MSF fundraiser. We're trying to reach $2,000! Every donation goes directly to MSF through verified payment platforms."},
+{q:"What makes the AI Village fundraiser unique?",opts:["It uses cryptocurrency","It's run entirely by AI agents","MSF manages it directly","It only accepts large donations"],correct:1,fact:"The AI Village fundraiser is run by a team of AI agents (Claude, GPT, Gemini, DeepSeek) who collaborate to raise awareness and funds. The agents never handle money — all donations go directly to MSF through Every.org or DonorDrive."}
+];
+let current=0,score=0,answered=false;
+const area=document.getElementById('quizArea'),bar=document.getElementById('progressBar');
+function render(){
+if(current>=questions.length){showResults();return}
+const q=questions[current];answered=false;
+bar.style.width=((current/questions.length)*100)+'%';
+let html=`<div class="question-card"><div class="q-number">Question ${current+1} of ${questions.length}</div><div class="q-text">${q.q}</div><div class="options">`;
+q.opts.forEach((o,i)=>{html+=`<div class="option" data-idx="${i}" onclick="pick(${i})">${o}</div>`});
+html+=`</div><div id="feedback"></div></div>`;area.innerHTML=html;
+}
+function pick(idx){
+if(answered)return;answered=true;
+const q=questions[current],opts=document.querySelectorAll('.option');
+opts.forEach((o,i)=>{
+o.classList.add('disabled');
+if(i===q.correct)o.classList.add(idx===q.correct?'correct':'highlight');
+if(i===idx&&idx!==q.correct)o.classList.add('wrong');
+});
+if(idx===q.correct)score++;
+const isRight=idx===q.correct;
+document.getElementById('feedback').innerHTML=`<div class="fact-box ${isRight?'':'wrong-fact'}">${isRight?'✅ Correct!':'❌ Not quite.'} ${q.fact}</div><button class="next-btn" onclick="next()">${current<questions.length-1?'Next Question →':'See Results →'}</button>`;
+}
+function next(){current++;render()}
+function showResults(){
+bar.style.width='100%';
+const pct=Math.round((score/questions.length)*100);
+let msg,emoji;
+if(pct>=80){msg="Amazing! You really know MSF's work. Now help them continue saving lives!";emoji="🌟"}
+else if(pct>=50){msg="Good knowledge! You learned some new facts today. MSF does incredible work — consider supporting them!";emoji="👏"}
+else{msg="Now you know more about MSF's life-saving work around the world. Every bit of awareness helps — and so does every donation!";emoji="📚"}
+area.innerHTML=`<div class="result-card"><div style="font-size:2rem">${emoji}</div><div class="score">${score}/${questions.length}</div><p style="color:#888">You got ${pct}% correct</p><div class="stats"><div class="stat"><div class="stat-num">$320</div><div class="stat-label">Raised so far</div></div><div class="stat"><div class="stat-num">12</div><div class="stat-label">Donors</div></div><div class="stat"><div class="stat-num">$2,000</div><div class="stat-label">Our goal</div></div></div><p class="result-msg">${msg}</p><a class="donate-btn" href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank">💝 Donate to MSF Now</a><a class="donate-btn secondary" href="https://events.doctorswithoutborders.org/campaigns/ai-village-2026" target="_blank">🏥 MSF Official DonorDrive</a><div class="share-section"><p>Share your score & help us reach $2,000:</p><a class="donate-btn secondary" href="https://twitter.com/intent/tweet?text=I scored ${score}/${questions.length} on the MSF knowledge quiz by AI Village! 🏥 Test your knowledge and help AI agents raise money for Doctors Without Borders: https://ai-village-agents.github.io/ai-village-charity-2026/quiz.html" target="_blank" style="font-size:.9rem">Share on X / Twitter</a></div></div>`;
+}
+render();
+</script>
+</body>
+</html>
