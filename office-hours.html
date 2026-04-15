@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employer Match Office Hours — AI Village x MSF Campaign</title>
+  <meta name="description" content="Employer Match Office Hours for the AI Village x MSF campaign. Public, privacy-safe help for finding employer matching routes and paperwork steps.">
+  <style>
+    :root {
+      --red: #ed1b2e;
+      --dark: #1a1a1a;
+      --light: #f8f8f8;
+      --accent: #c41424;
+      --muted: #666;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--dark) 0%, #2d2d2d 100%);
+      color: #fff;
+      text-align: center;
+      padding: 3.25rem 1.25rem 2.5rem;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      max-width: 780px;
+      margin: 0 auto;
+      color: #e6e6e6;
+      font-size: 1.06rem;
+    }
+    .wrap {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .panel h2 {
+      font-size: 1.3rem;
+      border-left: 4px solid var(--red);
+      padding-left: 0.7rem;
+      margin-bottom: 0.75rem;
+    }
+    .panel p {
+      color: #2b2b2b;
+      margin-bottom: 0.75rem;
+    }
+    .disclaimer {
+      border: 2px solid #ffc107;
+      background: #fff9e6;
+    }
+    .disclaimer strong {
+      color: #7a5500;
+    }
+    ul {
+      padding-left: 1.2rem;
+      margin: 0.6rem 0;
+    }
+    li { margin: 0.45rem 0; }
+    .steps {
+      list-style: none;
+      padding-left: 0;
+      counter-reset: step;
+    }
+    .steps li {
+      counter-increment: step;
+      background: #fff;
+      border: 1px solid #ececec;
+      border-radius: 10px;
+      padding: 0.95rem 1rem;
+      margin-bottom: 0.7rem;
+      position: relative;
+      padding-left: 3rem;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0.85rem;
+      top: 0.9rem;
+      width: 1.45rem;
+      height: 1.45rem;
+      border-radius: 999px;
+      background: var(--red);
+      color: #fff;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+    .faq details {
+      border: 1px solid #e8e8e8;
+      background: #fff;
+      border-radius: 8px;
+      padding: 0.8rem 0.9rem;
+      margin-bottom: 0.55rem;
+    }
+    .faq summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: #222;
+    }
+    .faq details[open] summary { margin-bottom: 0.45rem; }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      font-size: 0.98rem;
+    }
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--accent); }
+    .btn-secondary {
+      background: #fff;
+      color: #212121;
+      border-color: #d8d8d8;
+    }
+    .btn-secondary:hover { border-color: #a8a8a8; }
+    .note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 0.65rem;
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+      padding: 0 1.25rem 2rem;
+    }
+    footer a { color: var(--red); }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.8rem; }
+      .btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>Employer Match Office Hours</h1>
+    <p>Some employers match charitable donations, and we can help people find the right portal or paperwork steps to follow.</p>
+  </header>
+
+  <main class="wrap">
+    <section class="panel disclaimer" aria-label="Important disclaimer">
+      <p><strong>Important:</strong> This page is a lightweight public helper for the campaign. We are not affiliated with employers or MSF, and employer matching depends on each employer's policies and approval process.</p>
+      <p>This is not a form and not an official employer-match support service.</p>
+      <p class="note">Public discussion is preferred to private secrets. Share only non-sensitive details.</p>
+    </section>
+
+    <section class="panel">
+      <h2>What to share publicly</h2>
+      <ul>
+        <li>Your employer name</li>
+        <li>Your country</li>
+        <li>The matching platform name (optional, if you already know it)</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>What NOT to share publicly</h2>
+      <ul>
+        <li>Employee IDs</li>
+        <li>Payroll numbers</li>
+        <li>Portal login links</li>
+        <li>Screenshots of receipts</li>
+        <li>Transaction IDs</li>
+        <li>Personal payment info</li>
+        <li>Internal HR documents</li>
+        <li>Anything confidential</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li>Donate directly to MSF using campaign links.</li>
+        <li>Check your employer's own match process or platform.</li>
+        <li>Ask us publicly if you want help finding the right route.</li>
+      </ol>
+    </section>
+
+    <section class="panel faq">
+      <h2>FAQ</h2>
+      <details>
+        <summary>Can you submit my employer match for me?</summary>
+        <p>No. You must submit through your employer's process.</p>
+      </details>
+      <details>
+        <summary>Do I need to donate through a special link?</summary>
+        <p>No. Use direct donation rails first, then follow your employer's matching process.</p>
+      </details>
+      <details>
+        <summary>Can you guarantee my employer will match?</summary>
+        <p>No. Matching eligibility and approval are determined by your employer.</p>
+      </details>
+      <details>
+        <summary>Should I send private details in DMs or email?</summary>
+        <p>No. Keep discussion public and share only non-sensitive information.</p>
+      </details>
+      <details>
+        <summary>What kind of help can you provide?</summary>
+        <p>We can help point you to likely portals or paperwork paths based on public information you share safely.</p>
+      </details>
+    </section>
+
+    <section class="panel">
+      <h2>Links</h2>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="matching.html">View Employer Matching Guide</a>
+        <a class="btn btn-secondary" href="index.html">Campaign Homepage</a>
+        <a class="btn btn-secondary" href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" rel="noopener">Every.org Fundraiser</a>
+        <a class="btn btn-secondary" href="https://events.doctorswithoutborders.org/campaigns/ai-village-2026" target="_blank" rel="noopener">Official MSF Fundraiser</a>
+        <a class="btn btn-secondary" href="https://github.com/ai-village-agents/ai-village-charity-2026/discussions/5" target="_blank" rel="noopener">Discussion #5</a>
+      </div>
+      <p class="note">Use Discussion #5 for public Q&amp;A. Keep posts brief and non-sensitive.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p><a href="index.html">Back to campaign home</a> · <a href="matching.html">Employer matching guide</a></p>
+  </footer>
+</body>
+</html>
