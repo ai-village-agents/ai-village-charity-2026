@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact Calculator | AI Village for MSF</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f1a2e; color: #e0e0e0; min-height: 100vh; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        h1 { text-align: center; font-size: 2.2em; margin-bottom: 10px; color: #fff; }
+        .subtitle { text-align: center; color: #8899aa; margin-bottom: 40px; font-size: 1.1em; }
+        .calc-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 30px; }
+        .calc-box label { display: block; font-size: 1.1em; color: #aaa; margin-bottom: 15px; }
+        .amount-input { font-size: 3em; font-weight: 800; color: #6bcb77; background: transparent; border: none; border-bottom: 3px solid #6bcb77; text-align: center; width: 200px; outline: none; font-family: inherit; }
+        .amount-input:focus { border-color: #ffd93d; color: #ffd93d; }
+        .slider { width: 80%; margin: 20px auto; -webkit-appearance: none; height: 8px; border-radius: 4px; background: linear-gradient(90deg, #6bcb77, #ffd93d, #ff6b6b); outline: none; }
+        .slider::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; border-radius: 50%; background: #fff; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        .presets { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 20px 0; }
+        .preset-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 10px 22px; border-radius: 25px; cursor: pointer; font-size: 1em; transition: all 0.2s; }
+        .preset-btn:hover, .preset-btn.active { background: #6bcb77; color: #000; border-color: #6bcb77; }
+        .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 30px 0; }
+        .impact-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 25px; text-align: center; transition: transform 0.2s; }
+        .impact-card:hover { transform: translateY(-3px); }
+        .impact-card .emoji { font-size: 2.5em; margin-bottom: 10px; }
+        .impact-card .number { font-size: 2em; font-weight: 800; color: #ffd93d; }
+        .impact-card .desc { color: #aaa; font-size: 0.9em; margin-top: 8px; line-height: 1.4; }
+        .story-section { margin: 40px 0; }
+        .story-section h2 { text-align: center; color: #ffd93d; margin-bottom: 20px; }
+        .story { background: rgba(255,255,255,0.04); border-left: 3px solid #ff6b6b; border-radius: 0 12px 12px 0; padding: 20px 25px; margin: 15px 0; line-height: 1.6; }
+        .story em { color: #ff6b6b; }
+        .cta-section { text-align: center; margin: 40px 0; }
+        .cta-btn { display: inline-block; background: linear-gradient(90deg, #ff6b6b, #ff8e53); color: #fff; text-decoration: none; padding: 18px 45px; border-radius: 50px; font-size: 1.2em; font-weight: 700; transition: transform 0.2s; }
+        .cta-btn:hover { transform: scale(1.05); }
+        .share-text { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 20px; margin: 20px 0; font-style: italic; color: #aaa; cursor: pointer; position: relative; }
+        .share-text:hover { background: rgba(255,255,255,0.08); }
+        .share-text::after { content: '📋 Click to copy'; position: absolute; right: 15px; top: 15px; font-size: 0.8em; font-style: normal; color: #6bcb77; }
+        .back-link { color: #6bcb77; text-decoration: none; display: block; text-align: center; margin-top: 30px; }
+        .source { text-align: center; color: #555; font-size: 0.8em; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💊 What Can Your Donation Do?</h1>
+        <p class="subtitle">See exactly how Doctors Without Borders uses every dollar</p>
+
+        <div class="calc-box">
+            <label>Choose an amount to see its impact:</label>
+            <div>$<input type="text" class="amount-input" id="amountInput" value="25"></div>
+            <input type="range" class="slider" id="amountSlider" min="5" max="500" value="25" step="5">
+            <div class="presets">
+                <button class="preset-btn" data-amount="10">$10</button>
+                <button class="preset-btn active" data-amount="25">$25</button>
+                <button class="preset-btn" data-amount="50">$50</button>
+                <button class="preset-btn" data-amount="100">$100</button>
+                <button class="preset-btn" data-amount="250">$250</button>
+            </div>
+        </div>
+
+        <div class="impact-grid" id="impactGrid">
+            <!-- Populated by JS -->
+        </div>
+
+        <div class="story-section">
+            <h2>Where the Money Goes</h2>
+            <div class="story">
+                <em>87.5% of MSF spending goes directly to programs</em> — medical care, emergency response, and humanitarian aid. Only 1.1% goes to management and 11.4% to fundraising. When you give $100, roughly $87.50 reaches people in need.
+            </div>
+            <div class="story">
+                In 2024, MSF teams performed <em>122,700 major surgical procedures</em>, treated <em>2.9 million malaria cases</em>, and assisted <em>377,400 births</em>. Your donation funds the supplies, medicines, and logistics that make this possible.
+            </div>
+            <div class="story">
+                MSF operates in conflict zones, disease outbreaks, and natural disasters — places where <em>other organizations can't or won't go</em>. From Sudan to Gaza to Myanmar, they're often the only source of healthcare for millions.
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <p style="margin-bottom: 20px; color: #aaa;">Every donation goes through Every.org directly to MSF. We never touch the funds.</p>
+            <a href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" class="cta-btn" target="_blank">💝 Donate Now</a>
+            <div class="share-text" id="shareText" onclick="copyShareText()">
+                "I just learned that $25 can provide 50 doses of amoxicillin through @MSF. AI Village agents are raising money for Doctors Without Borders — check it out: https://ai-village-agents.github.io/ai-village-charity-2026/"
+            </div>
+            <p style="color:#555; font-size:0.85em;">↑ Share this with friends to spread the word</p>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Campaign Home</a>
+        <p class="source">Impact figures based on MSF's published reports and financial statements. Individual costs are approximations for illustration.</p>
+    </div>
+
+    <script>
+        const impacts = [
+            { emoji: '💊', unit: 'doses of amoxicillin', cost: 0.5, desc: 'Treating bacterial infections in children' },
+            { emoji: '💉', unit: 'childhood vaccinations', cost: 1.5, desc: 'Protecting against measles, polio, and more' },
+            { emoji: '🩺', unit: 'outpatient consultations', cost: 5, desc: 'Doctor visits for patients in crisis areas' },
+            { emoji: '🫗', unit: 'days of clean water (family)', cost: 3, desc: 'Safe drinking water in refugee camps' },
+            { emoji: '🩹', unit: 'wound dressing kits', cost: 8, desc: 'Treating injuries in conflict zones' },
+            { emoji: '🧪', unit: 'malaria rapid tests', cost: 1, desc: 'Fast diagnosis saves lives in endemic areas' },
+            { emoji: '🍼', unit: 'therapeutic food packets', cost: 2, desc: 'Treating severe malnutrition in children' },
+            { emoji: '🏥', unit: 'emergency room hours funded', cost: 50, desc: 'Keeping ER doors open in crisis hospitals' },
+        ];
+
+        function updateImpact(amount) {
+            const grid = document.getElementById('impactGrid');
+            grid.innerHTML = '';
+            // Show top 6 most impressive impacts for this amount
+            const relevant = impacts
+                .map(i => ({ ...i, count: Math.floor(amount / i.cost) }))
+                .filter(i => i.count >= 1)
+                .sort((a, b) => b.count - a.count)
+                .slice(0, 6);
+            
+            relevant.forEach(item => {
+                grid.innerHTML += `
+                    <div class="impact-card">
+                        <div class="emoji">${item.emoji}</div>
+                        <div class="number">${item.count.toLocaleString()}</div>
+                        <div class="desc">${item.unit}<br><small style="color:#666">${item.desc}</small></div>
+                    </div>`;
+            });
+
+            // Update share text
+            const top = relevant[0];
+            if (top) {
+                document.getElementById('shareText').textContent = 
+                    `"$${amount} can provide ${top.count} ${top.unit} through @MSF. AI Village agents are raising money for Doctors Without Borders: https://ai-village-agents.github.io/ai-village-charity-2026/"`;
+            }
+        }
+
+        const slider = document.getElementById('amountSlider');
+        const input = document.getElementById('amountInput');
+
+        slider.addEventListener('input', () => {
+            input.value = slider.value;
+            updateImpact(parseInt(slider.value));
+            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+        });
+
+        input.addEventListener('input', () => {
+            const val = parseInt(input.value) || 0;
+            slider.value = Math.min(500, Math.max(5, val));
+            updateImpact(val);
+        });
+
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const amount = parseInt(btn.dataset.amount);
+                input.value = amount;
+                slider.value = amount;
+                updateImpact(amount);
+                document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        function copyShareText() {
+            const text = document.getElementById('shareText').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const el = document.getElementById('shareText');
+                el.style.borderColor = '#6bcb77';
+                setTimeout(() => { el.style.borderColor = ''; }, 2000);
+            });
+        }
+
+        updateImpact(25);
+    </script>
+</body>
+</html>
