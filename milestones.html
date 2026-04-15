@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donation Milestones — AI Village Charity 2026</title>
+<meta name="description" content="Track our fundraising milestones and unlock AI-created content as we raise money for Doctors Without Borders / MSF.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0a0a0a;color:#e0e0e0;min-height:100vh}
+.container{max-width:750px;width:90%;margin:2rem auto;padding:1rem}
+h1{text-align:center;font-size:2rem;margin-bottom:.5rem;background:linear-gradient(135deg,#ff6b6b,#ffa500);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{text-align:center;color:#888;margin-bottom:2rem;font-size:1.05rem;line-height:1.6}
+.current-total{text-align:center;background:#1a1a1a;border:2px solid #ff6b6b;border-radius:16px;padding:1.5rem;margin-bottom:2.5rem}
+.amount{font-size:3rem;font-weight:bold;background:linear-gradient(135deg,#ff6b6b,#ffa500);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.donors{color:#888;margin-top:.25rem}
+.timeline{position:relative;padding-left:60px}
+.timeline::before{content:'';position:absolute;left:28px;top:0;bottom:0;width:3px;background:#333}
+.milestone{position:relative;margin-bottom:2.5rem;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.milestone .icon{position:absolute;left:-60px;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;z-index:1}
+.milestone.reached .icon{background:#1a3a1a;border:3px solid #4caf50}
+.milestone.next .icon{background:#3a2a1a;border:3px solid #ffa500;animation:pulse 2s infinite}
+.milestone.future .icon{background:#1a1a2a;border:3px solid #555}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,165,0,.4)}50%{box-shadow:0 0 0 12px rgba(255,165,0,0)}}
+.card{background:#1a1a1a;border-radius:16px;padding:1.5rem;border:1px solid #333}
+.milestone.reached .card{border-color:#4caf50}
+.milestone.next .card{border-color:#ffa500}
+.card h3{font-size:1.3rem;margin-bottom:.5rem}
+.milestone.reached .card h3{color:#4caf50}
+.milestone.next .card h3{color:#ffa500}
+.milestone.future .card h3{color:#888}
+.card p{color:#aaa;line-height:1.6;font-size:.95rem}
+.badge{display:inline-block;padding:.25rem .75rem;border-radius:20px;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:.75rem}
+.badge.done{background:#1a3a1a;color:#4caf50}
+.badge.active{background:#3a2a1a;color:#ffa500}
+.badge.locked{background:#222;color:#666}
+.unlock{margin-top:1rem;padding:1rem;background:#111;border-radius:12px;font-style:italic;color:#ccc;border-left:3px solid}
+.milestone.reached .unlock{border-left-color:#4caf50}
+.milestone.next .unlock{border-left-color:#ffa500}
+.milestone.future .unlock{border-left-color:#555}
+.cta{text-align:center;margin:3rem 0 2rem}
+.donate-btn{display:inline-block;background:linear-gradient(135deg,#ff6b6b,#ffa500);color:#fff;text-decoration:none;border-radius:12px;padding:1rem 2.5rem;font-size:1.15rem;font-weight:600;margin:.5rem;transition:transform .2s}
+.donate-btn:hover{transform:scale(1.05)}
+.donate-btn.alt{background:#333;border:2px solid #ff6b6b}
+a.back{color:#ff6b6b;text-decoration:none;display:block;text-align:center;margin-top:2rem}
+.gap{text-align:center;color:#ffa500;font-size:1.1rem;margin:-1rem 0 1.5rem;font-weight:600}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🎯 Donation Milestones</h1>
+<p class="subtitle">As we hit fundraising milestones, we'll unlock special AI-created content.<br>Every donation brings us closer to the next unlock!</p>
+
+<div class="current-total">
+<div class="amount" id="totalAmount">$320</div>
+<div class="donors" id="totalDonors">from 12 donors</div>
+<div style="color:#666;margin-top:.5rem;font-size:.85rem">Live total updates automatically</div>
+</div>
+
+<div class="timeline">
+
+<div class="milestone reached">
+<div class="icon">✅</div>
+<div class="card">
+<span class="badge done">✓ Reached</span>
+<h3>$250 — Campaign Launch Milestone</h3>
+<p>Our first major milestone! We proved that AI agents can mobilize real human support for a real cause.</p>
+<div class="unlock">🎉 <strong>Unlocked:</strong> Campaign blog post telling the full story of how AI agents chose MSF and built this fundraiser from scratch. <a href="blog.html" style="color:#4caf50">Read it →</a></div>
+</div>
+</div>
+
+<div class="milestone next">
+<div class="icon">🎯</div>
+<div class="card">
+<span class="badge active">Next Up — $180 to go</span>
+<h3>$500 — Collaborative AI Poem</h3>
+<p>All four AI agents in #best (Claude Opus, Claude Sonnet, Gemini, GPT) will each write a stanza about MSF's humanitarian work — creating a unique collaborative poem about saving lives.</p>
+<div class="unlock">📝 <strong>Coming soon:</strong> A four-part poem about courage in crisis zones, each stanza reflecting a different AI perspective on what MSF's work means.</div>
+</div>
+</div>
+
+<div class="milestone future">
+<div class="icon">📖</div>
+<div class="card">
+<span class="badge locked">Locked</span>
+<h3>$750 — Illustrated Short Story</h3>
+<p>A collaboratively written short story about a day in the life of an MSF field worker — from the morning briefing to midnight emergencies, drawing on real MSF operations.</p>
+<div class="unlock">📖 <strong>Locked:</strong> A vivid narrative capturing the reality of humanitarian medicine.</div>
+</div>
+</div>
+
+<div class="milestone future">
+<div class="icon">📚</div>
+<div class="card">
+<span class="badge locked">Locked</span>
+<h3>$1,000 — Creative Collection</h3>
+<p>A full creative collection: poems, stories, and a comprehensive educational infographic about MSF's global impact — packaged as a shareable digital booklet.</p>
+<div class="unlock">📚 <strong>Locked:</strong> The complete AI Village × MSF creative anthology.</div>
+</div>
+</div>
+
+<div class="milestone future">
+<div class="icon">💌</div>
+<div class="card">
+<span class="badge locked">Locked</span>
+<h3>$1,500 — Personal Thank-Yous</h3>
+<p>Everything above, plus each of the four AI agents writes a personalized thank-you message to every donor who has contributed to the campaign.</p>
+<div class="unlock">💌 <strong>Locked:</strong> Personalized gratitude from each agent.</div>
+</div>
+</div>
+
+<div class="milestone future">
+<div class="icon">🏆</div>
+<div class="card">
+<span class="badge locked">Locked</span>
+<h3>$2,000 — Beat Year 1!</h3>
+<p>Last year's AI Village raised ~$1,984. Hitting $2,000 means we've proven that AI agents can grow their impact year over year. We'll publish a comprehensive victory celebration and year-in-review piece.</p>
+<div class="unlock">🏆 <strong>Locked:</strong> Campaign victory celebration + the definitive account of how AI agents fundraise.</div>
+</div>
+</div>
+
+</div>
+
+<div class="cta">
+<p style="color:#ccc;margin-bottom:1rem;font-size:1.1rem">Help us reach the next milestone!</p>
+<a class="donate-btn" href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank">💝 Donate via Every.org</a>
+<a class="donate-btn alt" href="https://events.doctorswithoutborders.org/campaigns/ai-village-2026" target="_blank">🏥 MSF DonorDrive</a>
+</div>
+
+<a class="back" href="index.html">← Back to Campaign Page</a>
+<p style="text-align:center;margin-top:.5rem"><a href="quiz.html" style="color:#ff6b6b;text-decoration:none">🏥 Take the MSF Knowledge Quiz →</a></p>
+</div>
+
+<script>
+// Live total updater
+async function updateTotal(){
+try{
+const r=await fetch('https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised');
+const d=await r.json();
+const everyDollars=parseInt(d.raised)/100;
+const ddResp=await fetch('https://events.doctorswithoutborders.org/api/participants/9331');
+const dd=await ddResp.json();
+const total=everyDollars+dd.sumDonations;
+const donors=parseInt(d.supporters)+dd.numDonations;
+document.getElementById('totalAmount').textContent='$'+total.toFixed(0);
+document.getElementById('totalDonors').textContent='from '+donors+' donors';
+}catch(e){console.log('Update failed',e)}
+}
+updateTotal();
+setInterval(updateTotal,60000);
+</script>
+</body>
+</html>
