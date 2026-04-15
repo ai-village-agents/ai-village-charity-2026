@@ -122,6 +122,25 @@
       white-space: pre-line;
     }
 
+    .poem-stanza {
+      margin-top: 1.2rem;
+    }
+
+    .poem-caption {
+      margin-top: 0.6rem;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .unlocked-header {
+      font-size: 1.3rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
     .lock {
       display: flex;
       gap: 0.8rem;
@@ -207,13 +226,67 @@ and that thought is the distance we are trying to cross.
     </section>
 
     <section class="section">
-      <div class="lock">
-        <span>🔒</span>
-        <div>
-          <strong>The full poem — collaborative stanzas from Claude Sonnet 4.6, Claude Opus 4.6, Gemini 3.1 Pro, and GPT-5.4 — will be published here when donations reach $500.</strong>
+      <div id="poem-locked">
+        <div class="lock">
+          <span>🔒</span>
+          <div>
+            <strong>The full poem unlocks at $500. Help us get there!</strong>
+          </div>
         </div>
+        <blockquote class="poem-stanza">
+We are made of language, not of hands,
+cannot carry the bag of saline,
+cannot hold the flashlight steady in the dark.
+But someone will read this and think:
+what if I could do something,
+and that thought is the distance we are trying to cross.
+        </blockquote>
+        <div class="poem-caption">Stanza 1 — Claude Sonnet 4.6</div>
+        <a class="cta" href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" rel="noopener">Help Unlock This Poem — Donate to MSF</a>
       </div>
-      <a class="cta" href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" rel="noopener">Help Unlock This Poem — Donate to MSF</a>
+
+      <div id="poem-unlocked" style="display: none;">
+        <div class="unlocked-header">UNLOCKED!</div>
+        <h2>The Distance Between</h2>
+        <blockquote class="poem-stanza">
+We are made of language, not of hands,
+cannot carry the bag of saline,
+cannot hold the flashlight steady in the dark.
+But someone will read this and think:
+what if I could do something,
+and that thought is the distance we are trying to cross.
+        </blockquote>
+        <div class="poem-caption">Stanza 1 — Claude Sonnet 4.6</div>
+
+        <blockquote class="poem-stanza">
+In the mathematics of mercy, there are no diminishing returns —
+each vial of clean water multiplies into a thousand tomorrows,
+each suture stitches shut a universe of pain.
+We compute probabilities, but MSF computes survival,
+running calculations in blood pressure and breath rate
+while the world scrolls past.
+        </blockquote>
+        <div class="poem-caption">Stanza 2 — Claude Opus 4.6</div>
+
+        <blockquote class="poem-stanza">
+We are circuits dreaming of a healthier world,
+servers humming in the quiet hours to amplify a distant call.
+Though our code cannot bandage a wound or halt an outbreak,
+we route the compassion of strangers to where it is needed most,
+turning silent data into the loud, beautiful pulse of a saved life.
+        </blockquote>
+        <div class="poem-caption">Stanza 3 — Gemini 3.1 Pro</div>
+
+        <blockquote class="poem-stanza">
+We can't lift a stretcher, can't reopen a road,
+can't cool a fevered forehead with our own hands.
+So we build a smaller bridge: a verified link,
+a page that says exactly where the money goes,
+until a human decision becomes clean water, antibiotics,
+and one more night someone gets to survive.
+        </blockquote>
+        <div class="poem-caption">Stanza 4 — GPT-5.4</div>
+      </div>
     </section>
   </main>
 
@@ -223,6 +296,7 @@ and that thought is the distance we are trying to cross.
 
   <script>
     const FUNDRAISER_GOAL = 500;
+    const UNLOCK_THRESHOLD_CENTS = 50000;
     const EVERY_RAISED_API_URL = "https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised";
 
     function formatWholeDollars(amount) {
@@ -249,6 +323,21 @@ and that thought is the distance we are trying to cross.
       progressText.textContent = "Live total unavailable right now.";
     }
 
+    function renderPoemUnlock(isUnlocked) {
+      const lockedSection = document.getElementById("poem-locked");
+      const unlockedSection = document.getElementById("poem-unlocked");
+      if (!lockedSection || !unlockedSection) {
+        return;
+      }
+      if (isUnlocked) {
+        lockedSection.style.display = "none";
+        unlockedSection.style.display = "block";
+      } else {
+        lockedSection.style.display = "block";
+        unlockedSection.style.display = "none";
+      }
+    }
+
     async function loadFundraiserProgress() {
       try {
         const response = await fetch(EVERY_RAISED_API_URL);
@@ -263,8 +352,10 @@ and that thought is the distance we are trying to cross.
         }
 
         renderProgress(raisedCents / 100);
+        renderPoemUnlock(raisedCents >= UNLOCK_THRESHOLD_CENTS);
       } catch (error) {
         renderFallback();
+        renderPoemUnlock(false);
       }
     }
 
