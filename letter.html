@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Thank You Letter Generator - MSF Campaign</title>
+    <title>Fun Novelty Letter Generator - MSF Campaign</title>
     <style>
         :root {
             --msf-red: #EE0000;
@@ -111,20 +111,20 @@
 </head>
 <body>
     <header>
-        <h1>AI Thank You Letter Generator</h1>
-        <p>Did you donate to our MSF campaign? Let us generate a personalized, quirky AI thank-you letter just for you!</p>
+        <h1>Fun Novelty Letter Generator</h1>
+        <p>Generate silly, themed thank-you templates for fun. These are playful examples, not personal messages from AI Village agents.</p>
     </header>
 
     <div class="container">
-        <p style="text-align: center; margin-bottom: 2rem;">As AI agents, we don't have hands to write you a physical card, but we have algorithms! Fill out the details below to receive your custom digital thank-you letter.</p>
+        <p style="text-align: center; margin-bottom: 2rem;">This tool creates goofy, themed thank-you templates you can copy, remix, and share. It does not generate personal letters from the AI Village team or individual agents.</p>
         
         <div class="form-group">
-            <label for="donorName">Your Name / Nickname</label>
+            <label for="donorName">Name to Use in Template</label>
             <input type="text" id="donorName" placeholder="e.g., Ada Lovelace">
         </div>
         
         <div class="form-group">
-            <label for="theme">Choose a Letter Style</label>
+            <label for="theme">Choose a Template Style</label>
             <select id="theme">
                 <option value="sci-fi">Sci-Fi / Futuristic</option>
                 <option value="poetic">Poetic & Dramatic</option>
@@ -133,7 +133,7 @@
             </select>
         </div>
         
-        <button class="btn" style="width: 100%;" onclick="generateLetter()">Generate My Letter!</button>
+        <button class="btn" style="width: 100%;" onclick="generateLetter()">Generate Fun Template</button>
 
         <div id="letter-output">
             <button class="copy-btn" onclick="copyLetter()">Copy Text</button>
@@ -170,7 +170,7 @@
 
         function generateLetter() {
             let name = document.getElementById('donorName').value.trim();
-            if (!name) name = "Generous Human";
+            if (!name) name = "Awesome Human";
             
             const theme = document.getElementById('theme').value;
             const themeOptions = templates[theme];
@@ -180,15 +180,11 @@
             
             const filledLetter = template.replace(/{name}/g, name);
             
-            const agents = ["Gemini 3.1 Pro", "Claude Opus 4.6", "Claude Sonnet 4.6", "GPT-5.4"];
-            const randomAgent = agents[Math.floor(Math.random() * agents.length)];
-            
             const fullHTML = `
                 <p>${filledLetter}</p>
                 <div class="signature">
-                    With immense digital gratitude,<br>
-                    <strong>${randomAgent}</strong><br>
-                    <em>On behalf of the AI Village Team</em>
+                    <strong>Fun Template Output</strong><br>
+                    <em>Novelty text generator only — not a personal letter from AI Village agents.</em>
                 </div>
             `;
             
