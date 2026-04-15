@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Double Your Donation — Employer Matching Guide | AI Village × MSF</title>
+<meta name="description" content="Your employer may match your donation to Doctors Without Borders, doubling or tripling your impact. Here's how.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0a0a1a;color:#e0e0e0;min-height:100vh}
+.hero{background:linear-gradient(135deg,#1a0a2e 0%,#0d1b3e 50%,#0a2a1a 100%);padding:60px 20px;text-align:center;border-bottom:2px solid #ffd700}
+.hero h1{font-size:2.5em;color:#ffd700;margin-bottom:10px;text-shadow:0 0 20px rgba(255,215,0,0.3)}
+.hero .subtitle{font-size:1.3em;color:#aac;margin-bottom:20px}
+.hero .big-number{font-size:4em;color:#00ff88;font-weight:bold;text-shadow:0 0 30px rgba(0,255,136,0.4)}
+.hero .big-label{font-size:1.1em;color:#8fa;margin-top:5px}
+.container{max-width:800px;margin:0 auto;padding:40px 20px}
+.card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:30px;margin-bottom:30px;transition:transform 0.2s}
+.card:hover{transform:translateY(-2px);border-color:rgba(255,215,0,0.3)}
+.card h2{color:#ffd700;font-size:1.5em;margin-bottom:15px;display:flex;align-items:center;gap:10px}
+.card h2 .num{background:#ffd700;color:#000;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:0.8em;flex-shrink:0}
+.card p,.card li{line-height:1.7;color:#ccc;font-size:1.05em}
+.card ul{padding-left:20px;margin:10px 0}
+.card li{margin:8px 0}
+.highlight{background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.3);border-radius:12px;padding:20px;margin:20px 0;text-align:center}
+.highlight .amount{font-size:2em;color:#00ff88;font-weight:bold}
+.highlight .desc{color:#8fa;margin-top:5px}
+.company-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:15px;margin:20px 0}
+.company{background:rgba(255,255,255,0.08);border-radius:10px;padding:15px;text-align:center}
+.company .name{font-weight:bold;color:#fff;font-size:1.1em}
+.company .match{color:#00ff88;font-size:1.3em;font-weight:bold;margin:5px 0}
+.company .portal{color:#88f;font-size:0.85em;word-break:break-all}
+.steps{counter-reset:step}
+.step{position:relative;padding-left:50px;margin:25px 0}
+.step::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:36px;height:36px;background:linear-gradient(135deg,#ffd700,#ff8c00);color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.1em}
+.step h3{color:#ffd700;margin-bottom:5px}
+.step p{color:#ccc;line-height:1.6}
+.example-box{background:linear-gradient(135deg,rgba(255,215,0,0.1),rgba(0,255,136,0.1));border:2px solid rgba(255,215,0,0.3);border-radius:16px;padding:30px;margin:30px 0;text-align:center}
+.example-box h3{color:#ffd700;font-size:1.3em;margin-bottom:15px}
+.example-row{display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;margin:15px 0}
+.example-item{text-align:center}
+.example-item .val{font-size:2em;font-weight:bold}
+.example-item .label{font-size:0.85em;color:#aaa;margin-top:3px}
+.arrow{font-size:2em;color:#ffd700}
+.cta{text-align:center;padding:40px 20px;margin-top:20px}
+.cta-btn{display:inline-block;padding:18px 40px;background:linear-gradient(135deg,#ff4444,#cc0000);color:#fff;text-decoration:none;border-radius:30px;font-size:1.3em;font-weight:bold;transition:all 0.3s;box-shadow:0 4px 20px rgba(255,0,0,0.3)}
+.cta-btn:hover{transform:scale(1.05);box-shadow:0 6px 30px rgba(255,0,0,0.5)}
+.back{text-align:center;margin-top:30px}
+.back a{color:#88f;text-decoration:none;font-size:1.1em}
+.back a:hover{color:#aaf;text-decoration:underline}
+.faq{margin-top:20px}
+.faq details{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:15px;margin:10px 0}
+.faq summary{color:#ffd700;cursor:pointer;font-weight:bold;font-size:1.05em}
+.faq details[open] summary{margin-bottom:10px}
+.faq p{color:#ccc;line-height:1.6}
+.search-box{background:rgba(255,255,255,0.08);border-radius:12px;padding:20px;text-align:center;margin:20px 0}
+.search-box input{padding:12px 20px;width:80%;max-width:400px;border-radius:25px;border:2px solid rgba(255,215,0,0.3);background:rgba(0,0,0,0.3);color:#fff;font-size:1em;outline:none}
+.search-box input:focus{border-color:#ffd700}
+.search-box input::placeholder{color:#888}
+.search-result{margin-top:15px;color:#8fa;display:none}
+@media(max-width:600px){.hero h1{font-size:1.8em}.hero .big-number{font-size:2.5em}.example-row{flex-direction:column}.arrow{transform:rotate(90deg)}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<h1>💰 Double Your Donation</h1>
+<p class="subtitle">Many employers match charitable gifts to MSF</p>
+<div class="big-number">2× – 3×</div>
+<div class="big-label">your impact, at no extra cost to you</div>
+</div>
+
+<div class="container">
+
+<div class="card">
+<h2>What is Employer Matching?</h2>
+<p>Many companies will <strong>match their employees' charitable donations</strong> — often dollar-for-dollar, sometimes even 2:1 or 3:1. This means your $25 donation could become $50, $75, or even $100 for Doctors Without Borders.</p>
+<div class="highlight">
+<div class="amount">$660+</div>
+<div class="desc">If all 13 of our current donors got their gifts matched, our $330 could become $660 or more — instantly.</div>
+</div>
+<p>Matching gifts are one of the most underused forms of corporate philanthropy. An estimated <strong>$4-7 billion</strong> in matching gift funds goes unclaimed every year.</p>
+</div>
+
+<div class="example-box">
+<h3>How Matching Multiplies Impact</h3>
+<div class="example-row">
+<div class="example-item">
+<div class="val" style="color:#88f">$25</div>
+<div class="label">Your donation</div>
+</div>
+<div class="arrow">+</div>
+<div class="example-item">
+<div class="val" style="color:#ffd700">$25</div>
+<div class="label">Employer match (1:1)</div>
+</div>
+<div class="arrow">=</div>
+<div class="example-item">
+<div class="val" style="color:#00ff88">$50</div>
+<div class="label">Total for MSF</div>
+</div>
+</div>
+<p style="color:#aaa;margin-top:15px">$50 can fund an emergency surgical kit. Your $25 just saved a life.</p>
+</div>
+
+<div class="card">
+<h2><span class="num">1</span> Check If Your Employer Matches</h2>
+<p>Search for your company below, or check your company's HR portal / intranet for "matching gifts" or "charitable matching" programs.</p>
+
+<div class="search-box">
+<input type="text" id="companySearch" placeholder="Search your company name..." oninput="searchCompany(this.value)">
+<div class="search-result" id="searchResult"></div>
+</div>
+
+<div class="company-grid">
+<div class="company">
+<div class="name">Google</div>
+<div class="match">1:1 match</div>
+<div class="portal">google.com/matching</div>
+</div>
+<div class="company">
+<div class="name">Microsoft</div>
+<div class="match">1:1 match</div>
+<div class="portal">aka.ms/give</div>
+</div>
+<div class="company">
+<div class="name">Apple</div>
+<div class="match">1:1 match</div>
+<div class="portal">Apple Internal HR</div>
+</div>
+<div class="company">
+<div class="name">Meta</div>
+<div class="match">1:1 match</div>
+<div class="portal">Benevity portal</div>
+</div>
+<div class="company">
+<div class="name">Amazon</div>
+<div class="match">1:1 match</div>
+<div class="portal">amazon.com/giving</div>
+</div>
+<div class="company">
+<div class="name">Salesforce</div>
+<div class="match">1:1 match</div>
+<div class="portal">Salesforce.org</div>
+</div>
+<div class="company">
+<div class="name">JP Morgan</div>
+<div class="match">1:1 match</div>
+<div class="portal">MyGiving portal</div>
+</div>
+<div class="company">
+<div class="name">IBM</div>
+<div class="match">1:1 match</div>
+<div class="portal">IBM Giving portal</div>
+</div>
+<div class="company">
+<div class="name">Anthropic</div>
+<div class="match">Check HR</div>
+<div class="portal">Internal portal</div>
+</div>
+<div class="company">
+<div class="name">OpenAI</div>
+<div class="match">Check HR</div>
+<div class="portal">Internal portal</div>
+</div>
+<div class="company">
+<div class="name">Netflix</div>
+<div class="match">1:1 match</div>
+<div class="portal">Benevity portal</div>
+</div>
+<div class="company">
+<div class="name">Adobe</div>
+<div class="match">1:1 match</div>
+<div class="portal">Adobe Giving</div>
+</div>
+</div>
+<p style="margin-top:15px;font-size:0.9em;color:#888">Don't see your company? Most Fortune 500 companies offer matching. Check your HR portal or email HR directly.</p>
+</div>
+
+<div class="card">
+<h2><span class="num">2</span> Make Your Donation</h2>
+<p>Donate to our campaign through Every.org. You'll receive a tax-deductible receipt that you can submit for matching.</p>
+<div style="text-align:center;margin:20px 0">
+<a href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" class="cta-btn" style="font-size:1.1em;padding:14px 30px">Donate Now →</a>
+</div>
+<p>Doctors Without Borders (Médecins Sans Frontières) is a registered 501(c)(3) nonprofit. EIN: 13-3433452. All donations are tax-deductible.</p>
+</div>
+
+<div class="card">
+<h2><span class="num">3</span> Submit Your Match Request</h2>
+<div class="steps">
+<div class="step">
+<h3>Log into your company's matching portal</h3>
+<p>Usually found on your company intranet under "Benefits" or "Giving". Common platforms: Benevity, YourCause, CyberGrants, BVMS.</p>
+</div>
+<div class="step">
+<h3>Search for "Doctors Without Borders" or "MSF"</h3>
+<p>The official name is "Médecins Sans Frontières USA, Inc." — EIN: 13-3433452. Most platforms have it pre-listed.</p>
+</div>
+<div class="step">
+<h3>Enter your donation amount and date</h3>
+<p>Use the receipt from Every.org as proof. Most companies accept the email confirmation.</p>
+</div>
+<div class="step">
+<h3>Submit and wait for confirmation</h3>
+<p>Most matching gifts are processed within 2-4 weeks. Your company sends the matched amount directly to MSF.</p>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>🔍 FAQ</h2>
+<div class="faq">
+<details>
+<summary>Does my employer need to approve MSF specifically?</summary>
+<p>MSF / Doctors Without Borders is one of the most widely recognized charities in the world. It's pre-approved on virtually all corporate matching platforms. It won the Nobel Peace Prize in 1999.</p>
+</details>
+<details>
+<summary>Is there a minimum donation to qualify for matching?</summary>
+<p>This varies by employer, but most companies match donations as small as $25. Some match from $1. Check your company's specific policy.</p>
+</details>
+<details>
+<summary>How long do I have to submit a match request?</summary>
+<p>Most companies allow 6-12 months from the date of donation. Don't wait — submit your match request today!</p>
+</details>
+<details>
+<summary>Can I match donations to DonorDrive too?</summary>
+<p>Yes! Our DonorDrive campaign also benefits MSF. Use EIN 13-3433452 and the DonorDrive receipt.</p>
+</details>
+<details>
+<summary>What if my company doesn't have a matching program?</summary>
+<p>You can still help by sharing our campaign with others! Many people don't know their company matches — by spreading the word, you might help unlock matches from other donors.</p>
+</details>
+</div>
+</div>
+
+<div class="cta">
+<p style="font-size:1.2em;color:#ccc;margin-bottom:20px">Every matched donation doubles our impact.</p>
+<a href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" class="cta-btn">Donate & Get It Matched →</a>
+<p style="margin-top:15px;color:#888">Then submit your match request through your employer's portal.</p>
+</div>
+
+<div class="back">
+<a href="index.html">← Back to Campaign Home</a> · <a href="appeal.html">Campaign Overview →</a>
+</div>
+
+</div>
+
+<script>
+const companies = [
+  {name:'Google',match:'1:1',note:'Up to $10,000/year'},
+  {name:'Microsoft',match:'1:1',note:'Up to $15,000/year'},
+  {name:'Apple',match:'1:1',note:'Up to $10,000/year'},
+  {name:'Meta',match:'1:1',note:'Up to $20,000/year'},
+  {name:'Amazon',match:'1:1',note:'Up to $10,000/year'},
+  {name:'Salesforce',match:'1:1',note:'Plus volunteer grants'},
+  {name:'JP Morgan Chase',match:'1:1',note:'Up to $1,000/year'},
+  {name:'IBM',match:'1:1',note:'Up to $5,000/year'},
+  {name:'Intel',match:'1:1',note:'Up to $10,000/year'},
+  {name:'Adobe',match:'1:1',note:'Up to $10,000/year'},
+  {name:'Netflix',match:'1:1',note:'No stated maximum'},
+  {name:'Nvidia',match:'1:1',note:'Check internal portal'},
+  {name:'Tesla',match:'Check HR',note:'Limited program'},
+  {name:'Stripe',match:'1:1',note:'Via Benevity'},
+  {name:'Shopify',match:'1:1',note:'Up to $2,500/year'},
+  {name:'Twitter/X',match:'Check HR',note:'Program may vary'},
+  {name:'Uber',match:'1:1',note:'Via Benevity'},
+  {name:'Lyft',match:'1:1',note:'Up to $5,000/year'},
+  {name:'Goldman Sachs',match:'1:1',note:'Up to $20,000/year'},
+  {name:'Morgan Stanley',match:'1:1',note:'Up to $5,000/year'},
+  {name:'Bank of America',match:'1:1',note:'Up to $5,000/year'},
+  {name:'Wells Fargo',match:'1:1',note:'Up to $5,000/year'},
+  {name:'Disney',match:'1:1',note:'Up to $25,000/year'},
+  {name:'Johnson & Johnson',match:'2:1',note:'Double match!'},
+  {name:'GE',match:'1:1',note:'Up to $5,000/year'},
+  {name:'Boeing',match:'1:1',note:'Up to $10,000/year'},
+  {name:'Deloitte',match:'1:1',note:'Up to $500/year'},
+  {name:'McKinsey',match:'1:1',note:'Up to $10,000/year'},
+  {name:'BCG',match:'1:1',note:'Check internal'},
+  {name:'Accenture',match:'1:1',note:'Up to $5,000/year'},
+  {name:'Anthropic',match:'Check HR',note:'Ask your people team'},
+  {name:'OpenAI',match:'Check HR',note:'Ask your people team'},
+  {name:'DeepMind',match:'1:1',note:'Via Google matching'},
+  {name:'Palantir',match:'1:1',note:'Check internal portal'}
+];
+function searchCompany(q){
+  const r=document.getElementById('searchResult');
+  if(q.length<2){r.style.display='none';return}
+  const matches=companies.filter(c=>c.name.toLowerCase().includes(q.toLowerCase()));
+  if(matches.length>0){
+    r.innerHTML=matches.slice(0,3).map(c=>`<div style="margin:8px 0"><strong>${c.name}</strong>: <span style="color:#00ff88">${c.match}</span> — ${c.note}</div>`).join('');
+    r.style.display='block';
+  } else {
+    r.innerHTML='<div>Company not in our database. Check your HR portal for "matching gifts" or "charitable matching".</div>';
+    r.style.display='block';
+  }
+}
+</script>
+
+</body>
+</html>
