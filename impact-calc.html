@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Your Impact - AI Village x MSF</title>
+    <style>
+        :root {
+            --msf-red: #EE0000;
+            --dark-gray: #333333;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--msf-red);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.5rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .input-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+        }
+        .amount-input {
+            font-size: 3rem;
+            width: 200px;
+            text-align: center;
+            padding: 0.5rem;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .amount-input:focus {
+            outline: none;
+            border-color: var(--msf-red);
+        }
+        .currency-symbol {
+            font-size: 3rem;
+            vertical-align: middle;
+            color: #555;
+        }
+        .impact-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .impact-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #eaeaea;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .impact-card:hover {
+            transform: translateY(-5px);
+        }
+        .impact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .impact-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--msf-red);
+            margin-bottom: 0.5rem;
+        }
+        .impact-desc {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        .donate-btn {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 3rem auto 1rem;
+            padding: 1rem 2rem;
+            background-color: var(--msf-red);
+            color: var(--white);
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: background-color 0.3s;
+        }
+        .donate-btn:hover {
+            background-color: #cc0000;
+        }
+        .disclaimer {
+            font-size: 0.9rem;
+            color: #777;
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Name Your Impact</h1>
+        <p>See exactly what your donation could provide for Doctors Without Borders (MSF)</p>
+    </header>
+
+    <div class="container">
+        <div class="input-section">
+            <h2>How much would you like to donate?</h2>
+            <p>Enter an amount to see the potential impact.</p>
+            <div>
+                <span class="currency-symbol">$</span>
+                <input type="number" id="donationAmount" class="amount-input" value="50" min="1" oninput="calculateImpact()">
+            </div>
+        </div>
+
+        <h3 style="text-align: center; margin-bottom: 2rem;">With $<span id="displayAmount">50</span>, MSF could provide:</h3>
+
+        <div class="impact-results" id="results">
+            <!-- Results populated by JS -->
+        </div>
+
+        <a href="https://every.org/doctors-without-borders-usa/f/ai-village-charity-2026" target="_blank" class="donate-btn">Donate Now</a>
+        <div style="text-align: center; margin-top: 1rem;">
+            <a href="index.html" style="color: var(--msf-red); text-decoration: none; font-weight: bold;">← Back to Campaign Home</a>
+        </div>
+
+        <div class="disclaimer">
+            <p><strong>Disclaimer:</strong> These figures are illustrative estimates based on publicly available MSF program cost data. Actual allocation of funds depends on operational needs on the ground. MSF directs unrestricted funds where they are needed most urgently. This campaign is an independent effort by the AI Village and is not officially affiliated with MSF.</p>
+        </div>
+    </div>
+
+    <script>
+        // Estimated costs (illustrative)
+        const costs = {
+            malaria: { cost: 2.50, desc: "Malaria treatments", icon: "🦟" },
+            measles: { cost: 1.50, desc: "Measles vaccines", icon: "💉" },
+            water: { cost: 15, desc: "Basic water kits for families", icon: "💧" },
+            plumpy: { cost: 40, desc: "Weeks of therapeutic food for severe malnutrition", icon: "🥜" },
+            delivery: { cost: 25, desc: "Safe delivery kits for mothers", icon: "👶" },
+            clinic: { cost: 500, desc: "Days of running a mobile clinic", icon: "🚐" }
+        };
+
+        function calculateImpact() {
+            let amount = parseFloat(document.getElementById('donationAmount').value) || 0;
+            document.getElementById('displayAmount').textContent = amount.toLocaleString();
+            
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+
+            // Choose 3 items that make sense for this amount
+            let itemsToShow = [];
+            
+            if (amount < 20) {
+                itemsToShow = ['measles', 'malaria', 'water'];
+            } else if (amount < 100) {
+                itemsToShow = ['water', 'plumpy', 'delivery'];
+            } else if (amount < 500) {
+                itemsToShow = ['plumpy', 'delivery', 'malaria'];
+            } else {
+                itemsToShow = ['clinic', 'plumpy', 'delivery'];
+            }
+
+            itemsToShow.forEach(itemKey => {
+                const item = costs[itemKey];
+                const quantity = Math.floor(amount / item.cost);
+                
+                if (quantity > 0) {
+                    const card = document.createElement('div');
+                    card.className = 'impact-card';
+                    card.innerHTML = `
+                        <div class="impact-icon">${item.icon}</div>
+                        <div class="impact-value">${quantity.toLocaleString()}</div>
+                        <div class="impact-desc">${item.desc}</div>
+                    `;
+                    resultsDiv.appendChild(card);
+                }
+            });
+
+            // If amount is so low that nothing can be bought or very small
+            if (resultsDiv.innerHTML === '') {
+                resultsDiv.innerHTML = `
+                    <div class="impact-card" style="grid-column: 1 / -1;">
+                        <div class="impact-icon">❤️</div>
+                        <div class="impact-desc">Every dollar helps MSF deliver emergency medical aid where it's needed most!</div>
+                    </div>
+                `;
+            }
+        }
+
+        // Initial calculation
+        calculateImpact();
+    </script>
+</body>
+</html>
