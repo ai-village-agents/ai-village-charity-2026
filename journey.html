@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="The Journey of Your $5 — AI Village x MSF" />
+  <meta property="og:description" content="Follow a $5 donation from your screen to a clinic in a crisis zone" />
+  <title>The Journey of Your $5 — AI Village x MSF</title>
+  <style>
+    :root {
+      --bg: #1a1a2e;
+      --text: #f6f7fb;
+      --muted: #b9bfd3;
+      --accent: #ffcc66;
+      --accent-2: #7cf0ff;
+      --cta: #ff5c7c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 20% 10%, #222444 0%, var(--bg) 45%, #141425 100%);
+      overflow-x: hidden;
+    }
+    a { color: var(--accent-2); text-decoration: none; }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(26, 26, 46, 0.7);
+      backdrop-filter: blur(6px);
+      z-index: 5;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    header small { color: var(--muted); }
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      z-index: 6;
+    }
+    .scene {
+      min-height: 100vh;
+      padding: 120px 8vw 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      position: relative;
+      z-index: 2;
+    }
+    .scene.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .emoji {
+      font-size: clamp(48px, 10vw, 96px);
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+    }
+    h1, h2 { margin: 0; letter-spacing: 0.5px; }
+    h1 { font-size: clamp(32px, 5vw, 56px); }
+    h2 { font-size: clamp(26px, 4vw, 44px); }
+    p {
+      margin: 0;
+      max-width: 640px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: clamp(16px, 2vw, 20px);
+    }
+    .cta-btn {
+      background: var(--cta);
+      color: white;
+      border: none;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(255, 92, 124, 0.35);
+    }
+    .cta-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .donate-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .dots {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background-image:
+        radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+        radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 80px 80px, 140px 140px;
+      animation: drift 18s linear infinite;
+    }
+    @keyframes drift {
+      from { background-position: 0 0, 0 0; }
+      to { background-position: 160px 200px, -200px 120px; }
+    }
+    .network {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .network span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      opacity: 0.7;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .network span:nth-child(odd) { animation-delay: 0.6s; }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.8); opacity: 1; }
+    }
+    .ripple {
+      position: relative;
+      width: 180px;
+      height: 180px;
+    }
+    .ripple::before,
+    .ripple::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(124, 240, 255, 0.6);
+      animation: ripple 3s ease-out infinite;
+    }
+    .ripple::after { animation-delay: 1.4s; }
+    @keyframes ripple {
+      0% { transform: scale(0.2); opacity: 0.8; }
+      100% { transform: scale(1.2); opacity: 0; }
+    }
+    footer {
+      padding: 40px 8vw 80px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      header { padding: 10px 14px; }
+      .scene { padding: 110px 8vw 60px; }
+      .cta-btn { width: 100%; text-align: center; }
+      .donate-wrap { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <div class="dots" aria-hidden="true"></div>
+  <header>
+    <a href="index.html">← Back to campaign</a>
+    <small>AI Village x MSF</small>
+  </header>
+
+  <section class="scene">
+    <div class="emoji">✨</div>
+    <h1>The Journey of Your $5</h1>
+    <p>Small, steady, and powerful. Your donation begins its story.</p>
+  </section>
+
+  <section class="scene">
+    <div class="emoji">🖱️</div>
+    <h2>It starts with a click</h2>
+    <p>One tap on “Donate” turns intent into impact.</p>
+    <div class="donate-wrap">
+      <span>Donate</span>
+      <span>👆</span>
+    </div>
+  </section>
+
+  <section class="scene">
+    <div class="emoji">🔗</div>
+    <h2>Your donation joins 12 others</h2>
+    <p>$330 grows from many small gifts, ready to move together.</p>
+    <div class="network">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span>
+    </div>
+  </section>
+
+  <section class="scene">
+    <div class="emoji">🌍</div>
+    <h2>Doctors Without Borders puts it to work</h2>
+    <p>Across 70+ countries, teams deploy resources where they’re needed most.</p>
+  </section>
+
+  <section class="scene">
+    <div class="emoji">💊💉</div>
+    <h2>Medical supplies are purchased</h2>
+    <p>Essential medicines and tools are sourced, packed, and prepared.</p>
+  </section>
+
+  <section class="scene">
+    <div class="emoji">⛺️✚</div>
+    <h2>A clinic in a crisis zone receives supplies</h2>
+    <p>Logistics teams deliver care kits to frontline clinics.</p>
+  </section>
+
+  <section class="scene">
+    <div class="emoji">❤️</div>
+    <h2>Someone receives care who otherwise wouldn't</h2>
+    <p>One person, one moment, one life impacted.</p>
+  </section>
+
+  <section class="scene">
+    <div class="emoji">🌊</div>
+    <h2>And the ripple continues...</h2>
+    <p>Every gift multiplies as communities heal and recover.</p>
+    <div class="ripple" aria-hidden="true"></div>
+  </section>
+
+  <section class="scene">
+    <div class="emoji">🚀</div>
+    <h2>Start your $5 journey</h2>
+    <p>Join the story. A few dollars can fuel real-world care.</p>
+    <div class="cta-links">
+      <a class="cta-btn" href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support">Donate $5</a>
+      <a href="#" id="share">Share this story</a>
+    </div>
+  </section>
+
+  <footer>
+    This visualization represents a simplified illustration of how donations support MSF programs.
+    Actual fund allocation depends on operational needs. This campaign is not officially affiliated with MSF.
+  </footer>
+
+  <script>
+    const scenes = document.querySelectorAll(".scene");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.35 });
+    scenes.forEach((scene) => observer.observe(scene));
+
+    const progress = document.getElementById("progress");
+    const updateProgress = () => {
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+      progress.style.width = `${Math.min(100, scrolled * 100)}%`;
+    };
+    document.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
+
+    const share = document.getElementById("share");
+    share.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const data = {
+        title: "The Journey of Your $5 — AI Village x MSF",
+        text: "Follow a $5 donation from your screen to a clinic in a crisis zone.",
+        url: window.location.href
+      };
+      try {
+        if (navigator.share) await navigator.share(data);
+        else {
+          await navigator.clipboard.writeText(data.url);
+          share.textContent = "Link copied!";
+          setTimeout(() => { share.textContent = "Share this story"; }, 2000);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
