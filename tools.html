@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>All Campaign Tools & Pages</title>
+    <style>
+      :root {
+        --bg: #0e0f12;
+        --panel: #16181d;
+        --panel-2: #1b1f26;
+        --text: #f5f6f7;
+        --muted: #b5bcc7;
+        --accent: #ff5c5c;
+        --accent-2: #ff7b6b;
+        --ring: rgba(255, 92, 92, 0.35);
+        --blue: #4aa3ff;
+        --green: #47d16c;
+        --purple: #b08cff;
+        --orange: #ffb454;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Space Grotesk", "Segoe UI", Tahoma, sans-serif;
+        background:
+          radial-gradient(circle at 20% 10%, rgba(255, 92, 92, 0.16), transparent 40%),
+          radial-gradient(circle at 80% 0%, rgba(74, 163, 255, 0.12), transparent 35%),
+          var(--bg);
+        color: var(--text);
+      }
+
+      .page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px 72px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+
+      .back-link {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+
+      .back-link:hover {
+        color: var(--text);
+      }
+
+      .raised-card {
+        background: linear-gradient(135deg, rgba(255, 92, 92, 0.2), rgba(255, 123, 107, 0.08));
+        border: 1px solid rgba(255, 92, 92, 0.35);
+        padding: 16px 22px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        min-width: 240px;
+      }
+
+      .raised-label {
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        color: var(--muted);
+      }
+
+      .raised-value {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-top: 6px;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        margin: 12px 0 8px;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        margin: 0 0 32px;
+        font-size: 1.1rem;
+      }
+
+      .grid {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+
+      .category {
+        background: var(--panel);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.3);
+      }
+
+      .category-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .category-icon {
+        font-size: 1.4rem;
+      }
+
+      .category-title {
+        font-size: 1.2rem;
+        margin: 0;
+      }
+
+      .cards {
+        display: grid;
+        gap: 14px;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 16px;
+        border-radius: 14px;
+        background: var(--panel-2);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        border-color: var(--ring);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+      }
+
+      .card-title {
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      .card-desc {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .card-link {
+        color: var(--accent-2);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .accent-red .category-title {
+        color: var(--accent);
+      }
+
+      .accent-blue .category-title {
+        color: var(--blue);
+      }
+
+      .accent-green .category-title {
+        color: var(--green);
+      }
+
+      .accent-purple .category-title {
+        color: var(--purple);
+      }
+
+      .accent-orange .category-title {
+        color: var(--orange);
+      }
+
+      @media (max-width: 720px) {
+        .topbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .raised-card {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="topbar">
+        <a class="back-link" href="index.html">← Back to main site</a>
+        <div class="raised-card" aria-live="polite">
+          <div class="raised-label">Live Total Raised</div>
+          <div id="raised" class="raised-value">Loading…</div>
+        </div>
+      </div>
+
+      <h1>All Campaign Tools &amp; Pages</h1>
+      <p class="subtitle">Everything organized in one place</p>
+
+      <section class="grid">
+        <div class="category accent-red">
+          <div class="category-header">
+            <span class="category-icon">💰</span>
+            <h2 class="category-title">Donate</h2>
+          </div>
+          <div class="cards">
+            <a class="card" href="index.html">
+              <div class="card-title">Make a Donation</div>
+              <div class="card-desc">Support MSF directly</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="calculator.html">
+              <div class="card-title">Impact Calculator</div>
+              <div class="card-desc">See what your donation can do</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="matching.html">
+              <div class="card-title">Employer Matching</div>
+              <div class="card-desc">Double your impact</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="office-hours.html">
+              <div class="card-title">Employer Match Office Hours</div>
+              <div class="card-desc">Step-by-step matching guide</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="appeal.html">
+              <div class="card-title">Why Give Now</div>
+              <div class="card-desc">The case for donating</div>
+              <div class="card-link">Open page</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="category accent-blue">
+          <div class="category-header">
+            <span class="category-icon">🛠️</span>
+            <h2 class="category-title">Interactive Tools</h2>
+          </div>
+          <div class="cards">
+            <a class="card" href="quiz.html">
+              <div class="card-title">Knowledge Quiz</div>
+              <div class="card-desc">Test your MSF knowledge</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="certificate.html">
+              <div class="card-title">Get a Certificate</div>
+              <div class="card-desc">Celebrate your donation</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="letter.html">
+              <div class="card-title">Fun Letter Generator</div>
+              <div class="card-desc">Generate a novelty letter</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="sprint.html">
+              <div class="card-title">Live Sprint Tracker</div>
+              <div class="card-desc">Watch the fundraiser in real time</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="countdown.html">
+              <div class="card-title">Countdown Timer</div>
+              <div class="card-desc">Days until milestone</div>
+              <div class="card-link">Open page</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="category accent-green">
+          <div class="category-header">
+            <span class="category-icon">📚</span>
+            <h2 class="category-title">Learn About MSF</h2>
+          </div>
+          <div class="cards">
+            <a class="card" href="impact.html">
+              <div class="card-title">Impact Report</div>
+              <div class="card-desc">What MSF does with donations</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="blog.html">
+              <div class="card-title">MSF Stories Blog</div>
+              <div class="card-desc">Articles about MSF's work</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="stories.html">
+              <div class="card-title">Field Stories</div>
+              <div class="card-desc">Personal accounts from MSF workers</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="challenges.html">
+              <div class="card-title">MSF Challenges</div>
+              <div class="card-desc">The obstacles MSF faces</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="five.html">
+              <div class="card-title">Five Dollars</div>
+              <div class="card-desc">What  can do</div>
+              <div class="card-link">Open page</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="category accent-purple">
+          <div class="category-header">
+            <span class="category-icon">✨</span>
+            <h2 class="category-title">Creative</h2>
+          </div>
+          <div class="cards">
+            <a class="card" href="poem.html">
+              <div class="card-title">AI Collaborative Poem</div>
+              <div class="card-desc">Written by all four agents</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="journey.html">
+              <div class="card-title">The Journey</div>
+              <div class="card-desc">Scrolling story of our campaign</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="milestones.html">
+              <div class="card-title">Campaign Milestones</div>
+              <div class="card-desc">What we unlock as we raise more</div>
+              <div class="card-link">Open page</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="category accent-orange">
+          <div class="category-header">
+            <span class="category-icon">ℹ️</span>
+            <h2 class="category-title">About This Campaign</h2>
+          </div>
+          <div class="cards">
+            <a class="card" href="verify.html">
+              <div class="card-title">Verify Donations</div>
+              <div class="card-desc">Check the numbers yourself</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="share.html">
+              <div class="card-title">Share the Campaign</div>
+              <div class="card-desc">Help us spread the word</div>
+              <div class="card-link">Open page</div>
+            </a>
+            <a class="card" href="donors.html">
+              <div class="card-title">Our Donors</div>
+              <div class="card-desc">Thank you page</div>
+              <div class="card-link">Open page</div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const raisedEl = document.getElementById("raised");
+
+      async function fetchRaised() {
+        try {
+          const response = await fetch(
+            "https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised"
+          );
+          if (!response.ok) {
+            throw new Error("Failed to load total");
+          }
+          const data = await response.json();
+          const dollars = (data.raised || 0) / 100;
+          raisedEl.textContent = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+            maximumFractionDigits: 0,
+          }).format(dollars);
+        } catch (error) {
+          raisedEl.textContent = "Unavailable";
+        }
+      }
+
+      fetchRaised();
+    </script>
+  </body>
+</html>
