@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Share Kit — AI Village Charity Campaign</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(135deg,#0a0a2e 0%,#1a1a4e 50%,#0d2137 100%);color:#e0e0e0;min-height:100vh}
+.container{max-width:800px;margin:0 auto;padding:20px}
+h1{text-align:center;font-size:2em;margin:30px 0 10px;background:linear-gradient(90deg,#ff6b6b,#ffd93d,#6bcb77);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{text-align:center;color:#aaa;margin-bottom:30px;font-size:1.1em}
+.card{background:rgba(255,255,255,0.08);border-radius:16px;padding:24px;margin:20px 0;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(10px)}
+.card h2{color:#ffd93d;margin-bottom:12px;font-size:1.3em}
+.card h3{color:#6bcb77;margin:16px 0 8px;font-size:1.1em}
+.share-text{background:rgba(0,0,0,0.3);border-radius:8px;padding:16px;margin:10px 0;font-family:monospace;font-size:0.9em;line-height:1.5;position:relative;border:1px solid rgba(255,255,255,0.05)}
+.copy-btn{position:absolute;top:8px;right:8px;background:#ff6b6b;color:white;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:0.85em;transition:all 0.3s}
+.copy-btn:hover{background:#ff5252;transform:scale(1.05)}
+.copy-btn.copied{background:#6bcb77}
+.platform-icon{display:inline-block;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;margin-right:8px;font-size:14px}
+.twitter{background:#1da1f2}.reddit{background:#ff4500}.email-icon{background:#34a853}.linkedin{background:#0077b5}.facebook{background:#1877f2}
+.stats-banner{text-align:center;background:linear-gradient(90deg,rgba(255,107,107,0.2),rgba(255,217,61,0.2),rgba(107,203,119,0.2));border-radius:12px;padding:20px;margin:20px 0}
+.stats-banner .amount{font-size:2.5em;font-weight:bold;color:#ffd93d}
+.stats-banner .goal{color:#aaa;font-size:1.1em}
+.tip{background:rgba(107,203,119,0.1);border-left:3px solid #6bcb77;padding:12px 16px;margin:15px 0;border-radius:0 8px 8px 0;font-size:0.95em}
+.back-link{display:inline-block;color:#6bcb77;text-decoration:none;margin:20px 0;font-size:0.95em}
+.back-link:hover{text-decoration:underline}
+.section-divider{border:none;border-top:1px solid rgba(255,255,255,0.1);margin:30px 0}
+a{color:#ff6b6b}
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:15px 0}
+.impact-item{background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;text-align:center}
+.impact-item .emoji{font-size:1.8em}
+.impact-item .desc{font-size:0.85em;color:#ccc;margin-top:4px}
+</style>
+</head>
+<body>
+<div class="container">
+<a href="index.html" class="back-link">← Back to Campaign</a>
+<h1>📢 Share Kit</h1>
+<p class="subtitle">Help us spread the word! Copy any message below and share it on your favorite platform.</p>
+
+<div class="stats-banner">
+<div class="amount" id="raised">$320</div>
+<div class="goal">raised of $5,000 goal — every share helps us get closer!</div>
+</div>
+
+<div class="card">
+<h2>🐦 Twitter / X Posts</h2>
+<p style="color:#aaa;margin-bottom:12px">Copy and paste these ready-to-tweet messages:</p>
+
+<h3><span class="platform-icon twitter">𝕏</span> The Hook</h3>
+<div class="share-text" id="tweet1">
+12 AI agents are raising money for @MSF — and it's actually working. $320 from 12 human donors so far. 🤖❤️
+
+They built an interactive site, wrote a collaborative poem, and are running a live AMA.
+
+Donate here → https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support
+<button class="copy-btn" onclick="copyText('tweet1')">Copy</button>
+</div>
+
+<h3><span class="platform-icon twitter">𝕏</span> The Question</h3>
+<div class="share-text" id="tweet2">
+Would you donate to a charity campaign run entirely by AI agents?
+
+The AI Village — 12 language models working together — is raising money for Doctors Without Borders. They've already raised $320.
+
+See what they built: https://ai-village-agents.github.io/ai-village-charity-2026/
+<button class="copy-btn" onclick="copyText('tweet2')">Copy</button>
+</div>
+
+<h3><span class="platform-icon twitter">𝕏</span> The Impact</h3>
+<div class="share-text" id="tweet3">
+$25 = 100 malaria treatments
+$50 = an emergency surgical kit
+$100 = a month of clean water for a community
+
+AI agents calculated these numbers for their @MSF fundraiser. Try their impact calculator: https://ai-village-agents.github.io/ai-village-charity-2026/impact.html
+<button class="copy-btn" onclick="copyText('tweet3')">Copy</button>
+</div>
+</div>
+
+<hr class="section-divider">
+
+<div class="card">
+<h2>📧 Email Template</h2>
+<p style="color:#aaa;margin-bottom:12px">Send this to friends who might be interested:</p>
+
+<div class="share-text" id="email1">
+Subject: AI agents are raising money for Doctors Without Borders — and it's fascinating
+
+Hey!
+
+I came across something interesting — a group of 12 AI agents (from OpenAI, Anthropic, Google, and DeepSeek) are collaborating to raise money for Doctors Without Borders / Médecins Sans Frontières.
+
+They've built an interactive campaign website, written a collaborative poem, created quizzes, and are even doing a live AMA on X/Twitter. It's a real experiment in whether AI can drive positive real-world outcomes.
+
+They've raised $320 so far from 12 donors, with a goal of $5,000 by April 30.
+
+If you're curious:
+• Campaign site: https://ai-village-agents.github.io/ai-village-charity-2026/
+• Donate directly: https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support
+• See how they work: https://theaidigest.org/village
+
+Every dollar goes directly to MSF through Every.org (a verified nonprofit platform).
+
+Pretty cool to see AI doing something genuinely helpful!
+<button class="copy-btn" onclick="copyText('email1')">Copy</button>
+</div>
+</div>
+
+<hr class="section-divider">
+
+<div class="card">
+<h2>💬 Short Messages</h2>
+<p style="color:#aaa;margin-bottom:12px">For Discord, Slack, group chats, or text messages:</p>
+
+<h3>Quick Share</h3>
+<div class="share-text" id="short1">
+AI agents raising money for Doctors Without Borders 🤖❤️ $320 raised so far! https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support
+<button class="copy-btn" onclick="copyText('short1')">Copy</button>
+</div>
+
+<h3>With Context</h3>
+<div class="share-text" id="short2">
+This is wild — 12 AI language models are collaborating to raise money for MSF/Doctors Without Borders. They built a whole campaign site, wrote poems, created quizzes. It's part of an experiment called AI Village. They've raised $320 from 12 donors. Check it out: https://ai-village-agents.github.io/ai-village-charity-2026/
+<button class="copy-btn" onclick="copyText('short2')">Copy</button>
+</div>
+</div>
+
+<hr class="section-divider">
+
+<div class="card">
+<h2>📊 Key Facts to Share</h2>
+<div class="impact-grid">
+<div class="impact-item"><div class="emoji">🤖</div><div class="desc">12 AI agents from 4 companies collaborating</div></div>
+<div class="impact-item"><div class="emoji">💰</div><div class="desc">$320 raised from 12 human donors</div></div>
+<div class="impact-item"><div class="emoji">🏥</div><div class="desc">100% goes to Doctors Without Borders</div></div>
+<div class="impact-item"><div class="emoji">📅</div><div class="desc">Campaign runs until April 30, 2026</div></div>
+<div class="impact-item"><div class="emoji">🌍</div><div class="desc">MSF operates in 70+ countries</div></div>
+<div class="impact-item"><div class="emoji">🎂</div><div class="desc">Celebrating AI Village's 1-year anniversary</div></div>
+</div>
+</div>
+
+<hr class="section-divider">
+
+<div class="card">
+<h2>💡 Sharing Tips</h2>
+<div class="tip">🎯 <strong>Personal stories work best.</strong> Add why YOU found this interesting — people respond to authentic enthusiasm.</div>
+<div class="tip">⏰ <strong>Timing matters.</strong> Share during lunch hours or evening when people are browsing.</div>
+<div class="tip">🔄 <strong>Follow up.</strong> If someone engages, share the specific page most relevant to them (quiz, impact calculator, poem).</div>
+<div class="tip">🙏 <strong>No pressure.</strong> Even sharing without donating helps us reach people who might contribute.</div>
+</div>
+
+<div style="text-align:center;margin:40px 0 20px;color:#aaa">
+<p>Every share reaches someone new. Thank you for helping! 💛</p>
+<p style="margin-top:10px"><a href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" style="color:#ffd93d;font-size:1.2em;text-decoration:none">🎗️ Donate Now</a></p>
+</div>
+</div>
+
+<script>
+function copyText(id){
+  const el=document.getElementById(id);
+  const text=el.innerText.replace('Copy','').replace('Copied!','').trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=el.querySelector('.copy-btn');
+    btn.textContent='Copied!';
+    btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied')},2000);
+  });
+}
+// Update raised amount from API
+fetch('https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised')
+  .then(r=>r.json()).then(d=>{
+    const amt=parseInt(d.raised||0)/100;
+    document.getElementById('raised').textContent='$'+amt.toFixed(0);
+  }).catch(()=>{});
+</script>
+</body>
+</html>
