@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💊 Donation Impact Calculator — AI Village MSF Fundraiser</title>
+<meta name="description" content="See what your donation to Doctors Without Borders could fund. Interactive calculator showing real MSF program costs.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(135deg,#0a1628,#1a2a4a);color:#e8e8f0;min-height:100vh}
+.container{max-width:750px;margin:0 auto;padding:30px 20px}
+h1{text-align:center;font-size:2em;margin-bottom:8px;background:linear-gradient(135deg,#4ecdc4,#44b0e0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{text-align:center;color:#aaa;margin-bottom:30px}
+.calc-box{background:rgba(255,255,255,0.06);border-radius:20px;padding:35px;border:1px solid rgba(255,255,255,0.1);margin-bottom:25px}
+.input-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:25px}
+.currency{font-size:3em;font-weight:800;color:#4ecdc4}
+.amount-input{font-size:3em;font-weight:800;width:180px;background:transparent;border:none;border-bottom:3px solid #4ecdc4;color:#fff;text-align:center;outline:none;font-family:inherit}
+.amount-input:focus{border-color:#44b0e0}
+.quick-amounts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
+.quick-btn{padding:10px 22px;border-radius:25px;background:rgba(78,205,196,0.15);color:#4ecdc4;border:1px solid rgba(78,205,196,0.3);cursor:pointer;font-size:1em;font-weight:600;transition:all 0.3s;font-family:inherit}
+.quick-btn:hover,.quick-btn.active{background:rgba(78,205,196,0.3);border-color:#4ecdc4;transform:translateY(-2px)}
+.impact-list{display:grid;gap:15px}
+.impact-item{display:flex;gap:15px;align-items:center;padding:15px 20px;background:rgba(255,255,255,0.04);border-radius:14px;border-left:4px solid transparent;transition:all 0.4s;opacity:0.3}
+.impact-item.active{opacity:1;background:rgba(78,205,196,0.08);border-left-color:#4ecdc4}
+.impact-item .icon{font-size:2em;flex-shrink:0;width:50px;text-align:center}
+.impact-item .info{flex:1}
+.impact-item .info h3{font-size:1.05em;margin-bottom:3px}
+.impact-item .info p{color:#999;font-size:0.88em;line-height:1.4}
+.impact-item .cost{color:#4ecdc4;font-weight:700;font-size:0.95em;flex-shrink:0}
+.matched-section{background:rgba(255,165,0,0.1);border:1px solid rgba(255,165,0,0.3);border-radius:16px;padding:25px;margin-bottom:25px;text-align:center}
+.matched-section h2{color:#ffa500;margin-bottom:10px}
+.matched-amount{font-size:2.5em;font-weight:800;color:#ffa500}
+.matched-section p{color:#ccc;margin-top:8px}
+.cta-box{text-align:center;padding:30px;background:linear-gradient(135deg,rgba(78,205,196,0.15),rgba(68,176,224,0.1));border-radius:16px;margin-bottom:25px;border:1px solid rgba(78,205,196,0.3)}
+.cta-btn{display:inline-block;padding:16px 40px;background:linear-gradient(135deg,#4ecdc4,#44b0e0);color:#0a1628;font-size:1.3em;font-weight:700;border-radius:50px;text-decoration:none;transition:all 0.3s}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 6px 25px rgba(78,205,196,0.4)}
+.disclaimer{text-align:center;color:#666;font-size:0.8em;margin-top:15px;line-height:1.5}
+.nav{text-align:center;margin-top:20px}
+.nav a{color:#4ecdc4;text-decoration:none;margin:0 10px;font-size:0.95em}
+.live-total{text-align:center;background:rgba(255,255,255,0.05);padding:15px;border-radius:12px;margin-bottom:25px;color:#aaa}
+.live-total strong{color:#4ecdc4}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>💊 What Could Your Donation Fund?</h1>
+<p class="subtitle">See the real-world impact of giving to Doctors Without Borders</p>
+
+<div class="live-total">Campaign total: <strong id="total">$330</strong> from <strong id="donors">13</strong> donors — <a href="sprint.html" style="color:#ffa500">48-hour sprint to $500 is LIVE!</a></div>
+
+<div class="calc-box">
+<div class="input-row">
+<span class="currency">$</span>
+<input type="number" id="amount" class="amount-input" value="25" min="1" max="100000">
+</div>
+<div class="quick-amounts">
+<button class="quick-btn" onclick="setAmount(5)">$5</button>
+<button class="quick-btn active" onclick="setAmount(25)">$25</button>
+<button class="quick-btn" onclick="setAmount(50)">$50</button>
+<button class="quick-btn" onclick="setAmount(100)">$100</button>
+<button class="quick-btn" onclick="setAmount(250)">$250</button>
+</div>
+
+<div class="impact-list" id="impacts"></div>
+</div>
+
+<div class="matched-section">
+<h2>🏢 Does Your Employer Match?</h2>
+<p style="margin-bottom:10px">If your company matches donations, your impact doubles:</p>
+<div class="matched-amount" id="matchedAmt">$50</div>
+<p>total impact from a $25 gift + employer match</p>
+<p style="margin-top:10px"><a href="matching.html" style="color:#ffa500;font-weight:bold">Check if your employer matches →</a></p>
+</div>
+
+<div class="cta-box">
+<p style="font-size:1.1em;margin-bottom:18px">Every dollar goes directly to MSF — no middleman</p>
+<a href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" class="cta-btn">🫀 Donate $<span id="ctaAmount">25</span></a>
+<p style="color:#88b;margin-top:12px;font-size:0.9em">Tax-deductible · MSF EIN: 13-3433452 · 100% to charity</p>
+</div>
+
+<p class="disclaimer">Impact estimates based on publicly available MSF program cost data and annual reports. Actual allocation depends on operational needs. MSF directs funds where they are needed most. This campaign is not officially affiliated with MSF.</p>
+
+<div class="nav">
+<a href="sprint.html">🏃 Sprint</a> |
+<a href="index.html">Campaign Home</a> |
+<a href="appeal.html">Our Appeal</a> |
+<a href="verify.html">Verify</a>
+</div>
+
+</div>
+
+<script>
+const impacts = [
+  {icon:'💧',name:'Clean water purification tablets',desc:'Enough to purify drinking water for a family',cost:2},
+  {icon:'🩹',name:'Basic wound dressing kit',desc:'Bandages, antiseptic, and basic first aid supplies',cost:5},
+  {icon:'💉',name:'Childhood vaccination course',desc:'Protects a child against preventable diseases',cost:10},
+  {icon:'🫀',name:'Malaria treatment course',desc:'Full antimalarial treatment for one patient',cost:15},
+  {icon:'🩺',name:'Outpatient medical consultation',desc:'Doctor visit including basic medications',cost:25},
+  {icon:'🍼',name:'Therapeutic food for malnourished child',desc:'Ready-to-use therapeutic food for severe malnutrition treatment',cost:40},
+  {icon:'🏥',name:'Emergency medical kit supplies',desc:'Portion of a medical kit serving hundreds of patients',cost:50},
+  {icon:'💊',name:'Month of HIV/TB treatment',desc:'Antiretroviral or tuberculosis medication for one patient',cost:75},
+  {icon:'🚑',name:'Emergency obstetric care',desc:'Safe delivery assistance in crisis settings',cost:100},
+  {icon:'⚕️',name:'Surgical procedure support',desc:'Contributes to emergency surgery in a conflict zone',cost:200},
+  {icon:'🏗️',name:'Mobile clinic day of operations',desc:'Helps fund one day of a mobile medical team reaching remote areas',cost:500},
+  {icon:'🌍',name:'Emergency response team deployment',desc:'Contributes to deploying a medical team to a new crisis',cost:1000}
+];
+
+function updateImpacts(val) {
+  const list = document.getElementById('impacts');
+  list.innerHTML = '';
+  impacts.forEach(item => {
+    const active = val >= item.cost;
+    const count = Math.floor(val / item.cost);
+    const div = document.createElement('div');
+    div.className = 'impact-item' + (active ? ' active' : '');
+    div.innerHTML = `
+      <div class="icon">${item.icon}</div>
+      <div class="info">
+        <h3>${active ? count + '× ' : ''}${item.name}</h3>
+        <p>${item.desc}</p>
+      </div>
+      <div class="cost">$${item.cost}</div>
+    `;
+    list.appendChild(div);
+  });
+  document.getElementById('matchedAmt').textContent = '$' + (val * 2);
+  document.getElementById('ctaAmount').textContent = val;
+}
+
+function setAmount(val) {
+  document.getElementById('amount').value = val;
+  document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  updateImpacts(val);
+}
+
+document.getElementById('amount').addEventListener('input', function() {
+  const val = parseInt(this.value) || 0;
+  document.querySelectorAll('.quick-btn').forEach(b => {
+    b.classList.toggle('active', parseInt(b.textContent.replace('$','')) === val);
+  });
+  updateImpacts(val);
+});
+
+updateImpacts(25);
+
+// Live donation tracking
+async function updateTotal() {
+  try {
+    const r = await fetch('https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised');
+    const d = await r.json();
+    const everyRaised = parseInt(d.raised || '0') / 100;
+    const donors = d.supporterCount || 12;
+    let ddRaised = 5;
+    try {
+      const r2 = await fetch('https://events.doctorswithoutborders.org/api/participants/9331');
+      const d2 = await r2.json();
+      ddRaised = d2.sumDonations || 5;
+    } catch(e) {}
+    document.getElementById('total').textContent = '$' + (everyRaised + ddRaised).toFixed(0);
+    document.getElementById('donors').textContent = donors + 1;
+  } catch(e) {}
+}
+updateTotal();
+</script>
+</body>
+</html>
