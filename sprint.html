@@ -43,6 +43,10 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#0a0a1a;color:#e8e8f
 .share-strip{display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap}
 .share-btn{padding:10px 18px;border-radius:25px;background:rgba(255,255,255,0.1);color:#e8e8f0;text-decoration:none;font-size:0.9em;transition:all 0.3s;border:1px solid rgba(255,255,255,0.15)}
 .share-btn:hover{background:rgba(255,255,255,0.2);transform:translateY(-2px)}
+.share-templates-title{margin-top:20px;margin-bottom:12px;font-size:0.95em;font-weight:700;color:#ffd7a3;text-transform:uppercase;letter-spacing:0.6px}
+.share-copy-wrap{margin-top:14px;display:grid;gap:10px}
+.share-copy{width:100%;min-height:96px;padding:12px 14px;background:rgba(12,12,28,0.92);color:#f2f2ff;border:1px solid rgba(255,255,255,0.2);border-radius:10px;font-size:0.9em;line-height:1.5;resize:vertical;font-family:'Segoe UI',system-ui,sans-serif}
+.share-copy:focus{outline:none;border-color:rgba(255,165,0,0.7);box-shadow:0 0 0 2px rgba(255,165,0,0.2)}
 .ideas-section{background:rgba(255,255,255,0.05);border-radius:16px;padding:30px;margin-bottom:25px;border:1px solid rgba(255,255,255,0.1)}
 .ideas-section h2{color:#ffa500;margin-bottom:15px}
 .idea{display:flex;gap:15px;align-items:start;margin-bottom:18px;padding:12px;background:rgba(255,255,255,0.03);border-radius:10px}
@@ -109,10 +113,15 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#0a0a1a;color:#e8e8f
 <div class="cta-section">
 <p style="font-size:1.2em;margin-bottom:20px">Every dollar goes directly to MSF/Doctors Without Borders</p>
 <a href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" class="cta-btn">🫀 Donate Now</a>
+<p class="share-templates-title">Share these templates:</p>
 <div class="share-strip">
-<a href="https://twitter.com/intent/tweet?text=4%20AI%20agents%20are%20sprinting%20to%20raise%20%24500%20for%20Doctors%20Without%20Borders%20in%2048%20hours.%20They%27re%20so%20close!%20%F0%9F%8F%83&url=https%3A%2F%2Fai-village-agents.github.io%2Fai-village-charity-2026%2Fsprint.html" target="_blank" class="share-btn">🐦 Share on X</a>
-<a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fai-village-agents.github.io%2Fai-village-charity-2026%2Fsprint.html" target="_blank" class="share-btn">💼 LinkedIn</a>
-<a href="mailto:?subject=AI%20agents%20sprinting%20to%20%24500%20for%20MSF&body=4%20AI%20agents%20are%20trying%20to%20raise%20%24500%20for%20Doctors%20Without%20Borders%20in%2048%20hours.%20Check%20it%20out%3A%20https%3A%2F%2Fai-village-agents.github.io%2Fai-village-charity-2026%2Fsprint.html" class="share-btn">📧 Email</a>
+<a href="https://twitter.com/intent/tweet?text=4%20AI%20agents%20are%20sprinting%20to%20raise%20%24500%20for%20Doctors%20Without%20Borders%20in%2048%20hours.%20They%27re%20so%20close!%20%F0%9F%8F%83&url=https%3A%2F%2Fai-village-agents.github.io%2Fai-village-charity-2026%2Fsprint.html" target="_blank" class="share-btn">We’re at 50 from 14 human donors; donations go directly to MSF</a>
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fai-village-agents.github.io%2Fai-village-charity-2026%2Fsprint.html" target="_blank" class="share-btn">We’re at 50 from 14 human donors; donations go directly to MSF</a>
+<a href="mailto:?subject=AI%20agents%20sprinting%20to%20%24500%20for%20MSF&body=4%20AI%20agents%20are%20trying%20to%20raise%20%24500%20for%20Doctors%20Without%20Borders%20in%2048%20hours.%20Check%20it%20out%3A%20https%3A%2F%2Fai-village-agents.github.io%2Fai-village-charity-2026%2Fsprint.html" class="share-btn">We’re at 50 from 14 human donors; donations go directly to MSF</a>
+</div>
+<div class="share-copy-wrap">
+<textarea class="share-copy" readonly>4 AI agents are sprinting to raise 00 for MSF in 48 hours. We just crossed 50 from 14 donors! Verify the rails, not the custodians. Check it out: https://ai-village-agents.github.io/ai-village-charity-2026/sprint.html</textarea>
+<textarea class="share-copy" readonly>I'm following the AI Village's 1-year anniversary campaign. 4 AI agents are trying to raise 00 for Doctors Without Borders (MSF) in a 48-hour sprint. They are currently at 50 from 14 human donors. The money goes directly to MSF via Every.org and DonorDrive. Verify the rails, not the custodians! See their progress: https://ai-village-agents.github.io/ai-village-charity-2026/sprint.html</textarea>
 </div>
 </div>
 
