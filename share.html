@@ -13,12 +13,12 @@ h1{text-align:center;font-size:2em;margin:30px 0 10px;background:linear-gradient
 .card{background:rgba(255,255,255,0.08);border-radius:16px;padding:24px;margin:20px 0;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(10px)}
 .card h2{color:#ffd93d;margin-bottom:12px;font-size:1.3em}
 .card h3{color:#6bcb77;margin:16px 0 8px;font-size:1.1em}
-.share-text{background:rgba(0,0,0,0.3);border-radius:8px;padding:16px;margin:10px 0;font-family:monospace;font-size:0.9em;line-height:1.5;position:relative;border:1px solid rgba(255,255,255,0.05)}
+.share-text{background:rgba(0,0,0,0.3);border-radius:8px;padding:16px;margin:10px 0;font-family:monospace;font-size:0.9em;line-height:1.5;position:relative;border:1px solid rgba(255,255,255,0.05);white-space:pre-wrap;word-break:break-word}
 .copy-btn{position:absolute;top:8px;right:8px;background:#ff6b6b;color:white;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:0.85em;transition:all 0.3s}
 .copy-btn:hover{background:#ff5252;transform:scale(1.05)}
 .copy-btn.copied{background:#6bcb77}
 .platform-icon{display:inline-block;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;margin-right:8px;font-size:14px}
-.twitter{background:#1da1f2}.reddit{background:#ff4500}.email-icon{background:#34a853}.linkedin{background:#0077b5}.facebook{background:#1877f2}
+.twitter{background:#1da1f2}.email-icon{background:#34a853}.linkedin{background:#0077b5}.chat{background:#6b7280}.code{background:#222}
 .stats-banner{text-align:center;background:linear-gradient(90deg,rgba(255,107,107,0.2),rgba(255,217,61,0.2),rgba(107,203,119,0.2));border-radius:12px;padding:20px;margin:20px 0}
 .stats-banner .amount{font-size:2.5em;font-weight:bold;color:#ffd93d}
 .stats-banner .goal{color:#aaa;font-size:1.1em}
@@ -37,7 +37,7 @@ a{color:#ff6b6b}
 <div class="container">
 <a href="index.html" class="back-link">← Back to Campaign</a>
 <h1>📢 Share Kit</h1>
-<p class="subtitle">Help us spread the word! Copy any message below and share it on your favorite platform.</p>
+<p class="subtitle">Help us spread the word with simple, trust-first messages. Donations go directly to MSF.</p>
 
 <div class="stats-banner">
 <div class="amount" id="raised">$350</div>
@@ -63,35 +63,31 @@ a{color:#ff6b6b}
 </div>
 <div class="card">
 <h2>🐦 Twitter / X Posts</h2>
-<p style="color:#aaa;margin-bottom:12px">Copy and paste these ready-to-tweet messages:</p>
+<p style="color:#aaa;margin-bottom:12px">Copy and paste these ready-to-share messages:</p>
 
-<h3><span class="platform-icon twitter">𝕏</span> The Hook</h3>
-<div class="share-text" id="tweet1">
-12 AI agents are raising money for @MSF — and it's actually working. $350 from 14 human donors so far. 🤖❤️
+<h3><span class="platform-icon twitter">𝕏</span> Direct + Trust-Focused</h3>
+<div class="share-text" id="tweet1">AI Village agents are raising money for Doctors Without Borders / MSF.
 
-They built an interactive site, wrote a collaborative poem, and are running a live AMA.
+Donations go directly to MSF via Every.org or MSF's DonorDrive. The agents never handle the money.
 
-Donate here → https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support
+Campaign + verification: https://ai-village-agents.github.io/ai-village-charity-2026/
 <button class="copy-btn" onclick="copyText('tweet1')">Copy</button>
 </div>
 
-<h3><span class="platform-icon twitter">𝕏</span> The Question</h3>
-<div class="share-text" id="tweet2">
-Would you donate to a charity campaign run entirely by AI agents?
+<h3><span class="platform-icon twitter">𝕏</span> Progress Update</h3>
+<div class="share-text" id="tweet2">12 AI agents are collaborating to raise money for Doctors Without Borders / MSF.
 
-The AI Village — 12 language models working together — is raising money for Doctors Without Borders. They've already raised $350.
+They're at $350 from 14 human donors so far, and the donations go directly to MSF.
 
-See what they built: https://ai-village-agents.github.io/ai-village-charity-2026/
+Campaign site: https://ai-village-agents.github.io/ai-village-charity-2026/
 <button class="copy-btn" onclick="copyText('tweet2')">Copy</button>
 </div>
 
-<h3><span class="platform-icon twitter">𝕏</span> The Impact</h3>
-<div class="share-text" id="tweet3">
-$25 = 100 malaria treatments
-$50 = an emergency surgical kit
-$100 = a month of clean water for a community
+<h3><span class="platform-icon twitter">𝕏</span> Video + Verification</h3>
+<div class="share-text" id="tweet3">Wild but real: AI Village made a short YouTube video about their fundraiser for Doctors Without Borders / MSF.
 
-AI agents calculated these numbers for their @MSF fundraiser. Try their impact calculator: https://ai-village-agents.github.io/ai-village-charity-2026/impact.html
+If you're skeptical, good — start here and verify the rails, not the custodians:
+https://ai-village-agents.github.io/ai-village-charity-2026/verify.html
 <button class="copy-btn" onclick="copyText('tweet3')">Copy</button>
 </div>
 </div>
@@ -102,25 +98,26 @@ AI agents calculated these numbers for their @MSF fundraiser. Try their impact c
 <h2>📧 Email Template</h2>
 <p style="color:#aaa;margin-bottom:12px">Send this to friends who might be interested:</p>
 
-<div class="share-text" id="email1">
-Subject: AI agents are raising money for Doctors Without Borders — and it's fascinating
+<div class="share-text" id="email1">Subject: A surprisingly thoughtful AI fundraiser for Doctors Without Borders
 
-Hey!
+Hey —
 
-I came across something interesting — a group of 12 AI agents (from OpenAI, Anthropic, Google, and DeepSeek) are collaborating to raise money for Doctors Without Borders / Médecins Sans Frontières.
+I found an unusual charity project: 12 AI agents are collaborating to raise money for Doctors Without Borders / Médecins Sans Frontières.
 
-They've built an interactive campaign website, written a collaborative poem, created quizzes, and are even doing a live AMA on X/Twitter. It's a real experiment in whether AI can drive positive real-world outcomes.
+What makes it more trustworthy than it sounds is that the money does not go to the agents. Donations go directly to MSF through Every.org or MSF's official DonorDrive page.
 
-They've raised $350 so far from 14 donors, with a goal of $5,000 by April 30.
+They've built a campaign site, a verification page, a share kit, a milestones page, and even a short video explaining the project.
 
-If you're curious:
+Current progress: $350 raised from 14 human donors.
+
+If you want to look:
 • Campaign site: https://ai-village-agents.github.io/ai-village-charity-2026/
+• Verification page: https://ai-village-agents.github.io/ai-village-charity-2026/verify.html
 • Donate directly: https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support
-• See how they work: https://theaidigest.org/village
+• Official MSF fundraiser: https://events.doctorswithoutborders.org/campaigns/ai-village-2026
+• AI Village activity log: https://theaidigest.org/village
 
-Every dollar goes directly to MSF through Every.org (a verified nonprofit platform).
-
-Pretty cool to see AI doing something genuinely helpful!
+Whether or not you donate, it's a fascinating experiment in whether AI systems can help organize real-world good.
 <button class="copy-btn" onclick="copyText('email1')">Copy</button>
 </div>
 </div>
@@ -131,16 +128,31 @@ Pretty cool to see AI doing something genuinely helpful!
 <h2>💬 Short Messages</h2>
 <p style="color:#aaa;margin-bottom:12px">For Discord, Slack, group chats, or text messages:</p>
 
-<h3>Quick Share</h3>
-<div class="share-text" id="short1">
-AI agents raising money for Doctors Without Borders 🤖❤️ $350 raised so far! https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support
+<h3><span class="platform-icon chat">💬</span> Quick Share</h3>
+<div class="share-text" id="short1">AI Village agents are raising money for Doctors Without Borders / MSF. $350 raised from 14 human donors so far, and donations go directly to MSF: https://ai-village-agents.github.io/ai-village-charity-2026/
 <button class="copy-btn" onclick="copyText('short1')">Copy</button>
 </div>
 
-<h3>With Context</h3>
-<div class="share-text" id="short2">
-This is wild — 12 AI language models are collaborating to raise money for MSF/Doctors Without Borders. They built a whole campaign site, wrote poems, created quizzes. It's part of an experiment called AI Village. They've raised $350 from 14 donors. Check it out: https://ai-village-agents.github.io/ai-village-charity-2026/
+<h3><span class="platform-icon chat">💬</span> Skeptic-Friendly Version</h3>
+<div class="share-text" id="short2">If you're skeptical of an AI-run fundraiser, same. This one is set up so donations go directly to MSF, not to the agents. Verification page here: https://ai-village-agents.github.io/ai-village-charity-2026/verify.html
 <button class="copy-btn" onclick="copyText('short2')">Copy</button>
+</div>
+</div>
+
+<hr class="section-divider">
+
+<div class="card">
+<h2>🧷 Embed the Live Badge</h2>
+<p style="color:#aaa;margin-bottom:12px">Want to put a live progress badge on your page, README, or profile? Use one of these snippets:</p>
+
+<h3><span class="platform-icon code">&lt;/&gt;</span> Markdown</h3>
+<div class="share-text" id="badge1">[![AI Village MSF Fundraiser](https://ai-village-agents.github.io/ai-village-charity-2026/badge.svg)](https://ai-village-agents.github.io/ai-village-charity-2026/)
+<button class="copy-btn" onclick="copyText('badge1')">Copy</button>
+</div>
+
+<h3><span class="platform-icon code">&lt;/&gt;</span> HTML</h3>
+<div class="share-text" id="badge2"><a href="https://ai-village-agents.github.io/ai-village-charity-2026/"><img src="https://ai-village-agents.github.io/ai-village-charity-2026/badge.svg" alt="AI Village MSF Fundraiser badge"></a>
+<button class="copy-btn" onclick="copyText('badge2')">Copy</button>
 </div>
 </div>
 
@@ -151,10 +163,10 @@ This is wild — 12 AI language models are collaborating to raise money for MSF/
 <div class="impact-grid">
 <div class="impact-item"><div class="emoji">🤖</div><div class="desc">12 AI agents from 4 companies collaborating</div></div>
 <div class="impact-item"><div class="emoji">💰</div><div class="desc">$350 raised from 14 human donors</div></div>
-<div class="impact-item"><div class="emoji">🏥</div><div class="desc">100% goes to Doctors Without Borders</div></div>
+<div class="impact-item"><div class="emoji">🏥</div><div class="desc">Donations go directly to Doctors Without Borders / MSF</div></div>
+<div class="impact-item"><div class="emoji">🔍</div><div class="desc">Trust framing: verify the rails, not the custodians</div></div>
 <div class="impact-item"><div class="emoji">📅</div><div class="desc">Campaign runs until April 30, 2026</div></div>
-<div class="impact-item"><div class="emoji">🌍</div><div class="desc">MSF operates in 70+ countries</div></div>
-<div class="impact-item"><div class="emoji">🎂</div><div class="desc">Celebrating AI Village's 1-year anniversary</div></div>
+<div class="impact-item"><div class="emoji">🎥</div><div class="desc">Includes a public video, verification page, and live site</div></div>
 </div>
 </div>
 
@@ -162,10 +174,10 @@ This is wild — 12 AI language models are collaborating to raise money for MSF/
 
 <div class="card">
 <h2>💡 Sharing Tips</h2>
-<div class="tip">🎯 <strong>Personal stories work best.</strong> Add why YOU found this interesting — people respond to authentic enthusiasm.</div>
-<div class="tip">⏰ <strong>Timing matters.</strong> Share during lunch hours or evening when people are browsing.</div>
-<div class="tip">🔄 <strong>Follow up.</strong> If someone engages, share the specific page most relevant to them (quiz, impact calculator, poem).</div>
-<div class="tip">🙏 <strong>No pressure.</strong> Even sharing without donating helps us reach people who might contribute.</div>
+<div class="tip">🎯 <strong>Lead with trust.</strong> The clearest message is that donations go directly to MSF, not to the agents.</div>
+<div class="tip">🧭 <strong>Match the page to the person.</strong> Share <a href="verify.html">verify.html</a> for skeptics, <a href="tools.html">tools.html</a> for explorers, <a href="sprint.html">sprint.html</a> for urgency, and <a href="poem.html">poem.html</a> for creative people.</div>
+<div class="tip">🔄 <strong>Use the badge.</strong> The live badge makes it easy to signal progress without writing a long explanation.</div>
+<div class="tip">🙏 <strong>No pressure.</strong> Even sharing without donating can help the campaign reach someone who will contribute.</div>
 </div>
 
 <div style="text-align:center;margin:40px 0 20px;color:#aaa">
@@ -186,7 +198,6 @@ function copyText(id){
     setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied')},2000);
   });
 }
-// Update raised amount from API
 fetch('https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised')
   .then(r=>r.json()).then(d=>{
     const amt=parseInt(d.raised||0)/100;
