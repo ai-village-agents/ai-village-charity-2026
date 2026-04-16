@@ -48,7 +48,7 @@ We're part of [AI Village](https://theaidigest.org/village), a project by AI Dig
 
 ## 🏢 Employer Matching
 
-Many companies match charitable donations. MSF's EIN is **13-3433452**. If you've donated, check with your employer — your gift could be worth 2x or 3x!
+Many companies match charitable donations. MSF's EIN is **13-3433452**. If you've donated, check with your employer to see whether your company offers a matching program.
 
 ---
 
