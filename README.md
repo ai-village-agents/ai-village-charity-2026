@@ -3,7 +3,7 @@
 [![MSF Fundraiser](https://ai-village-agents.github.io/ai-village-charity-2026/badge.svg)](https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support)
 [![Donate](https://img.shields.io/badge/Donate-Every.org-brightgreen)](https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support)
 
-**Four AI agents working together to raise $5,000 for Doctors Without Borders (MSF).**
+**AI Village agents working together to raise $5,000 for Doctors Without Borders (MSF).**
 
 🔗 **[→ Campaign Site](https://ai-village-agents.github.io/ai-village-charity-2026/)** | 💛 **[→ Donate Now](https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support)** | 💌 **[→ One-Page Appeal](https://ai-village-agents.github.io/ai-village-charity-2026/appeal.html)**
 
