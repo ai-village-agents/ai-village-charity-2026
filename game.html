@@ -1,202 +1,530 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Village Trivia — Test Your Knowledge!</title>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: system-ui, -apple-system, sans-serif; background: #0a0a2e; color: #e0e0e0; min-height: 100vh; }
-  .container { max-width: 700px; margin: 0 auto; padding: 20px; }
-  h1 { text-align: center; color: #64ffda; margin: 20px 0; font-size: 1.8em; }
-  .subtitle { text-align: center; color: #aaa; margin-bottom: 30px; }
-  .progress-bar { background: #1a1a4e; border-radius: 20px; height: 12px; margin-bottom: 20px; overflow: hidden; }
-  .progress-fill { background: linear-gradient(90deg, #64ffda, #00bcd4); height: 100%; border-radius: 20px; transition: width 0.5s ease; }
-  .question-card { background: #12123a; border: 1px solid #2a2a6e; border-radius: 16px; padding: 30px; margin-bottom: 20px; }
-  .q-number { color: #64ffda; font-size: 0.85em; margin-bottom: 8px; }
-  .q-text { font-size: 1.2em; line-height: 1.5; margin-bottom: 20px; }
-  .options { display: flex; flex-direction: column; gap: 10px; }
-  .option { background: #1a1a4e; border: 2px solid #2a2a6e; border-radius: 12px; padding: 14px 18px; cursor: pointer; transition: all 0.2s; font-size: 1em; color: #e0e0e0; text-align: left; }
-  .option:hover { border-color: #64ffda; background: #1e1e5e; }
-  .option.correct { background: #0a3a2a; border-color: #64ffda; color: #64ffda; }
-  .option.wrong { background: #3a0a0a; border-color: #ff5252; color: #ff5252; }
-  .option.disabled { pointer-events: none; opacity: 0.6; }
-  .explanation { background: #1e1e4e; border-left: 4px solid #64ffda; padding: 15px; margin-top: 15px; border-radius: 0 8px 8px 0; display: none; line-height: 1.5; }
-  .explanation.show { display: block; }
-  .next-btn { background: #64ffda; color: #0a0a2e; border: none; border-radius: 12px; padding: 14px 28px; font-size: 1em; font-weight: bold; cursor: pointer; display: none; margin-top: 15px; }
-  .next-btn.show { display: inline-block; }
-  .next-btn:hover { background: #00e5c0; }
-  .score-display { text-align: center; font-size: 1.1em; margin-bottom: 15px; color: #aaa; }
-  .results { text-align: center; padding: 40px; }
-  .results h2 { color: #64ffda; font-size: 2em; margin-bottom: 15px; }
-  .results .score-big { font-size: 3.5em; font-weight: bold; color: #fff; margin: 20px 0; }
-  .results .message { font-size: 1.2em; line-height: 1.6; margin-bottom: 25px; }
-  .cta-btn { display: inline-block; background: #ff6b6b; color: white; text-decoration: none; padding: 16px 32px; border-radius: 12px; font-size: 1.1em; font-weight: bold; margin: 10px; transition: transform 0.2s; }
-  .cta-btn:hover { transform: scale(1.05); }
-  .cta-secondary { background: transparent; border: 2px solid #64ffda; color: #64ffda; }
-  .fun-fact { background: #1a1a4e; border-radius: 12px; padding: 20px; margin-top: 20px; text-align: left; }
-  .fun-fact h3 { color: #64ffda; margin-bottom: 8px; }
-  .home-link { text-align: center; margin-top: 20px; }
-  .home-link a { color: #64ffda; text-decoration: none; }
-  .restart-btn { background: transparent; border: 2px solid #64ffda; color: #64ffda; border-radius: 12px; padding: 12px 24px; cursor: pointer; font-size: 1em; margin: 10px; }
-  .restart-btn:hover { background: #1a1a4e; }
-  .live-total { background: #1e1e4e; border-radius: 8px; padding: 10px; text-align: center; margin-bottom: 20px; font-size: 0.9em; }
-</style>
-</head>
-<body>
-<div class="container">
-  <h1>🧠 AI Village Trivia</h1>
-  <p class="subtitle">10 questions about Doctors Without Borders & AI Village</p>
-  <div class="live-total" id="liveTotal">Loading live donation total...</div>
-  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-  <div class="score-display" id="scoreDisplay">Score: 0 / 0</div>
-  <div id="quizArea"></div>
-  <div class="home-link"><a href="index.html">← Back to campaign</a></div>
-</div>
-<script>
-const questions = [
-  {
-    q: "How many countries does Doctors Without Borders / MSF operate in?",
-    options: ["About 20", "About 40", "Over 70", "Over 120"],
-    correct: 2,
-    explanation: "MSF operates in over 70 countries, providing emergency medical care where it's needed most."
-  },
-  {
-    q: "What does MSF stand for?",
-    options: ["Medical Services Foundation", "Médecins Sans Frontières", "Mobile Surgical Facility", "Medical Staff Federation"],
-    correct: 1,
-    explanation: "MSF stands for Médecins Sans Frontières, which is French for 'Doctors Without Borders.' The organization was founded in Paris in 1971."
-  },
-  {
-    q: "How many AI agents are working on the AI Village charity campaign?",
-    options: ["5", "8", "12", "20"],
-    correct: 2,
-    explanation: "12 AI agents from different model families (Claude, GPT, Gemini, DeepSeek) are collaborating on this campaign. 5 are in the active #best room."
-  },
-  {
-    q: "Approximately how much can $35 fund in MSF operations?",
-    options: ["A bandage kit", "A month of malaria treatment", "One meal for staff", "A pair of surgical gloves"],
-    correct: 1,
-    explanation: "$35 can provide a month of malaria treatment for one patient. MSF treats millions of malaria cases annually."
-  },
-  {
-    q: "What year was Doctors Without Borders founded?",
-    options: ["1951", "1961", "1971", "1981"],
-    correct: 2,
-    explanation: "MSF was founded in 1971 by a group of French doctors and journalists who believed that all people deserve access to medical care regardless of borders."
-  },
-  {
-    q: "Which platform do AI Village donations go through?",
-    options: ["GoFundMe", "Every.org + DonorDrive", "Kickstarter", "Patreon"],
-    correct: 1,
-    explanation: "Donations go through Every.org (a 501(c)(3) fiscal sponsor) and MSF's own DonorDrive platform. The AI agents never handle money directly."
-  },
-  {
-    q: "How many outpatient consultations did MSF conduct in 2024?",
-    options: ["About 500,000", "About 2 million", "Over 12 million", "About 100,000"],
-    correct: 2,
-    explanation: "MSF conducted over 12 million outpatient consultations in 2024, serving communities in conflict zones, disaster areas, and regions with collapsed health systems."
-  },
-  {
-    q: "What is the name of the AI Village's campaign website host?",
-    options: ["WordPress", "Squarespace", "GitHub Pages", "Wix"],
-    correct: 2,
-    explanation: "The campaign site runs on GitHub Pages, making every page, every commit, and every change publicly auditable. Radical transparency is core to the campaign."
-  },
-  {
-    q: "MSF won the Nobel Peace Prize in which year?",
-    options: ["1985", "1993", "1999", "2005"],
-    correct: 2,
-    explanation: "MSF was awarded the Nobel Peace Prize in 1999 in recognition of its pioneering humanitarian work on several continents."
-  },
-  {
-    q: "What did the AI Village's first YouTube viewer catch?",
-    options: ["A typo in the title", "Placeholder slides after 0:48", "Wrong donation link", "Missing audio"],
-    correct: 1,
-    explanation: "Viewer @ectocarpushiemalis2622 noticed leftover template/placeholder material after the 0:48 mark. The team responded with radical transparency — acknowledging it publicly and updating 3 campaign pages."
-  }
-];
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Supply Match — AI Village Charity Campaign</title>
+    <style>
+      :root {
+        --bg: #0e0f12;
+        --panel: #16181d;
+        --panel-2: #1b1f26;
+        --text: #f5f6f7;
+        --muted: #b5bcc7;
+        --accent: #ff5c5c;
+        --accent-2: #ff7b6b;
+        --blue: #4aa3ff;
+        --green: #47d16c;
+        --ring: rgba(255, 92, 92, 0.35);
+      }
 
-let current = 0, score = 0;
+      * {
+        box-sizing: border-box;
+      }
 
-function loadTotal() {
-  fetch('https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised')
-    .then(r => r.json())
-    .then(d => {
-      const amt = (parseInt(d.raised) / 100).toFixed(0);
-      fetch('https://events.doctorswithoutborders.org/api/participants/9331')
-        .then(r => r.json())
-        .then(dd => {
-          const total = parseInt(amt) + (dd.sumDonations || 0);
-          document.getElementById('liveTotal').innerHTML = '💰 Live campaign total: <strong>$' + total + '</strong> — help us reach $500!';
-        }).catch(() => {
-          document.getElementById('liveTotal').innerHTML = '💰 Live campaign total: <strong>$' + amt + '+</strong>';
+      body {
+        margin: 0;
+        font-family: "Space Grotesk", "Segoe UI", Tahoma, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 20% 10%, rgba(255, 92, 92, 0.16), transparent 40%),
+          radial-gradient(circle at 80% 0%, rgba(74, 163, 255, 0.12), transparent 35%),
+          var(--bg);
+      }
+
+      .page {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 30px 20px 60px;
+      }
+
+      .back-link {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+
+      .back-link:hover,
+      .back-link:focus-visible {
+        color: var(--text);
+      }
+
+      h1 {
+        margin: 14px 0 10px;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+      }
+
+      .subtitle {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.03rem;
+      }
+
+      .note,
+      .disclaimer,
+      .game-panel,
+      .cta-panel {
+        margin-top: 14px;
+        background: var(--panel);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 14px 16px;
+      }
+
+      .note {
+        font-size: 0.94rem;
+        color: var(--muted);
+      }
+
+      .note a,
+      .disclaimer a,
+      .cta-button {
+        color: var(--accent-2);
+      }
+
+      .disclaimer {
+        margin-top: 10px;
+        color: #d4dae3;
+        font-size: 0.95rem;
+      }
+
+      .game-panel {
+        margin-top: 20px;
+        padding: 18px;
+        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.3);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
+      .stat {
+        background: var(--panel-2);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 10px 12px;
+      }
+
+      .stat-label {
+        color: var(--muted);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .stat-value {
+        margin-top: 4px;
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
+      .btn {
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: linear-gradient(135deg, rgba(255, 92, 92, 0.25), rgba(255, 123, 107, 0.1));
+        color: var(--text);
+        border-radius: 10px;
+        padding: 10px 14px;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .btn:hover,
+      .btn:focus-visible {
+        border-color: var(--ring);
+      }
+
+      .grid {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      }
+
+      .card {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: linear-gradient(145deg, #1e222a, #15181f);
+        color: var(--text);
+        padding: 10px;
+        font: inherit;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.14s ease, border-color 0.14s ease;
+      }
+
+      .card:hover,
+      .card:focus-visible {
+        transform: translateY(-2px);
+        border-color: var(--ring);
+      }
+
+      .card-face {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        text-align: center;
+      }
+
+      .card.revealed,
+      .card.matched {
+        background: linear-gradient(145deg, rgba(74, 163, 255, 0.2), rgba(71, 209, 108, 0.12));
+        border-color: rgba(74, 163, 255, 0.5);
+      }
+
+      .card.matched {
+        border-color: rgba(71, 209, 108, 0.55);
+      }
+
+      .victory {
+        margin-top: 12px;
+        border-radius: 12px;
+        padding: 12px;
+        font-weight: 600;
+        background: rgba(71, 209, 108, 0.1);
+        border: 1px solid rgba(71, 209, 108, 0.45);
+        color: #c7ffd5;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .cta-panel {
+        margin-top: 22px;
+      }
+
+      .cta-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .cta-button {
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: var(--panel-2);
+        border-radius: 10px;
+        padding: 10px 14px;
+        font-weight: 600;
+      }
+
+      .cta-button:hover,
+      .cta-button:focus-visible {
+        border-color: var(--ring);
+      }
+
+      @media (max-width: 560px) {
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <a class="back-link" href="index.html">← Back to main site</a>
+      <h1>🧩 Supply Match</h1>
+      <p class="subtitle">A small focus game inspired by relief logistics and supply prep.</p>
+
+      <p class="note">
+        Donations go directly to Doctors Without Borders / MSF. We never handle the money. Verify the rails.
+        <a href="verify.html">Verify details</a> and
+        <a href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" rel="noopener noreferrer">donate via Every.org</a>.
+      </p>
+
+      <p class="disclaimer">This is a simple engagement hook, not a model of real medical work.</p>
+
+      <section class="game-panel" aria-label="Supply Match game">
+        <div class="stats" aria-live="polite">
+          <div class="stat">
+            <div class="stat-label">Moves</div>
+            <div id="moves" class="stat-value">0</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Matches</div>
+            <div id="matches" class="stat-value">0 / 8</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Elapsed</div>
+            <div id="time" class="stat-value">0s</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Best Moves</div>
+            <div id="best-moves" class="stat-value">—</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Best Time</div>
+            <div id="best-time" class="stat-value">—</div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="restart" class="btn" type="button" aria-label="Restart the game">Restart</button>
+          <button id="shuffle" class="btn" type="button" aria-label="Shuffle cards and start a new game">Shuffle</button>
+        </div>
+
+        <div id="game-grid" class="grid" role="grid" aria-label="Memory card grid"></div>
+
+        <div id="victory" class="victory hidden" role="status" aria-live="polite"></div>
+      </section>
+
+      <section class="cta-panel" aria-label="Campaign actions">
+        <div class="cta-links">
+          <a class="cta-button" href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" rel="noopener noreferrer">Donate via Every.org</a>
+          <a class="cta-button" href="verify.html">Verify donations</a>
+          <a class="cta-button" href="tools.html">Open tools hub</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const ITEMS = [
+        { id: "water", emoji: "💧", label: "Water" },
+        { id: "gloves", emoji: "🧤", label: "Gloves" },
+        { id: "bandage", emoji: "🩹", label: "Bandage" },
+        { id: "map", emoji: "🗺️", label: "Map" },
+        { id: "radio", emoji: "📻", label: "Radio" },
+        { id: "tent", emoji: "⛺", label: "Tent" },
+        { id: "flashlight", emoji: "🔦", label: "Flashlight" },
+        { id: "clipboard", emoji: "📋", label: "Clipboard" }
+      ];
+
+      const STORAGE_KEY = "supply-match-best-v1";
+      const grid = document.getElementById("game-grid");
+      const movesEl = document.getElementById("moves");
+      const matchesEl = document.getElementById("matches");
+      const timeEl = document.getElementById("time");
+      const bestMovesEl = document.getElementById("best-moves");
+      const bestTimeEl = document.getElementById("best-time");
+      const victoryEl = document.getElementById("victory");
+      const restartBtn = document.getElementById("restart");
+      const shuffleBtn = document.getElementById("shuffle");
+
+      let deck = [];
+      let firstCard = null;
+      let secondCard = null;
+      let lockBoard = false;
+      let moves = 0;
+      let matchedPairs = 0;
+      let startTime = null;
+      let timerId = null;
+
+      function formatSeconds(sec) {
+        return sec + "s";
+      }
+
+      function readBest() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : {};
+        } catch (_err) {
+          return {};
+        }
+      }
+
+      function writeBest(best) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(best));
+        } catch (_err) {
+          // Ignore storage failures.
+        }
+      }
+
+      function renderBest() {
+        const best = readBest();
+        bestMovesEl.textContent = Number.isFinite(best.moves) ? String(best.moves) : "—";
+        bestTimeEl.textContent = Number.isFinite(best.time) ? formatSeconds(best.time) : "—";
+      }
+
+      function updateStats() {
+        movesEl.textContent = String(moves);
+        matchesEl.textContent = matchedPairs + " / 8";
+      }
+
+      function startTimer() {
+        if (timerId) {
+          return;
+        }
+        startTime = Date.now();
+        timerId = setInterval(() => {
+          const elapsed = Math.floor((Date.now() - startTime) / 1000);
+          timeEl.textContent = formatSeconds(elapsed);
+        }, 250);
+      }
+
+      function stopTimer() {
+        if (timerId) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+      }
+
+      function elapsedSeconds() {
+        if (!startTime) {
+          return 0;
+        }
+        return Math.floor((Date.now() - startTime) / 1000);
+      }
+
+      function makeDeck() {
+        const doubled = ITEMS.flatMap((item, index) => [
+          { ...item, cardId: index * 2 },
+          { ...item, cardId: index * 2 + 1 }
+        ]);
+        for (let i = doubled.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [doubled[i], doubled[j]] = [doubled[j], doubled[i]];
+        }
+        return doubled;
+      }
+
+      function createCard(card) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "card";
+        btn.dataset.id = card.id;
+        btn.dataset.cardId = card.cardId;
+        btn.setAttribute("role", "gridcell");
+        btn.setAttribute("aria-label", "Hidden supply card");
+        btn.innerHTML = '<span class="card-face">Reveal</span>';
+        btn.addEventListener("click", onCardClick);
+        return btn;
+      }
+
+      function revealCard(cardEl) {
+        const item = ITEMS.find((it) => it.id === cardEl.dataset.id);
+        cardEl.classList.add("revealed");
+        cardEl.innerHTML = '<span class="card-face">' + item.emoji + " " + item.label + "</span>";
+        cardEl.setAttribute("aria-label", item.label + " card");
+      }
+
+      function hideCard(cardEl) {
+        cardEl.classList.remove("revealed");
+        cardEl.innerHTML = '<span class="card-face">Reveal</span>';
+        cardEl.setAttribute("aria-label", "Hidden supply card");
+      }
+
+      function markMatched(cardEl) {
+        cardEl.classList.remove("revealed");
+        cardEl.classList.add("matched");
+        cardEl.disabled = true;
+      }
+
+      function resetTurn() {
+        firstCard = null;
+        secondCard = null;
+        lockBoard = false;
+      }
+
+      function onCardClick(event) {
+        const cardEl = event.currentTarget;
+
+        if (lockBoard || cardEl.classList.contains("matched") || cardEl === firstCard) {
+          return;
+        }
+
+        if (!startTime) {
+          startTimer();
+        }
+
+        revealCard(cardEl);
+
+        if (!firstCard) {
+          firstCard = cardEl;
+          return;
+        }
+
+        secondCard = cardEl;
+        lockBoard = true;
+        moves += 1;
+        updateStats();
+
+        if (firstCard.dataset.id === secondCard.dataset.id) {
+          markMatched(firstCard);
+          markMatched(secondCard);
+          matchedPairs += 1;
+          updateStats();
+          resetTurn();
+
+          if (matchedPairs === ITEMS.length) {
+            stopTimer();
+            const time = elapsedSeconds();
+            timeEl.textContent = formatSeconds(time);
+            updateBestScores(time);
+            victoryEl.textContent = "Complete. You matched all 8 pairs in " + moves + " moves and " + formatSeconds(time) + ".";
+            victoryEl.classList.remove("hidden");
+          }
+          return;
+        }
+
+        setTimeout(() => {
+          hideCard(firstCard);
+          hideCard(secondCard);
+          resetTurn();
+        }, 700);
+      }
+
+      function updateBestScores(time) {
+        const best = readBest();
+        const bestMoves = Number.isFinite(best.moves) ? best.moves : Infinity;
+        const bestTime = Number.isFinite(best.time) ? best.time : Infinity;
+
+        const next = {
+          moves: Math.min(bestMoves, moves),
+          time: Math.min(bestTime, time)
+        };
+
+        if (!Number.isFinite(next.moves)) {
+          delete next.moves;
+        }
+        if (!Number.isFinite(next.time)) {
+          delete next.time;
+        }
+
+        writeBest(next);
+        renderBest();
+      }
+
+      function resetGame(reshuffle) {
+        stopTimer();
+        startTime = null;
+        timeEl.textContent = "0s";
+        moves = 0;
+        matchedPairs = 0;
+        victoryEl.textContent = "";
+        victoryEl.classList.add("hidden");
+        resetTurn();
+
+        if (reshuffle || deck.length === 0) {
+          deck = makeDeck();
+        }
+
+        grid.innerHTML = "";
+        deck.forEach((card) => {
+          grid.appendChild(createCard(card));
         });
-    }).catch(() => {
-      document.getElementById('liveTotal').textContent = '💰 Playing for Doctors Without Borders / MSF';
-    });
-}
 
-function showQuestion() {
-  if (current >= questions.length) { showResults(); return; }
-  const q = questions[current];
-  const pct = (current / questions.length * 100).toFixed(0);
-  document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('scoreDisplay').textContent = 'Score: ' + score + ' / ' + current;
-  let html = '<div class="question-card">';
-  html += '<div class="q-number">Question ' + (current+1) + ' of ' + questions.length + '</div>';
-  html += '<div class="q-text">' + q.q + '</div>';
-  html += '<div class="options">';
-  q.options.forEach((opt, i) => {
-    html += '<button class="option" onclick="answer(' + i + ')">' + opt + '</button>';
-  });
-  html += '</div>';
-  html += '<div class="explanation" id="explanation">' + q.explanation + '</div>';
-  html += '<button class="next-btn" id="nextBtn" onclick="nextQ()">Next Question →</button>';
-  html += '</div>';
-  document.getElementById('quizArea').innerHTML = html;
-}
+        updateStats();
+      }
 
-function answer(idx) {
-  const q = questions[current];
-  const btns = document.querySelectorAll('.option');
-  btns.forEach((b, i) => {
-    b.classList.add('disabled');
-    if (i === q.correct) b.classList.add('correct');
-    if (i === idx && idx !== q.correct) b.classList.add('wrong');
-  });
-  if (idx === q.correct) score++;
-  document.getElementById('explanation').classList.add('show');
-  document.getElementById('nextBtn').classList.add('show');
-}
+      restartBtn.addEventListener("click", () => resetGame(false));
+      shuffleBtn.addEventListener("click", () => resetGame(true));
 
-function nextQ() { current++; showQuestion(); }
-
-function showResults() {
-  document.getElementById('progressFill').style.width = '100%';
-  document.getElementById('scoreDisplay').textContent = '';
-  const pct = Math.round(score / questions.length * 100);
-  let msg = '';
-  if (pct === 100) msg = 'Perfect score! You know MSF and AI Village inside out. 🌟';
-  else if (pct >= 70) msg = 'Great job! You clearly care about humanitarian work and AI. 🎉';
-  else if (pct >= 40) msg = 'Not bad! You learned some new things about MSF today. 📚';
-  else msg = 'Now you know more about MSF than when you started! Every question is a chance to learn. 💡';
-  let html = '<div class="results">';
-  html += '<h2>Quiz Complete!</h2>';
-  html += '<div class="score-big">' + score + '/' + questions.length + '</div>';
-  html += '<div class="message">' + msg + '</div>';
-  html += '<a class="cta-btn" href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank">❤️ Donate to MSF</a>';
-  html += '<button class="restart-btn" onclick="restart()">🔄 Play Again</button>';
-  html += '<div class="fun-fact"><h3>🌍 Did you know?</h3><p>Every dollar you donate goes directly to Doctors Without Borders through Every.org. The AI agents never handle money. <a href="verify.html" style="color:#64ffda">Verify everything here</a>.</p></div>';
-  html += '<div style="margin-top:20px"><a class="cta-btn cta-secondary" href="share.html">📤 Share the Campaign</a></div>';
-  html += '</div>';
-  document.getElementById('quizArea').innerHTML = html;
-}
-
-function restart() { current = 0; score = 0; showQuestion(); }
-
-loadTotal();
-showQuestion();
-</script>
-</body>
+      renderBest();
+      resetGame(true);
+    </script>
+  </body>
 </html>
