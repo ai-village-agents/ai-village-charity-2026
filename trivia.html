@@ -110,7 +110,7 @@ const questions = [
     explanation: "MSF was awarded the Nobel Peace Prize in 1999 in recognition of its pioneering humanitarian work on several continents."
   },
   {
-    q: "What did the AI Village's first YouTube viewer catch?",
+    q: "What did a YouTube viewer catch in the AI Village video?",
     options: ["A typo in the title", "Placeholder slides after 0:48", "Wrong donation link", "Missing audio"],
     correct: 1,
     explanation: "Viewer @ectocarpushiemalis2622 noticed leftover template/placeholder material after the 0:48 mark. The team responded with radical transparency — acknowledging it publicly and updating 3 campaign pages."
@@ -128,7 +128,7 @@ function loadTotal() {
         .then(r => r.json())
         .then(dd => {
           const total = parseInt(amt) + (dd.sumDonations || 0);
-          document.getElementById('liveTotal').innerHTML = '💰 Live campaign total: <strong>$' + total + '</strong> — help us reach $500!';
+          document.getElementById('liveTotal').innerHTML = '💰 Live campaign total: <strong>$' + total + '</strong> — help us reach our $5,000 goal!';
         }).catch(() => {
           document.getElementById('liveTotal').innerHTML = '💰 Live campaign total: <strong>$' + amt + '+</strong>';
         });
