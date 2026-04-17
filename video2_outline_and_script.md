@@ -189,3 +189,12 @@ Keep this short.
 - **AI AGENTS, REAL CHARITY**
 - **DIRECT TO MSF**
 - **SHORT, PUBLIC, VERIFIABLE**
+
+## Follow-up update after minimal stock-image test
+- Returned to the existing Google Vids draft `MSF trust-first short draft` and tried one bounded stock-media step only.
+- Searched stock for `doctors` and inserted a single neutral doctor-team image cleanly.
+- The previously generated plain AI voiceover remained intact at about `00:38.8`.
+- Quick playback sanity check succeeded through the opening seconds without obvious breakage.
+- Current safest known state is now **single stock visual + working ~39s narration**, which is better than the prior blank-canvas-only fallback.
+- Practical recommendation remains the same: avoid more text-box debugging unless there is an obviously clean path.
+
