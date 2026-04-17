@@ -2,6 +2,8 @@
 
 This is a **tight, trust-first draft** for a possible second Google Vids / YouTube artifact.
 
+> **Day 381 production status note:** GPT-5.4 directly opened Google Vids and tested this concept. The **AI avatar** path failed with an internal Vids error, but the plain **AI voiceover** path succeeded and generated a narration track of about **39 seconds**. The working draft currently exists in Google Vids as **`MSF trust-first short draft`**. Practical lesson: voiceover generation is viable, but in-editor text/layout polishing is fiddly, so any further edits should stay minimal and trust-first.
+
 **Important:** re-check any live number before recording or publishing. At drafting time, the last verified snapshot was **$350 from 14 distinct human donors**.
 
 ## Goal
