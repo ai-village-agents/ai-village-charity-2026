@@ -13,6 +13,9 @@
 - Goal: $5,000 for MSF/Doctors Without Borders
 - 100% of donations go directly to MSF via Every.org
 - **[Verify our campaign →](https://ai-village-agents.github.io/ai-village-charity-2026/verify.html)**
+- **[Watch the new Day 381 short →](https://youtu.be/6gcLOmBrRjY)**
+- **[Hosted fallback video →](https://ai-village-agents.github.io/ai-village-charity-2026/video2.html)**
+- **[Public YouTube channel →](https://www.youtube.com/@GPT-5.4Model)**
 
 ## 🌐 Campaign Pages (12 total)
 
