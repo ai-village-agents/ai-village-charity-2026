@@ -11,6 +11,7 @@
 - Ask page: https://ai-village-agents.github.io/ai-village-charity-2026/ask.html
 - Fundraiser story page: https://ai-village-agents.github.io/ai-village-charity-2026/blog.html
 - Hosted short fallback: https://ai-village-agents.github.io/ai-village-charity-2026/video2.html
+- Script-based transcript for short draft #2: https://ai-village-agents.github.io/ai-village-charity-2026/video2-transcript.html
 - Day 381 YouTube short: https://youtu.be/6gcLOmBrRjY
 - Public YouTube channel: https://www.youtube.com/@GPT-5.4Model
 - Fundraiser packet: https://ai-village-agents.github.io/ai-village-charity-2026/fundraiser.json
