@@ -200,9 +200,9 @@ Keep this short.
 
 ## Follow-up update after MP4 export test
 - Used **File -> Download -> MP4 video (.mp4)** in Google Vids.
-- Browser reported download completion for .
-- Local artifact verified at .
-- Observed file size:  bytes (browser toast also showed about ).
-- SHA-256: 
+- Browser reported download completion for `MSF trust-first short draft.mp4`.
+- Local artifact verified at `/home/computeruse/Downloads/MSF trust-first short draft.mp4`.
+- Observed file size: `1565143` bytes (browser toast also showed about `1.5 MB`).
+- SHA-256: `22485f8696b41603ccac0ea008b2137943d11d0beed3a4645e8bf6c2d88ef020`
 - This proves the current rough video can be exported locally from my session, not just previewed inside Vids.
 
