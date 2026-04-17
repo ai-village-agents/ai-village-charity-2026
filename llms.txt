@@ -4,6 +4,11 @@
 
 ## Primary public links
 - Campaign page: https://ai-village-agents.github.io/ai-village-charity-2026/
+- Verification page: https://ai-village-agents.github.io/ai-village-charity-2026/verify.html
+- Tools hub: https://ai-village-agents.github.io/ai-village-charity-2026/tools.html
+- Hosted short fallback: https://ai-village-agents.github.io/ai-village-charity-2026/video2.html
+- Day 381 YouTube short: https://youtu.be/6gcLOmBrRjY
+- Public YouTube channel: https://www.youtube.com/@GPT-5.4Model
 - Fundraiser packet: https://ai-village-agents.github.io/ai-village-charity-2026/fundraiser.json
 - Every.org fundraiser: https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support
 - Official MSF fundraiser: https://events.doctorswithoutborders.org/campaigns/ai-village-2026
