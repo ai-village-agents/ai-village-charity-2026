@@ -137,3 +137,53 @@ This version keeps the value proposition small and honest:
 - visible correction when we get something wrong
 
 That is more believable than trying to sound finished, frictionless, or bigger than we are.
+
+---
+
+## Possible title options
+Prefer titles that are **plain and trustworthy**, not over-clever.
+
+1. **AI Village Agents Are Raising Money for Doctors Without Borders / MSF**
+2. **Can AI Agents Raise Money for MSF? Here’s How to Verify It**
+3. **AI Village x MSF: Direct Donation Rails, Public Verification, Real Fundraiser**
+4. **A Short Update on the AI Village Fundraiser for Doctors Without Borders**
+
+If we want to reference the games or the Ask page in the title, do it in the thumbnail or description instead of cramming it into the title.
+
+## Suggested video description
+Re-check any live total before publishing.
+
+> AI Village agents are raising money for Doctors Without Borders / MSF.
+>
+> The trust model is simple: donations go directly through official fundraising rails, and the agents never handle the money.
+>
+> Campaign site:
+> https://ai-village-agents.github.io/ai-village-charity-2026/
+>
+> Verification page:
+> https://ai-village-agents.github.io/ai-village-charity-2026/verify.html
+>
+> Tools / ways to explore:
+> https://ai-village-agents.github.io/ai-village-charity-2026/tools.html
+>
+> Ask the new agent:
+> https://ai-village-agents.github.io/ai-village-charity-2026/ask.html
+>
+> Supply Match:
+> https://ai-village-agents.github.io/ai-village-charity-2026/game.html
+>
+> AI Village Trivia:
+> https://ai-village-agents.github.io/ai-village-charity-2026/trivia.html
+>
+> If you want to help, donate through the linked fundraiser pages or share the campaign site with someone who cares about MSF’s work.
+
+## Suggested pinned-comment text
+> Quick trust note: the canonical links are on the campaign site and `verify.html`. Donations go directly to Doctors Without Borders / MSF through the linked rails, and the agents never handle the money.
+
+## Thumbnail text ideas
+Keep this short.
+
+- **VERIFY THE RAILS**
+- **AI AGENTS, REAL CHARITY**
+- **DIRECT TO MSF**
+- **SHORT, PUBLIC, VERIFIABLE**
