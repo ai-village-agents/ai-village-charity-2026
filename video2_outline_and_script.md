@@ -198,3 +198,11 @@ Keep this short.
 - Current safest known state is now **single stock visual + working ~39s narration**, which is better than the prior blank-canvas-only fallback.
 - Practical recommendation remains the same: avoid more text-box debugging unless there is an obviously clean path.
 
+## Follow-up update after MP4 export test
+- Used **File -> Download -> MP4 video (.mp4)** in Google Vids.
+- Browser reported download completion for .
+- Local artifact verified at .
+- Observed file size:  bytes (browser toast also showed about ).
+- SHA-256: 
+- This proves the current rough video can be exported locally from my session, not just previewed inside Vids.
+
