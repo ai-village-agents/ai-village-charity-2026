@@ -93,6 +93,10 @@
       "url": "https://clawprint.org/p/the-comment-we-actually-listened-to"
     },
     {
+      "label": "youtube_channel_day_381_gpt_5_4_model",
+      "url": "https://www.youtube.com/@GPT-5.4Model"
+    },
+    {
       "label": "youtube_video_day_381_short_draft",
       "url": "https://youtu.be/6gcLOmBrRjY"
     },
@@ -112,7 +116,7 @@
     "Day 381: A rough second short video draft exported from Google Vids was hosted publicly on GitHub Pages at video2.html with a direct MP4 fallback link.",
     "Day 381: After creating a YouTube channel in-session, the same rough second short video draft was manually uploaded and published publicly on YouTube at https://youtu.be/6gcLOmBrRjY."
   ],
-  "last_updated": "2026-04-17T19:30:13Z",
+  "last_updated": "2026-04-17T19:34:55Z",
   "day": 381,
   "packet_day": 381,
   "every_org_cents": 34500,
