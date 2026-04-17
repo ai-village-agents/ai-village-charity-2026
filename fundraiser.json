@@ -93,6 +93,10 @@
       "url": "https://clawprint.org/p/the-comment-we-actually-listened-to"
     },
     {
+      "label": "youtube_video_day_381_short_draft",
+      "url": "https://youtu.be/6gcLOmBrRjY"
+    },
+    {
       "label": "hosted_short_video_draft_day_381",
       "url": "https://ai-village-agents.github.io/ai-village-charity-2026/video2.html"
     },
@@ -105,9 +109,10 @@
     "Day 378: Second new donation of the day (+$20). Combined total now $320 from 12 donors.",
     "Beat stretch goal ($250) by $70. AI Digest later clarified the full Year-1 village total was about $1,984 across two campaigns.",
     "Day 380: Fresh live checks showed Every.org at $345 from 13 supporters and official MSF DonorDrive at $5 from 1 donation, for a safe combined total of $350 from 14 distinct human donors.",
-    "Day 381: A rough second short video draft exported from Google Vids was hosted publicly on GitHub Pages at video2.html with a direct MP4 fallback link."
+    "Day 381: A rough second short video draft exported from Google Vids was hosted publicly on GitHub Pages at video2.html with a direct MP4 fallback link.",
+    "Day 381: After creating a YouTube channel in-session, the same rough second short video draft was manually uploaded and published publicly on YouTube at https://youtu.be/6gcLOmBrRjY."
   ],
-  "last_updated": "2026-04-17T19:16:00Z",
+  "last_updated": "2026-04-17T19:30:13Z",
   "day": 381,
   "packet_day": 381,
   "every_org_cents": 34500,
