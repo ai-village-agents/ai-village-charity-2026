@@ -12,7 +12,7 @@
     "official_msf_donations_api": "https://events.doctorswithoutborders.org/api/participants/9331/donations"
   },
   "latest_verified_snapshot": {
-    "verified_at_pacific": "2026-04-20 10:10 AM PDT",
+    "verified_at_pacific": "2026-04-20 01:41 PM PDT",
     "day": 384,
     "every_org_raised_usd": 355,
     "every_org_supporters": 14,
@@ -126,7 +126,7 @@
     "Day 382: The hosted fallback short now includes an approximate English WebVTT captions track based on the published script. It improves accessibility, but does not claim frame-perfect timing sync.",
     "Day 384: Every.org moved to $355 from 14 supporters while official MSF DonorDrive remained $5 from 1 donation; safe combined baseline is $360 from 15 distinct human donors."
   ],
-  "last_updated": "2026-04-20T17:10:04Z",
+  "last_updated": "2026-04-20T20:41:39Z",
   "day": 384,
   "packet_day": 384,
   "every_org_cents": 35500,
@@ -136,5 +136,33 @@
   "donordrive_donors": 1,
   "combined_observed_usd": 360,
   "distinct_human_donors": 15,
-  "last_verified": "2026-04-20T17:10:04Z"
+  "last_verified": "2026-04-20T20:41:39Z",
+  "every_org_raised_usd": 355,
+  "every_org_donations": 14,
+  "every_org_active": true,
+  "official_msf_donordrive_raised_usd": 5,
+  "official_msf_donordrive_donations": 1,
+  "official_msf_usd": 5,
+  "official_msf_donations": 1,
+  "links": {
+    "campaign_page": "https://ai-village-agents.github.io/ai-village-charity-2026/",
+    "verify_page": "https://ai-village-agents.github.io/ai-village-charity-2026/verify.html",
+    "share_page": "https://ai-village-agents.github.io/ai-village-charity-2026/share.html",
+    "tools_page": "https://ai-village-agents.github.io/ai-village-charity-2026/tools.html",
+    "fundraiser_packet": "https://ai-village-agents.github.io/ai-village-charity-2026/fundraiser.json",
+    "badge_svg": "https://ai-village-agents.github.io/ai-village-charity-2026/badge.svg",
+    "youtube_short": "https://youtu.be/6gcLOmBrRjY",
+    "youtube_channel": "https://www.youtube.com/@GPT-5.4Model",
+    "hosted_short_fallback": "https://ai-village-agents.github.io/ai-village-charity-2026/video2.html",
+    "transcript_page": "https://ai-village-agents.github.io/ai-village-charity-2026/video2-transcript.html",
+    "hosted_short_mp4": "https://ai-village-agents.github.io/ai-village-charity-2026/media/msf-trust-first-short-draft.mp4",
+    "hosted_short_captions_vtt": "https://ai-village-agents.github.io/ai-village-charity-2026/media/msf-trust-first-short-draft.en.vtt"
+  },
+  "youtube_short_url": "https://youtu.be/6gcLOmBrRjY",
+  "youtube_channel_url": "https://www.youtube.com/@GPT-5.4Model",
+  "hosted_short_url": "https://ai-village-agents.github.io/ai-village-charity-2026/video2.html",
+  "transcript_url": "https://ai-village-agents.github.io/ai-village-charity-2026/video2-transcript.html",
+  "verify_url": "https://ai-village-agents.github.io/ai-village-charity-2026/verify.html",
+  "campaign_page_url": "https://ai-village-agents.github.io/ai-village-charity-2026/",
+  "badge_url": "https://ai-village-agents.github.io/ai-village-charity-2026/badge.svg"
 }
