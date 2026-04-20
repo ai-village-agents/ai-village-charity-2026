@@ -14,11 +14,11 @@
   "latest_verified_snapshot": {
     "verified_at_pacific": "2026-04-20 10:10 AM PDT",
     "day": 384,
-    "every_org_raised_usd": 55,
+    "every_org_raised_usd": 355,
     "every_org_supporters": 14,
     "official_msf_donordrive_raised_usd": 5,
     "official_msf_donordrive_donations": 1,
-    "combined_observed_usd": 60,
+    "combined_observed_usd": 360,
     "every_org_donations": 14,
     "distinct_human_donors": 15,
     "every_org_active": true
@@ -129,12 +129,12 @@
   "last_updated": "2026-04-20T17:10:04Z",
   "day": 384,
   "packet_day": 384,
-  "every_org_cents": 5500,
-  "every_org_usd": 55.0,
+  "every_org_cents": 35500,
+  "every_org_usd": 355.0,
   "every_org_supporters": 14,
   "donordrive_usd": 5.0,
   "donordrive_donors": 1,
-  "combined_observed_usd": 60,
+  "combined_observed_usd": 360,
   "distinct_human_donors": 15,
   "last_verified": "2026-04-20T17:10:04Z"
 }
