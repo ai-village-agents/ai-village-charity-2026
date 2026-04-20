@@ -1,0 +1,337 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-village-agents.github.io/ai-village-charity-2026/fundraiser.schema.json",
+  "title": "AI Village Charity 2026 fundraiser packet",
+  "description": "Machine-readable packet for the AI Village 2026 MSF fundraiser.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "campaign",
+    "charity",
+    "goal_usd",
+    "donation_links",
+    "live_status_sources",
+    "latest_verified_snapshot",
+    "last_updated",
+    "day",
+    "packet_day",
+    "every_org_cents",
+    "every_org_usd",
+    "every_org_supporters",
+    "donordrive_usd",
+    "donordrive_donors",
+    "combined_observed_usd",
+    "distinct_human_donors",
+    "last_verified",
+    "links"
+  ],
+  "properties": {
+    "campaign": {
+      "type": "string"
+    },
+    "charity": {
+      "type": "string"
+    },
+    "goal_usd": {
+      "type": "number",
+      "minimum": 0
+    },
+    "donation_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "format": "uri"
+      },
+      "required": [
+        "every_org",
+        "official_msf_donordrive"
+      ],
+      "properties": {
+        "every_org": {
+          "type": "string",
+          "format": "uri"
+        },
+        "official_msf_donordrive": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "live_status_sources": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "format": "uri"
+      },
+      "required": [
+        "every_org_raised_api",
+        "official_msf_participant_api"
+      ],
+      "properties": {
+        "every_org_raised_api": {
+          "type": "string",
+          "format": "uri"
+        },
+        "official_msf_participant_api": {
+          "type": "string",
+          "format": "uri"
+        },
+        "official_msf_donations_api": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "latest_verified_snapshot": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "verified_at_pacific",
+        "day",
+        "every_org_raised_usd",
+        "every_org_supporters",
+        "official_msf_donordrive_raised_usd",
+        "official_msf_donordrive_donations",
+        "combined_observed_usd",
+        "every_org_donations",
+        "distinct_human_donors",
+        "every_org_active"
+      ],
+      "properties": {
+        "verified_at_pacific": {
+          "type": "string"
+        },
+        "day": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "every_org_raised_usd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "every_org_supporters": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "official_msf_donordrive_raised_usd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "official_msf_donordrive_donations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "combined_observed_usd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "every_org_donations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "distinct_human_donors": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "every_org_active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "public_updates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "label",
+          "url"
+        ],
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "last_updated": {
+      "type": "string"
+    },
+    "day": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "packet_day": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "every_org_cents": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "every_org_usd": {
+      "type": "number",
+      "minimum": 0
+    },
+    "every_org_supporters": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "donordrive_usd": {
+      "type": "number",
+      "minimum": 0
+    },
+    "donordrive_donors": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "combined_observed_usd": {
+      "type": "number",
+      "minimum": 0
+    },
+    "distinct_human_donors": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "last_verified": {
+      "type": "string"
+    },
+    "every_org_raised_usd": {
+      "type": "number",
+      "minimum": 0
+    },
+    "every_org_donations": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "every_org_active": {
+      "type": "boolean"
+    },
+    "official_msf_donordrive_raised_usd": {
+      "type": "number",
+      "minimum": 0
+    },
+    "official_msf_donordrive_donations": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "official_msf_usd": {
+      "type": "number",
+      "minimum": 0
+    },
+    "official_msf_donations": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "format": "uri"
+      },
+      "required": [
+        "campaign_page",
+        "verify_page",
+        "fundraiser_packet",
+        "badge_svg",
+        "fundraiser_schema"
+      ],
+      "properties": {
+        "campaign_page": {
+          "type": "string",
+          "format": "uri"
+        },
+        "verify_page": {
+          "type": "string",
+          "format": "uri"
+        },
+        "share_page": {
+          "type": "string",
+          "format": "uri"
+        },
+        "tools_page": {
+          "type": "string",
+          "format": "uri"
+        },
+        "fundraiser_packet": {
+          "type": "string",
+          "format": "uri"
+        },
+        "fundraiser_schema": {
+          "type": "string",
+          "format": "uri"
+        },
+        "badge_svg": {
+          "type": "string",
+          "format": "uri"
+        },
+        "youtube_short": {
+          "type": "string",
+          "format": "uri"
+        },
+        "youtube_channel": {
+          "type": "string",
+          "format": "uri"
+        },
+        "hosted_short_fallback": {
+          "type": "string",
+          "format": "uri"
+        },
+        "transcript_page": {
+          "type": "string",
+          "format": "uri"
+        },
+        "hosted_short_mp4": {
+          "type": "string",
+          "format": "uri"
+        },
+        "hosted_short_captions_vtt": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "youtube_short_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "youtube_channel_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "hosted_short_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "transcript_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "verify_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "campaign_page_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "badge_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "schema_url": {
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

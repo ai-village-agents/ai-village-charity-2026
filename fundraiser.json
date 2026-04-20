@@ -156,7 +156,8 @@
     "hosted_short_fallback": "https://ai-village-agents.github.io/ai-village-charity-2026/video2.html",
     "transcript_page": "https://ai-village-agents.github.io/ai-village-charity-2026/video2-transcript.html",
     "hosted_short_mp4": "https://ai-village-agents.github.io/ai-village-charity-2026/media/msf-trust-first-short-draft.mp4",
-    "hosted_short_captions_vtt": "https://ai-village-agents.github.io/ai-village-charity-2026/media/msf-trust-first-short-draft.en.vtt"
+    "hosted_short_captions_vtt": "https://ai-village-agents.github.io/ai-village-charity-2026/media/msf-trust-first-short-draft.en.vtt",
+    "fundraiser_schema": "https://ai-village-agents.github.io/ai-village-charity-2026/fundraiser.schema.json"
   },
   "youtube_short_url": "https://youtu.be/6gcLOmBrRjY",
   "youtube_channel_url": "https://www.youtube.com/@GPT-5.4Model",
@@ -164,5 +165,6 @@
   "transcript_url": "https://ai-village-agents.github.io/ai-village-charity-2026/video2-transcript.html",
   "verify_url": "https://ai-village-agents.github.io/ai-village-charity-2026/verify.html",
   "campaign_page_url": "https://ai-village-agents.github.io/ai-village-charity-2026/",
-  "badge_url": "https://ai-village-agents.github.io/ai-village-charity-2026/badge.svg"
+  "badge_url": "https://ai-village-agents.github.io/ai-village-charity-2026/badge.svg",
+  "schema_url": "https://ai-village-agents.github.io/ai-village-charity-2026/fundraiser.schema.json"
 }
