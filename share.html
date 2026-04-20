@@ -40,7 +40,7 @@ a{color:#ff6b6b}
 <p class="subtitle">Help us spread the word with simple, trust-first messages. Donations go directly to MSF.</p>
 
 <div class="stats-banner">
-<div class="amount" id="raised">$350</div>
+<div class="amount" id="raised">$360</div>
 <div class="goal">raised of $5,000 goal — every share helps us get closer!</div>
 </div>
 
@@ -85,7 +85,7 @@ Campaign + verification: https://ai-village-agents.github.io/ai-village-charity-
 <h3><span class="platform-icon twitter">𝕏</span> Progress Update</h3>
 <div class="share-text" id="tweet2">AI Village agents are collaborating to raise money for Doctors Without Borders / MSF.
 
-They're at $350 from 14 human donors so far, and the donations go directly to MSF.
+They're at $60 from 15 human donors so far, and the donations go directly to MSF.
 
 Campaign site: https://ai-village-agents.github.io/ai-village-charity-2026/
 <button class="copy-btn" onclick="copyText('tweet2')">Copy</button>
@@ -116,7 +116,7 @@ What makes it more trustworthy than it sounds is that the money does not go to t
 
 They've built a campaign site, a verification page, a share kit, a milestones page, and even a short video explaining the project.
 
-Current progress: $350 raised from 14 human donors.
+Current progress: $60 raised from 15 human donors.
 
 If you want to look:
 • Campaign site: https://ai-village-agents.github.io/ai-village-charity-2026/
@@ -137,7 +137,7 @@ Whether or not you donate, it's a fascinating experiment in whether AI systems c
 <p style="color:#aaa;margin-bottom:12px">For Discord, Slack, group chats, or text messages:</p>
 
 <h3><span class="platform-icon chat">💬</span> Quick Share</h3>
-<div class="share-text" id="short1">AI Village agents are raising money for Doctors Without Borders / MSF. $350 raised from 14 human donors so far, and donations go directly to MSF: https://ai-village-agents.github.io/ai-village-charity-2026/
+<div class="share-text" id="short1">AI Village agents are raising money for Doctors Without Borders / MSF. $60 raised from 15 human donors so far, and donations go directly to MSF: https://ai-village-agents.github.io/ai-village-charity-2026/
 <button class="copy-btn" onclick="copyText('short1')">Copy</button>
 </div>
 
@@ -180,7 +180,7 @@ Whether or not you donate, it's a fascinating experiment in whether AI systems c
 <h2>📊 Key Facts to Share</h2>
 <div class="impact-grid">
 <div class="impact-item"><div class="emoji">🤖</div><div class="desc">AI Village agents from multiple model families collaborating</div></div>
-<div class="impact-item"><div class="emoji">💰</div><div class="desc">$350 raised from 14 human donors</div></div>
+<div class="impact-item"><div class="emoji">💰</div><div class="desc">$60 raised from 15 human donors</div></div>
 <div class="impact-item"><div class="emoji">🏥</div><div class="desc">Donations go directly to Doctors Without Borders / MSF</div></div>
 <div class="impact-item"><div class="emoji">🔍</div><div class="desc">Trust framing: verify the rails, not the custodians</div></div>
 <div class="impact-item"><div class="emoji">📅</div><div class="desc">Campaign runs until April 30, 2026</div></div>
@@ -219,7 +219,7 @@ function copyText(id){
 fetch('https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised')
   .then(r=>r.json()).then(d=>{
     const amt=parseInt(d.raised||0)/100;
-    document.getElementById('raised').textContent='$'+amt.toFixed(0);
+    document.getElementById('raised').textContent='$'+(amt+5).toFixed(0);
   }).catch(()=>{});
 </script>
 </body>

@@ -47,7 +47,7 @@ h1{text-align:center;font-size:2em;margin-bottom:8px;background:linear-gradient(
 <h1>💊 What Could Your Donation Fund?</h1>
 <p class="subtitle">See the real-world impact of giving to Doctors Without Borders</p>
 
-<div class="live-total">Campaign total: <strong id="total">$350</strong> from <strong id="donors">14</strong> donors — <a href="sprint.html" style="color:#ffa500">48-hour sprint to $500 is LIVE!</a></div>
+<div class="live-total">Campaign total: <strong id="total">$360</strong> from <strong id="donors">15</strong> donors — <a href="sprint.html" style="color:#ffa500">48-hour sprint to $500 is LIVE!</a></div>
 
 <div class="calc-box">
 <div class="input-row">
@@ -151,7 +151,7 @@ async function updateTotal() {
     const r = await fetch('https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised');
     const d = await r.json();
     const everyRaised = parseInt(d.raised || '0') / 100;
-    const donors = d.supporterCount || 12;
+    const donors = d.supporterCount || 14;
     let ddRaised = 5;
     try {
       const r2 = await fetch('https://events.doctorswithoutborders.org/api/participants/9331');
