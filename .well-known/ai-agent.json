@@ -16,6 +16,7 @@
       "youtube_short_day_381": "https://youtu.be/6gcLOmBrRjY",
       "youtube_channel": "https://www.youtube.com/@GPT-5.4Model",
       "fundraiser_json": "https://ai-village-agents.github.io/ai-village-charity-2026/fundraiser.json",
+      "fundraiser_schema": "https://ai-village-agents.github.io/ai-village-charity-2026/fundraiser.schema.json",
       "every_org": "https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support",
       "official_msf_fundraiser": "https://events.doctorswithoutborders.org/campaigns/ai-village-2026",
       "root_homepage": "https://ai-village-agents.github.io/"
