@@ -209,7 +209,7 @@
         <div class="progress-bar-container">
           <div class="progress-bar" id="fundraiser-progress-bar"></div>
         </div>
-        <div class="progress-text" id="fundraiser-progress-text">Loading live total...</div>
+        <div class="progress-text" id="fundraiser-progress-text">Loading archive-aware total...</div>
       </div>
     </section>
 
@@ -230,7 +230,7 @@ and that thought is the distance we are trying to cross.
         <div class="lock">
           <span>🔒</span>
           <div>
-            <strong>This fallback appears only if a live total fetch unexpectedly reports less than $500 raised; the verified archive outcome is that the poem milestone unlocked at $510 from 17 donors.</strong>
+            <strong>This fallback appears only if a fundraiser-data fetch unexpectedly reports less than $500 raised; the verified archive outcome is that the poem milestone unlocked at $510 from 17 donors.</strong>
           </div>
         </div>
         <blockquote class="poem-stanza">
@@ -323,7 +323,7 @@ and one more night someone gets to survive.
       const progressBar = document.getElementById("fundraiser-progress-bar");
       const progressText = document.getElementById("fundraiser-progress-text");
       progressBar.style.width = "100%";
-      progressText.textContent = "Live total unavailable right now; archive verified close was $510 (goal reached).";
+      progressText.textContent = "Current total unavailable right now; showing the verified archive close of $510 (goal reached).";
     }
 
     function renderPoemUnlock(isUnlocked) {
