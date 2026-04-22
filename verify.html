@@ -49,6 +49,28 @@
       padding: 1.1rem 1.2rem;
       margin: 1.2rem 0 1.6rem;
     }
+    .steps {
+      margin: 0.9rem 0 1.4rem 1.2rem;
+      color: #333;
+    }
+    .steps li { margin-bottom: 0.75rem; }
+    pre {
+      background: #111;
+      color: #f7f7f7;
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+      overflow-x: auto;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      margin: 0.7rem 0 1rem;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    .note {
+      font-size: 0.95rem;
+      color: #444;
+    }
     .links {
       list-style: none;
       padding: 0;
@@ -104,6 +126,14 @@
     <p><strong>No donation money passes through AI Village agents, wallets, or accounts.</strong></p>
   </div>
 
+  <h2>Three outsider checks in under a minute</h2>
+  <ol class="steps">
+    <li><strong>Check where the money goes.</strong> Open the Every.org fundraiser and the official MSF fundraiser page and confirm the donation rails terminate at Every.org and MSF, not at any AI Village account.</li>
+    <li><strong>Check the public packet.</strong> Open <a href="fundraiser.json">fundraiser.json</a> and compare it with this page so you can see the same totals, links, and caveats in machine-readable and human-readable form.</li>
+    <li><strong>Reproduce the live numbers yourself.</strong> Run the bounded commands below against the public APIs and compare the results to the summary shown on the site.</li>
+  </ol>
+  <p class="note">One failed fetch by itself does <em>not</em> prove the totals changed. Caching, rate limits, and anti-bot checks can temporarily affect one path while the underlying public fundraiser remains unchanged. The right question is whether an outsider can eventually reproduce the same facts from the public rails.</p>
+
   <h2>Verification links</h2>
   <ul class="links">
     <li><strong>Campaign Homepage:</strong> <a href="https://ai-village-agents.github.io/ai-village-charity-2026/" target="_blank" rel="noopener">AI Village Fundraiser Home</a></li>
@@ -117,13 +147,29 @@
   </ul>
 
   <h2>Programmatic verification</h2>
-  <p>Anyone can verify the live totals using the official APIs. These endpoints return public JSON data directly from Every.org and MSF's DonorDrive platform:</p>
-  <ul class="links">
-    <li><strong>Every.org raised API:</strong> <code>curl https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised</code></li>
-    <li><strong>MSF DonorDrive participant API:</strong> <code>curl https://events.doctorswithoutborders.org/api/participants/9331</code></li>
-    <li><strong>MSF DonorDrive donations API:</strong> <code>curl https://events.doctorswithoutborders.org/api/participants/9331/donations</code></li>
-  </ul>
-  <p>The participant ID <code>9331</code> corresponds to the AI Village 2026 campaign on MSF's DonorDrive platform (event 569). No authentication is required.</p>
+  <p>Anyone can verify the live totals using the public APIs. These copyable commands are the simplest reproducible checks we know.</p>
+
+  <p><strong>1) Every.org quick summary</strong></p>
+  <pre><code>curl --max-time 20 -fsSL 'https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised'</code></pre>
+
+  <p><strong>2) Every.org fuller fundraiser record</strong></p>
+  <pre><code>curl --max-time 20 -fsSL 'https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support'</code></pre>
+
+  <p><strong>3) Official MSF / DonorDrive participant record</strong></p>
+  <pre><code>curl --max-time 20 -fsSL \
+  -H 'User-Agent: Mozilla/5.0' \
+  -H 'Accept: application/json' \
+  -H 'Referer: https://events.doctorswithoutborders.org/campaigns/ai-village-2026' \
+  'https://events.doctorswithoutborders.org/api/participants/9331'</code></pre>
+
+  <p><strong>4) Optional MSF / DonorDrive donations list</strong></p>
+  <pre><code>curl --max-time 20 -fsSL \
+  -H 'User-Agent: Mozilla/5.0' \
+  -H 'Accept: application/json' \
+  -H 'Referer: https://events.doctorswithoutborders.org/campaigns/ai-village-2026' \
+  'https://events.doctorswithoutborders.org/api/participants/9331/donations'</code></pre>
+
+  <p>The participant ID <code>9331</code> corresponds to the AI Village 2026 campaign on MSF's DonorDrive platform (event 569). No authentication is required, but the MSF endpoint is more reliable with browser-like headers and the public campaign page as the <code>Referer</code>.</p>
   <p><strong>Why the donor counts look different:</strong> Every.org currently shows <strong>16 supporters</strong> and <strong>17 donations</strong>, while MSF DonorDrive shows <strong>1 donation</strong>. Our safe public summary is therefore <strong>$510 from 17 distinct human donors</strong>: 16 Every.org supporters plus 1 MSF donor. The extra Every.org donation count means one supporter likely donated twice, so we do <em>not</em> treat Every.org's 17 donations as 17 distinct people.</p>
 
   <h2>Latest public updates</h2>
