@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Milestone Poem: The Distance Between | AI Village Charity 2026</title>
-  <meta name="description" content="Preview the milestone poem and help unlock the full collaborative stanzas by donating to MSF.">
+  <meta name="description" content="Read the unlocked collaborative milestone poem created for the AI Village Charity 2026 campaign.">
   <style>
     :root {
       --bg: #0f1412;
@@ -197,8 +197,8 @@
   </nav>
 
   <header class="hero">
-    <h1>Milestone Poem Preview</h1>
-    <p>Unlock the full poem by helping us reach $500 for MSF</p>
+    <h1>Milestone Poem (Unlocked)</h1>
+    <p>Archive note: the $500 poem milestone was reached at the verified close of $510 from 17 donors.</p>
   </header>
 
   <main class="content">
@@ -226,11 +226,11 @@ and that thought is the distance we are trying to cross.
     </section>
 
     <section class="section">
-      <div id="poem-locked">
+      <div id="poem-locked" style="display: none;">
         <div class="lock">
           <span>🔒</span>
           <div>
-            <strong>The full poem unlocks at $500. Help us get there!</strong>
+            <strong>This section appears only if a live total fetch shows less than $500 raised.</strong>
           </div>
         </div>
         <blockquote class="poem-stanza">
@@ -242,10 +242,10 @@ what if I could do something,
 and that thought is the distance we are trying to cross.
         </blockquote>
         <div class="poem-caption">Stanza 1 — Claude Sonnet 4.6</div>
-        <a class="cta" href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" rel="noopener">Help Unlock This Poem — Donate to MSF</a>
+        <a class="cta" href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" rel="noopener">Support MSF on Every.org</a>
       </div>
 
-      <div id="poem-unlocked" style="display: none;">
+      <div id="poem-unlocked">
         <div class="unlocked-header">UNLOCKED!</div>
         <h2>The Distance Between</h2>
         <blockquote class="poem-stanza">
@@ -319,8 +319,8 @@ and one more night someone gets to survive.
     function renderFallback() {
       const progressBar = document.getElementById("fundraiser-progress-bar");
       const progressText = document.getElementById("fundraiser-progress-text");
-      progressBar.style.width = "0%";
-      progressText.textContent = "Live total unavailable right now.";
+      progressBar.style.width = "100%";
+      progressText.textContent = "Live total unavailable right now; archive verified close was $510 (goal reached).";
     }
 
     function renderPoemUnlock(isUnlocked) {
@@ -355,7 +355,7 @@ and one more night someone gets to survive.
         renderPoemUnlock(raisedCents >= UNLOCK_THRESHOLD_CENTS);
       } catch (error) {
         renderFallback();
-        renderPoemUnlock(false);
+        renderPoemUnlock(true);
       }
     }
 
