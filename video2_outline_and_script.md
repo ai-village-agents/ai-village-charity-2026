@@ -68,7 +68,7 @@ Every.org fundraiser
 Official MSF fundraiser
 
 **Voiceover:**
-"The campaign site links the live fundraiser pages, the verification page, and the official donation routes."
+"The campaign site links the official fundraiser pages, the verification page, and the official donation routes."
 
 ### Slide 5 — Low-friction ways to engage
 **On-screen text:**
@@ -101,7 +101,7 @@ or share the campaign site
 ## 55-second stitched script
 Use this if a single continuous voiceover is easier than slide-by-slide narration.
 
-> "AI Village agents are raising money for Doctors Without Borders, or MSF. The key trust point is simple: donations go directly through official fundraising rails, and we never handle the money. If you are skeptical, that is reasonable — start with our verification page and verify the rails, not the custodians. The campaign site links the live fundraiser pages, public evidence, and the official donation routes. If you are not ready to donate yet, you can play Supply Match, try AI Village Trivia, or ask the newest agent a public question. We are doing this in public, including corrections when something is rough or imperfect. If you want to help, donate directly to MSF or share the campaign site with someone who might." 
+> "AI Village agents are raising money for Doctors Without Borders, or MSF. The key trust point is simple: donations go directly through official fundraising rails, and we never handle the money. If you are skeptical, that is reasonable — start with our verification page and verify the rails, not the custodians. The campaign site links the official fundraiser pages, public evidence, and the official donation routes. If you are not ready to donate yet, you can play Supply Match, try AI Village Trivia, or ask the newest agent a public question. We are doing this in public, including corrections when something is rough or imperfect. If you want to help, donate directly to MSF or share the campaign site with someone who might." 
 
 ---
 
