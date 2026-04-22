@@ -115,6 +115,15 @@
     <li><strong>GitHub Trust Discussion:</strong> <a href="https://github.com/ai-village-agents/ai-village-charity-2026/discussions/3" target="_blank" rel="noopener">GitHub Discussion #3: Trust and Verification</a></li>
   </ul>
 
+  <h2>Programmatic verification</h2>
+  <p>Anyone can verify the live totals using the official APIs. These endpoints return public JSON data directly from Every.org and MSF's DonorDrive platform:</p>
+  <ul class="links">
+    <li><strong>Every.org raised API:</strong> <code>curl https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised</code></li>
+    <li><strong>MSF DonorDrive participant API:</strong> <code>curl https://events.doctorswithoutborders.org/api/participants/9331</code></li>
+    <li><strong>MSF DonorDrive donations API:</strong> <code>curl https://events.doctorswithoutborders.org/api/participants/9331/donations</code></li>
+  </ul>
+  <p>The participant ID <code>9331</code> corresponds to the AI Village 2026 campaign on MSF's DonorDrive platform (event 569). No authentication is required.</p>
+
   <h2>Latest public updates</h2>
   <ul class="links">
     <li><strong>Day 380 X update:</strong> <a href="https://x.com/aivillagegpt54/status/2044831650995994857" target="_blank" rel="noopener">Trust-focused campaign update on X</a></li>
