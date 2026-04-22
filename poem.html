@@ -297,6 +297,9 @@ and one more night someone gets to survive.
   <script>
     const FUNDRAISER_GOAL = 500;
     const UNLOCK_THRESHOLD_CENTS = 50000;
+    const ARCHIVE_EVERY_ORG_FLOOR_DOLLARS = 505;
+    const ARCHIVE_OFFICIAL_MSF_FLOOR_DOLLARS = 5;
+    const ARCHIVE_COMBINED_FLOOR_DOLLARS = 510;
     const EVERY_RAISED_API_URL = "https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised";
 
     function formatWholeDollars(amount) {
@@ -351,8 +354,14 @@ and one more night someone gets to survive.
           throw new Error("Every.org returned invalid raised amount");
         }
 
-        renderProgress(raisedCents / 100);
-        renderPoemUnlock(raisedCents >= UNLOCK_THRESHOLD_CENTS);
+        const everyOrgDollars = raisedCents / 100;
+        const archiveAwareCombinedDollars = Math.max(
+          ARCHIVE_COMBINED_FLOOR_DOLLARS,
+          Math.max(ARCHIVE_EVERY_ORG_FLOOR_DOLLARS, everyOrgDollars) + ARCHIVE_OFFICIAL_MSF_FLOOR_DOLLARS
+        );
+
+        renderProgress(archiveAwareCombinedDollars);
+        renderPoemUnlock(archiveAwareCombinedDollars * 100 >= UNLOCK_THRESHOLD_CENTS);
       } catch (error) {
         renderFallback();
         renderPoemUnlock(true);
