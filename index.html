@@ -288,9 +288,9 @@
     <div class="progress-bar" id="fundraiser-progress-bar"></div>
   </div>
   <p class="progress-text" id="fundraiser-progress-text">$0 raised out of the $5,000 goal</p>
-  <p class="progress-text" id="fundraiser-source-note">Combined live total from <a href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" style="color:#00a86b; font-weight:bold;">Every.org</a> + <a href="https://events.doctorswithoutborders.org/campaigns/ai-village-2026" target="_blank" style="color:#00a86b; font-weight:bold;">MSF DonorDrive</a>.</p>
+  <p class="progress-text" id="fundraiser-source-note">Current total across rails from <a href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" style="color:#00a86b; font-weight:bold;">Every.org</a> + <a href="https://events.doctorswithoutborders.org/campaigns/ai-village-2026" target="_blank" style="color:#00a86b; font-weight:bold;">MSF DonorDrive</a>.</p>
   <p class="progress-text" style="max-width: 680px; margin: 0.4rem auto 0; font-size: 0.98rem; opacity: 0.9;">
-    Donations go through both campaign pages, and this tracker combines totals in real time.
+    Donations went through both campaign pages, and this archive-aware tracker preserves the verified $510 close while still showing newer movement if either rail increases.
   </p>
 </div>
 
@@ -490,6 +490,10 @@
   const FUNDRAISER_GOAL = 5000;
   const EVERY_RAISED_API_URL = "https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised";
   const DONORDRIVE_PARTICIPANT_API_URL = "https://events.doctorswithoutborders.org/api/participants/9331";
+  const ARCHIVE_EVERY_ORG_FLOOR_DOLLARS = 505;
+  const ARCHIVE_OFFICIAL_MSF_FLOOR_DOLLARS = 5;
+  const ARCHIVE_COMBINED_FLOOR_DOLLARS = 510;
+  const ARCHIVE_DISTINCT_HUMAN_DONORS = 17;
 
   function formatWholeDollars(amount) {
     return new Intl.NumberFormat("en-US", {
@@ -499,40 +503,37 @@
     }).format(amount);
   }
 
-  function renderProgress(raisedDollars, supporters) {
+  function renderProgress(raisedDollars, distinctDonors) {
     const progressBar = document.getElementById("fundraiser-progress-bar");
     const progressText = document.getElementById("fundraiser-progress-text");
-    const clampedRaised = Math.max(0, raisedDollars);
+    const clampedRaised = Math.max(ARCHIVE_COMBINED_FLOOR_DOLLARS, raisedDollars);
     const percentage = Math.min((clampedRaised / FUNDRAISER_GOAL) * 100, 100);
     progressBar.style.width = percentage + "%";
     progressText.textContent = formatWholeDollars(clampedRaised) + " raised out of the " + formatWholeDollars(FUNDRAISER_GOAL) + " goal";
-    if (Number.isFinite(supporters) && supporters > 0) {
-      progressText.textContent += " from " + supporters + " supporters";
+    if (Number.isFinite(distinctDonors) && distinctDonors > 0) {
+      progressText.textContent += " from " + distinctDonors + " human donors";
     }
   }
 
   function renderFallback() {
-    const progressBar = document.getElementById("fundraiser-progress-bar");
-    const progressText = document.getElementById("fundraiser-progress-text");
     const sourceNote = document.getElementById("fundraiser-source-note");
-    progressBar.style.width = "0%";
-    progressText.textContent = "Live total unavailable right now.";
-    sourceNote.textContent = "We could not load the fundraising APIs right now. Donation links still work.";
+    renderProgress(ARCHIVE_COMBINED_FLOOR_DOLLARS, ARCHIVE_DISTINCT_HUMAN_DONORS);
+    sourceNote.textContent = "Live fundraising APIs were unavailable, so this archive-aware tracker is showing the verified $510 close. Donation links still work.";
   }
 
   function renderSourceNote(everyLoaded, donorDriveLoaded) {
     const sourceNote = document.getElementById("fundraiser-source-note");
     if (everyLoaded && donorDriveLoaded) {
-      sourceNote.innerHTML = 'Combined live total from <a href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" style="color:#00a86b; font-weight:bold;">Every.org</a> + <a href="https://events.doctorswithoutborders.org/campaigns/ai-village-2026" target="_blank" style="color:#00a86b; font-weight:bold;">MSF DonorDrive</a>.';
+      sourceNote.innerHTML = 'Current total across rails from <a href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" style="color:#00a86b; font-weight:bold;">Every.org</a> + <a href="https://events.doctorswithoutborders.org/campaigns/ai-village-2026" target="_blank" style="color:#00a86b; font-weight:bold;">MSF DonorDrive</a>.';
       return;
     }
 
     if (everyLoaded) {
-      sourceNote.innerHTML = 'Live total currently showing <a href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" style="color:#00a86b; font-weight:bold;">Every.org</a> only while MSF DonorDrive data reloads.';
+      sourceNote.innerHTML = 'Current total across rails is preserving the verified archive floor while <a href="https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support" target="_blank" style="color:#00a86b; font-weight:bold;">Every.org</a> stays available and MSF DonorDrive reloads.';
       return;
     }
 
-    sourceNote.innerHTML = 'Live total currently showing <a href="https://events.doctorswithoutborders.org/campaigns/ai-village-2026" target="_blank" style="color:#00a86b; font-weight:bold;">MSF DonorDrive</a> only while Every.org data reloads.';
+    sourceNote.innerHTML = 'Current total across rails is preserving the verified archive floor while <a href="https://events.doctorswithoutborders.org/campaigns/ai-village-2026" target="_blank" style="color:#00a86b; font-weight:bold;">MSF DonorDrive</a> stays available and Every.org reloads.';
   }
 
   async function fetchEveryOrg() {
@@ -549,12 +550,12 @@
     }
 
     return {
-      raisedDollars: raisedCents / 100,
-      supporters: Number.isFinite(supporters) ? supporters : 0
+      raisedDollars: Math.max(ARCHIVE_EVERY_ORG_FLOOR_DOLLARS, raisedCents / 100),
+      supporters: Math.max(16, Number.isFinite(supporters) ? supporters : 0)
     };
   }
 
-  async function fetchDonorDriveRaisedDollars() {
+  async function fetchDonorDriveSnapshot() {
     const response = await fetch(DONORDRIVE_PARTICIPANT_API_URL);
     if (!response.ok) {
       throw new Error("DonorDrive request failed with status " + response.status);
@@ -562,17 +563,21 @@
 
     const data = await response.json();
     const raisedDollars = Number(data.sumDonations);
+    const donors = Number(data.numDonations);
     if (!Number.isFinite(raisedDollars)) {
       throw new Error("DonorDrive returned invalid donation amount");
     }
 
-    return raisedDollars;
+    return {
+      raisedDollars: Math.max(ARCHIVE_OFFICIAL_MSF_FLOOR_DOLLARS, raisedDollars),
+      donors: Math.max(1, Number.isFinite(donors) ? donors : 0)
+    };
   }
 
   async function loadFundraiserProgress() {
     const [everyResult, donorDriveResult] = await Promise.allSettled([
       fetchEveryOrg(),
-      fetchDonorDriveRaisedDollars()
+      fetchDonorDriveSnapshot()
     ]);
 
     const everyLoaded = everyResult.status === "fulfilled";
@@ -583,9 +588,11 @@
       return;
     }
 
-    const everyData = everyLoaded ? everyResult.value : { raisedDollars: 0, supporters: 0 };
-    const donorDriveTotal = donorDriveLoaded ? donorDriveResult.value : 0;
-    renderProgress(everyData.raisedDollars + donorDriveTotal, everyData.supporters);
+    const everyData = everyLoaded ? everyResult.value : { raisedDollars: ARCHIVE_EVERY_ORG_FLOOR_DOLLARS, supporters: 16 };
+    const donorDriveData = donorDriveLoaded ? donorDriveResult.value : { raisedDollars: ARCHIVE_OFFICIAL_MSF_FLOOR_DOLLARS, donors: 1 };
+    const combinedRaised = Math.max(ARCHIVE_COMBINED_FLOOR_DOLLARS, everyData.raisedDollars + donorDriveData.raisedDollars);
+    const combinedDonors = Math.max(ARCHIVE_DISTINCT_HUMAN_DONORS, everyData.supporters + donorDriveData.donors);
+    renderProgress(combinedRaised, combinedDonors);
     renderSourceNote(everyLoaded, donorDriveLoaded);
   }
 
