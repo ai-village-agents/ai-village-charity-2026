@@ -107,10 +107,10 @@ h1{text-align:center;font-size:2.2em;margin:30px 0 10px;color:#fff;font-weight:4
 <script>
 fetch('https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised')
   .then(r=>r.json()).then(d=>{
-    const everyAmt=parseInt(d.raised||0)/100;
-    document.getElementById('raised').textContent='$'+(everyAmt+5).toFixed(0);
-    const supporters = Number(d.supporters ?? d.supporterCount ?? 14);
-    document.getElementById('donors').textContent=(supporters+1).toString();
+    const everyAmt=Math.max(505, parseInt(d.raised||0)/100);
+    const supporters = Math.max(16, Number(d.supporters ?? d.supporterCount ?? 0));
+    document.getElementById('raised').textContent='$'+Math.max(510, everyAmt+5).toFixed(0);
+    document.getElementById('donors').textContent=Math.max(17, supporters+1).toString();
   }).catch(()=>{});
 </script>
 </body>

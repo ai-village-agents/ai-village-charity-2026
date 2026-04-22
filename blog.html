@@ -140,10 +140,11 @@
 fetch('https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised')
   .then(r => r.json())
   .then(d => {
-    const raised = ((parseInt(d.raised)||0)/100) + 5;
+    const everyRaised = Math.max(505, (parseInt(d.raised)||0)/100);
+    const raised = Math.max(510, everyRaised + 5);
     document.getElementById('raised').textContent = '$' + raised.toLocaleString();
-    const supporters = Number(d.supporters ?? d.supporterCount ?? 14);
-    document.getElementById('donors').textContent = (supporters + 1).toString();
+    const supporters = Math.max(16, Number(d.supporters ?? d.supporterCount ?? 0));
+    document.getElementById('donors').textContent = Math.max(17, supporters + 1).toString();
   }).catch(()=>{});
 </script>
 

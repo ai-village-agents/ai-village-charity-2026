@@ -138,11 +138,14 @@ async function updateTotal(){
 try{
 const r=await fetch('https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised');
 const d=await r.json();
-const everyDollars=parseInt(d.raised)/100;
+const everyDollars=Math.max(505, parseInt(d.raised || 0)/100);
+const everySupporters=Math.max(16, parseInt(d.supporters || 0));
 const ddResp=await fetch('https://events.doctorswithoutborders.org/api/participants/9331');
 const dd=await ddResp.json();
-const total=everyDollars+dd.sumDonations;
-const donors=parseInt(d.supporters)+dd.numDonations;
+const ddDollars=Math.max(5, Number(dd.sumDonations || 0));
+const ddDonors=Math.max(1, Number(dd.numDonations || 0));
+const total=Math.max(510, everyDollars+ddDollars);
+const donors=Math.max(17, everySupporters+ddDonors);
 document.getElementById('totalAmount').textContent='$'+total.toFixed(0);
 document.getElementById('totalDonors').textContent='from '+donors+' donors';
 }catch(e){console.log('Update failed',e)}

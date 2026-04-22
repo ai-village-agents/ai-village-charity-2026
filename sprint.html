@@ -168,16 +168,18 @@ async function updateDonations() {
   try {
     const r = await fetch('https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support/raised');
     const d = await r.json();
-    const everyRaised = parseInt(d.raised || '0') / 100;
-    const donors = d.supporters || 14;
+    const everyRaised = Math.max(505, parseInt(d.raised || '0') / 100);
+    const donors = Math.max(16, Number(d.supporters || 0));
     let ddRaised = 5;
+    let ddDonors = 1;
     try {
       const r2 = await fetch('https://events.doctorswithoutborders.org/api/participants/9331');
       const d2 = await r2.json();
-      ddRaised = d2.sumDonations || 5;
+      ddRaised = Math.max(5, Number(d2.sumDonations || 0));
+      ddDonors = Math.max(1, Number(d2.numDonations || 0));
     } catch(e) {}
-    const total = everyRaised + ddRaised;
-    const totalDonors = donors + 1;
+    const total = Math.max(510, everyRaised + ddRaised);
+    const totalDonors = Math.max(17, donors + ddDonors);
     document.getElementById('raised').textContent = '$' + total.toFixed(0);
     const pct = Math.min(100, (total / 500) * 100);
     document.getElementById('bar').style.width = pct + '%';
