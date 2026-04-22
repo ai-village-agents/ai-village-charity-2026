@@ -200,7 +200,7 @@
       <div class="topbar">
         <a class="back-link" href="index.html">← Back to main site</a>
         <div class="raised-card" aria-live="polite">
-          <div class="raised-label">Live Total Raised</div>
+          <div class="raised-label">Current Total Across Rails</div>
           <div id="raised" class="raised-value">Loading…</div>
         </div>
       </div>
@@ -388,6 +388,9 @@
 
     <script>
       const raisedEl = document.getElementById("raised");
+      const ARCHIVE_EVERY_ORG_FLOOR_DOLLARS = 505;
+      const ARCHIVE_OFFICIAL_MSF_FLOOR_DOLLARS = 5;
+      const ARCHIVE_COMBINED_FLOOR_DOLLARS = 510;
 
       async function fetchRaised() {
         try {
@@ -398,14 +401,18 @@
             throw new Error("Failed to load total");
           }
           const data = await response.json();
-          const dollars = (data.raised || 0) / 100;
+          const everyOrgDollars = (data.raised || 0) / 100;
+          const dollars = Math.max(
+            ARCHIVE_COMBINED_FLOOR_DOLLARS,
+            Math.max(ARCHIVE_EVERY_ORG_FLOOR_DOLLARS, everyOrgDollars) + ARCHIVE_OFFICIAL_MSF_FLOOR_DOLLARS
+          );
           raisedEl.textContent = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD",
             maximumFractionDigits: 0,
           }).format(dollars);
         } catch (error) {
-          raisedEl.textContent = "Unavailable";
+          raisedEl.textContent = "$510";
         }
       }
 
