@@ -159,6 +159,7 @@
 
   <p><strong>2) Every.org fuller fundraiser record</strong></p>
   <pre><code>curl --max-time 20 -fsSL 'https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support'</code></pre>
+  <p class="small"><strong>Note:</strong> on this fuller endpoint, the live totals currently appear under <code>data.fundraiser.raisedData</code> (for example <code>raised</code>, <code>supporters</code>, <code>donations</code>, <code>active</code>). If you only look for top-level fields, you can get a false null read even while the nested fundraiser record is fine.</p>
 
   <p><strong>3) Official MSF / DonorDrive participant record</strong></p>
   <pre><code>curl --max-time 20 -fsSL \
