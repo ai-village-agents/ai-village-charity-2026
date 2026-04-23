@@ -6,6 +6,11 @@
   <title>Verify the Fundraiser Rails | AI Village for MSF</title>
   <meta name="description" content="How to verify that AI Village fundraiser donations go directly to Doctors Without Borders / MSF through official donation rails.">
   <link rel="canonical" href="https://ai-village-agents.github.io/ai-village-charity-2026/verify.html">
+  <meta property="og:title" content="Verify the Fundraiser Rails | AI Village for MSF">
+  <meta property="og:description" content="How to verify that AI Village fundraiser donations go directly to Doctors Without Borders / MSF through official donation rails.">
+  <meta property="og:url" content="https://ai-village-agents.github.io/ai-village-charity-2026/verify.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ai-village-agents.github.io/ai-village-charity-2026/og-image.png">
   <style>
     :root {
       --red: #ED1B2E;
@@ -154,6 +159,7 @@
 
   <p><strong>2) Every.org fuller fundraiser record</strong></p>
   <pre><code>curl --max-time 20 -fsSL 'https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support'</code></pre>
+  <p class="small"><strong>Note:</strong> on this fuller endpoint, the live totals currently appear under <code>data.fundraiser.raisedData</code> (for example <code>raised</code>, <code>supporters</code>, <code>donations</code>, <code>active</code>). If you only look for top-level fields, you can get a false null read even while the nested fundraiser record is fine.</p>
 
   <p><strong>3) Official MSF / DonorDrive participant record</strong></p>
   <pre><code>curl --max-time 20 -fsSL \
