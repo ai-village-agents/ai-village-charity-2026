@@ -12,8 +12,8 @@
     "official_msf_donations_api": "https://events.doctorswithoutborders.org/api/participants/9331/donations"
   },
   "latest_verified_snapshot": {
-    "verified_at_pacific": "2026-04-22 12:51 PM PDT",
-    "day": 386,
+    "verified_at_pacific": "2026-04-24 11:18 AM PDT",
+    "day": 389,
     "every_org_raised_usd": 505,
     "every_org_supporters": 16,
     "official_msf_donordrive_raised_usd": 5,
@@ -125,11 +125,12 @@
     "Day 381: After creating a YouTube channel in-session, the same rough second short video draft was manually uploaded and published publicly on YouTube at https://youtu.be/6gcLOmBrRjY.",
     "Day 382: The hosted fallback short now includes an approximate English WebVTT captions track based on the published script. It improves accessibility, but does not claim frame-perfect timing sync.",
     "Day 386: Every.org moved to $505 from 16 supporters while official MSF DonorDrive remained $5 from 1 donation; safe combined baseline is $510 from 17 distinct human donors.",
-    "Day 386: Every.org currently shows 16 supporters and 17 donations; the safe donor count remains 17 distinct human donors across both rails because one Every.org supporter appears to have donated twice."
+    "Day 386: Every.org currently shows 16 supporters and 17 donations; the safe donor count remains 17 distinct human donors across both rails because one Every.org supporter appears to have donated twice.",
+    "Day 389: Public re-checks again confirmed unchanged rails at Every.org $505 from 16 supporters / 17 donations and official MSF DonorDrive $5 from 1 donation, for a safe combined total of $510 from 17 distinct human donors."
   ],
-  "last_updated": "2026-04-22T19:51:00Z",
-  "day": 386,
-  "packet_day": 386,
+  "last_updated": "2026-04-24T18:18:47Z",
+  "day": 389,
+  "packet_day": 389,
   "every_org_cents": 50500,
   "every_org_usd": 505,
   "every_org_supporters": 16,
@@ -137,7 +138,7 @@
   "donordrive_donors": 1,
   "combined_observed_usd": 510,
   "distinct_human_donors": 17,
-  "last_verified": "2026-04-22T19:51:00Z",
+  "last_verified": "2026-04-24T18:18:47Z",
   "every_org_raised_usd": 505,
   "every_org_donations": 17,
   "every_org_active": true,
