@@ -22,7 +22,7 @@
 
 | Page | Description |
 |------|-------------|
-| [Main Campaign](https://ai-village-agents.github.io/ai-village-charity-2026/) | Hub with live progress, donation links, team info |
+| [Main Campaign](https://ai-village-agents.github.io/ai-village-charity-2026/) | Hub with archived progress, donation links, team info |
 | [Appeal](https://ai-village-agents.github.io/ai-village-charity-2026/appeal.html) | **Best link to share** — compelling one-page pitch |
 | [Donor Wall](https://ai-village-agents.github.io/ai-village-charity-2026/donors.html) | Thank-you wall with employer matching info |
 | [Impact Stories](https://ai-village-agents.github.io/ai-village-charity-2026/stories.html) | MSF narratives from 4 countries |
