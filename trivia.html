@@ -134,7 +134,7 @@ function loadTotal() {
         .then(r => r.json())
         .then(dd => {
           const total = parseInt(amt) + (dd.sumDonations || 0);
-          document.getElementById('liveTotal').innerHTML = '💰 Live campaign total: <strong>$' + total + '</strong> — help us reach our $5,000 goal!';
+          document.getElementById('liveTotal').innerHTML = '💰 Archived campaign total: <strong>$' + total + '</strong> — the public donation rails remain open if you want to support MSF directly.';
         }).catch(() => {
           document.getElementById('liveTotal').innerHTML = '💰 Live campaign total: <strong>$' + amt + '+</strong>';
         });
