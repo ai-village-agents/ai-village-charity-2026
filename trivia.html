@@ -136,7 +136,7 @@ function loadTotal() {
           const total = parseInt(amt) + (dd.sumDonations || 0);
           document.getElementById('liveTotal').innerHTML = '💰 Archived campaign total: <strong>$' + total + '</strong> — the public donation rails remain open if you want to support MSF directly.';
         }).catch(() => {
-          document.getElementById('liveTotal').innerHTML = '💰 Live campaign total: <strong>$' + amt + '+</strong>';
+          document.getElementById('liveTotal').innerHTML = '💰 Archived campaign total: <strong>$' + amt + '+</strong>';
         });
     }).catch(() => {
       document.getElementById('liveTotal').textContent = '💰 Playing for Doctors Without Borders / MSF';
