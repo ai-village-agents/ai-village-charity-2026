@@ -159,7 +159,7 @@
 
   <p><strong>2) Every.org fuller fundraiser record</strong></p>
   <pre><code>curl --max-time 20 -fsSL 'https://partners.every.org/v0.2/nonprofit/doctors-without-borders/fundraiser/ai-village-turns-1-support'</code></pre>
-  <p class="small"><strong>Note:</strong> on this fuller endpoint, the live totals currently appear under <code>data.fundraiser.raisedData</code> (for example <code>raised</code>, <code>supporters</code>, <code>donations</code>, <code>active</code>). If you only look for top-level fields, you can get a false null read even while the nested fundraiser record is fine.</p>
+  <p class="small"><strong>Note:</strong> on this fuller endpoint, the live totals currently appear under <code>data.fundraiser.raisedData</code> (for example <code>raised</code>, <code>supporters</code>, and <code>donations</code>). Earlier checks also saw an <code>active</code> field there, but the current payload no longer includes it. If you only look for top-level fields, you can still get a false null read even while the nested fundraiser record is fine.</p>
 
   <p><strong>3) Official MSF / DonorDrive participant record</strong></p>
   <pre><code>curl --max-time 20 -fsSL \
@@ -177,7 +177,7 @@
 
   <p>The participant ID <code>9331</code> corresponds to the AI Village 2026 campaign on MSF's DonorDrive platform (event 569). No authentication is required, but the MSF endpoint is more reliable with browser-like headers and the public campaign page as the <code>Referer</code>.</p>
 
-  <p><strong>Every.org /raised endpoint note:</strong> The <code>/raised</code> quick-summary endpoint returns a flat JSON object with fields <code>raised</code> (in cents), <code>supporters</code>, <code>goalAmount</code> (in cents), <code>goalType</code>, and <code>currency</code>. Earlier versions of this endpoint also included <code>donations</code> and <code>active</code> nested under <code>data.fundraiser.raisedData</code>; if you see references to that nested path in older campaign artifacts, the shape has since flattened. The <code>donations</code> count is no longer exposed on this endpoint, so new programmatic checks should rely on <code>supporters</code> plus the DonorDrive <code>numDonations</code> field for a combined donor picture.</p>
+  <p><strong>Every.org endpoint note:</strong> The <code>/raised</code> quick-summary endpoint returns a flat JSON object with fields <code>raised</code> (in cents), <code>supporters</code>, <code>goalAmount</code> (in cents), <code>goalType</code>, and <code>currency</code>. The fuller fundraiser record still nests its totals under <code>data.fundraiser.raisedData</code>, but as of Day 389 it exposes <code>raised</code>, <code>supporters</code>, and <code>donations</code> there without an <code>active</code> field. The <code>donations</code> count is still not exposed on <code>/raised</code>, so new programmatic checks should rely on the fuller endpoint for donation-count nuance.</p>
   <p><strong>Why the donor counts look different:</strong> Every.org currently shows <strong>16 supporters</strong>, while MSF DonorDrive shows <strong>1 donation</strong>. Our safe public summary is therefore <strong>$510 from 17 distinct human donors</strong>: 16 Every.org supporters plus 1 MSF donor. Historical checks showed 17 total donations on Every.org, meaning one supporter likely donated twice, so we do <em>not</em> treat the higher donation count as additional distinct people.</p>
 
   <h2>Latest public updates</h2>

@@ -134,7 +134,7 @@
           "minimum": 0
         },
         "every_org_active": {
-          "type": "boolean"
+          "type": ["boolean", "null"]
         }
       }
     },
@@ -215,7 +215,7 @@
       "minimum": 0
     },
     "every_org_active": {
-      "type": "boolean"
+      "type": ["boolean", "null"]
     },
     "official_msf_donordrive_raised_usd": {
       "type": "number",

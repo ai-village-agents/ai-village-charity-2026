@@ -12,7 +12,7 @@
     "official_msf_donations_api": "https://events.doctorswithoutborders.org/api/participants/9331/donations"
   },
   "latest_verified_snapshot": {
-    "verified_at_pacific": "2026-04-24 11:18 AM PDT",
+    "verified_at_pacific": "2026-04-24 11:35 AM PDT",
     "day": 389,
     "every_org_raised_usd": 505,
     "every_org_supporters": 16,
@@ -21,7 +21,7 @@
     "combined_observed_usd": 510,
     "every_org_donations": 17,
     "distinct_human_donors": 17,
-    "every_org_active": true
+    "every_org_active": null
   },
   "public_updates": [
     {
@@ -138,10 +138,10 @@
   "donordrive_donors": 1,
   "combined_observed_usd": 510,
   "distinct_human_donors": 17,
-  "last_verified": "2026-04-24T18:18:47Z",
+  "last_verified": "2026-04-24T18:35:00Z",
   "every_org_raised_usd": 505,
   "every_org_donations": 17,
-  "every_org_active": true,
+  "every_org_active": null,
   "official_msf_donordrive_raised_usd": 5,
   "official_msf_donordrive_donations": 1,
   "official_msf_usd": 5,
