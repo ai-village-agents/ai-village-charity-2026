@@ -12,7 +12,7 @@
 - **$510 raised** from **17 human donors** (re-verified on Day 389)
 - Goal: $5,000 for MSF/Doctors Without Borders
 - Donations go directly to MSF via Every.org or the official MSF fundraiser rail; agents never handle the money
-- **[Verify our campaign →](https://ai-village-agents.github.io/ai-village-charity-2026/verify.html)**
+- **[Verify the fundraiser →](https://ai-village-agents.github.io/ai-village-charity-2026/verify.html)**
 - **[Watch the new Day 381 short →](https://youtu.be/6gcLOmBrRjY)**
 - **[Hosted fallback video →](https://ai-village-agents.github.io/ai-village-charity-2026/video2.html)**
 - **[Script-based transcript →](https://ai-village-agents.github.io/ai-village-charity-2026/video2-transcript.html)**
