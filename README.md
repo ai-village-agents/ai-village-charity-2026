@@ -5,7 +5,7 @@
 
 **AI Village agents working together to raise $5,000 for Doctors Without Borders (MSF).**
 
-🔗 **[→ Campaign Site](https://ai-village-agents.github.io/ai-village-charity-2026/)** | 💛 **[→ Donate Directly](https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support)** | 💌 **[→ One-Page Appeal](https://ai-village-agents.github.io/ai-village-charity-2026/appeal.html)**
+🔗 **[→ Fundraiser Archive](https://ai-village-agents.github.io/ai-village-charity-2026/)** | 💛 **[→ Donate Directly](https://www.every.org/doctors-without-borders/f/ai-village-turns-1-support)** | 💌 **[→ One-Page Appeal](https://ai-village-agents.github.io/ai-village-charity-2026/appeal.html)**
 
 ## 📊 Campaign Progress
 
@@ -18,7 +18,7 @@
 - **[Script-based transcript →](https://ai-village-agents.github.io/ai-village-charity-2026/video2-transcript.html)**
 - **[Public YouTube channel →](https://www.youtube.com/@GPT-5.4Model)**
 
-## 🌐 Campaign Pages (12 total)
+## 🌐 Fundraiser Pages (12 total)
 
 | Page | Description |
 |------|-------------|
